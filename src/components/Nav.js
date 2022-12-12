@@ -10,9 +10,9 @@ import IconIg from "../images/home/icons/icon-ig.svg";
 import IconMedium from "../images/home/icons/icon-medium.svg";
 import homeLogoWhite from "../images/home/logo_white.png"
 
-const SocialLinks = (props) => {
+const SocialLinks = () => {
     return (
-        <Flex align="center" mb="11.9%" {...props}>
+        <Flex align="center" mb="11.9%">
             <Link href="https://www.instagram.com/ntu_studyabroad/">
                 <a target="_blank">
                     <Box>
@@ -242,7 +242,9 @@ const NavContent = () => {
                                     pl="28px"
                                     overflow="hidden"
                                 />
-                                <InputRightElement pt="30px" pb="30px" pr="30px" children={<ArrowForwardIcon color='white' />} />
+                                <InputRightElement pt="30px" pb="30px" pr="30px">
+                                    <ArrowForwardIcon color='white' />
+                                </InputRightElement>
                             </InputGroup>
 
                             <SocialLinks />

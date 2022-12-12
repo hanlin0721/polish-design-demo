@@ -24,7 +24,7 @@ const CookiesNotice = () => {
         >
             <Text fontSize="12px" fontWeight="600" maxW="710px" textAlign="center">
                 {t("cookies-desc1")}
-                <a target="_blank" style={{ color: "#8D98C0" }} href="https://www.ntu.edu.tw/english/copyright.html">
+                <a target="_blank" rel="noreferrer" style={{ color: "#8D98C0" }} href="https://www.ntu.edu.tw/english/copyright.html">
                     {t("privacy-link")}
                 </a>
                 {t("cookies-desc2")}

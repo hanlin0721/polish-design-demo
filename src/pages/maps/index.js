@@ -45,4 +45,5 @@ const Map = memo(() => {
     )
 })
 
+Map.displayName = 'Map'
 export default Map;
