@@ -4,10 +4,9 @@ import { ArrowForwardIcon } from "@chakra-ui/icons"
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import SwitchLang from "./Home/SwitchLang";
 import IconFb from "../images/home/icons/icon-fb.svg";
 import IconIg from "../images/home/icons/icon-ig.svg";
-import IconMedium from "../images/home/icons/icon-medium.svg";
+// import IconMedium from "../images/home/icons/icon-medium.svg";
 import homeLogoWhite from "../images/home/logo_white.png"
 
 const SocialLinks = () => {
@@ -27,13 +26,13 @@ const SocialLinks = () => {
                     </Box>
                 </a>
             </Link>
-            <Link href="https://www.youtube.com/channel/UCekymzo_M63vGMxPiDFV8wg">
+            {/* <Link href="https://www.youtube.com/channel/UCekymzo_M63vGMxPiDFV8wg">
                 <a target="_blank">
                     <Box>
                         <Image src={IconMedium.src} alt="icon_medium" />
                     </Box>
                 </a>
-            </Link>
+            </Link> */}
         </Flex>
     );
 };
