@@ -1,0 +1,46 @@
+{
+  "name": "p-ntuoh-frontend-copy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.9",
+    "@chakra-ui/react": "^2.2.4",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@react-spring/web": "^9.5.4",
+    "@react-three/drei": "^9.45.1",
+    "@react-three/fiber": "^8.9.1",
+    "@use-gesture/react": "^10.2.20",
+    "axios": "^0.27.2",
+    "date-fns": "^2.29.2",
+    "framer-motion": "^6.5.1",
+    "gsap": "^3.11.3",
+    "ios-inner-height": "^1.1.1",
+    "lil-gui": "^0.17.0",
+    "lodash": "^4.17.21",
+    "lottie-react": "^2.3.1",
+    "next": "12.2.3",
+    "next-i18next": "^12.0.0",
+    "normalize-wheel": "^1.0.1",
+    "react": "18.2.0",
+    "react-18-image-lightbox": "^5.1.4",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-modal-sheet": "^1.5.2",
+    "resso": "^0.6.0",
+    "spectorjs": "^0.9.27",
+    "stats.js": "^0.17.0",
+    "three": "^0.144.0",
+    "zustand": "^3.7.2"
+  },
+  "devDependencies": {
+    "eslint": "8.21.0",
+    "eslint-config-next": "12.2.3"
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21.25" height="20" viewBox="0 0 21.25 20">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#845b35"/>
+      <stop offset="1" stop-color="#eba15b"/>
+    </linearGradient>
+  </defs>
+  <path id="Icon_awesome-chart-pie" data-name="Icon awesome-chart-pie" d="M20.617,11.25H11.348l6.173,6.173a.627.627,0,0,0,.867.027,9.355,9.355,0,0,0,2.857-5.5.626.626,0,0,0-.627-.7ZM20,8.719A9.4,9.4,0,0,0,11.281,0a.629.629,0,0,0-.656.633V9.375h8.741A.628.628,0,0,0,20,8.719ZM8.75,11.25V1.981a.626.626,0,0,0-.7-.627,9.368,9.368,0,0,0-8.048,9.6A9.491,9.491,0,0,0,9.493,20a9.3,9.3,0,0,0,5.284-1.72.621.621,0,0,0,.061-.941Z" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+</svg>

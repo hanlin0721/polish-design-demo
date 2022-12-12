@@ -1,0 +1,48 @@
+import { Canvas } from '@react-three/fiber'
+import Experience from '../../components/Maps/Experience.js'
+import { memo } from 'react'
+import useControl from "../../store/useControl.js";
+import _ from 'lodash';
+
+const Map = memo(() => {
+    const nextScene = useControl((state) => state.nextScene)
+    const prevScene = useControl((state) => state.prevScene)
+
+    const next = _.debounce(function () {
+        nextScene()
+    }, 1000, {
+        leading: true,
+        trailing: false
+    })
+
+    const prev = _.debounce(function () {
+        prevScene()
+    }, 1000, {
+        leading: true,
+        trailing: false
+    })
+
+    const scrollHandler = (e) => {
+        if (e.deltaY > 0) {
+            next()
+        }
+        if (e.deltaY < 0) {
+            prev()
+        }
+    }
+
+    return (
+        <Canvas
+            shadows
+            camera={{
+                fov: 45,
+                near: 0.01,
+            }}
+            onWheel={scrollHandler}
+        >
+            <Experience />
+        </Canvas>
+    )
+})
+
+export default Map;

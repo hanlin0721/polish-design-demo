@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38" height="38" viewBox="0 0 38 38">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="38" height="38" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="リピートグリッド_19" data-name="リピートグリッド 19" clip-path="url(#clip-path)">
+    <g id="グループ_3066" data-name="グループ 3066" transform="translate(0)">
+      <path id="パス_200" data-name="パス 200" d="M19,0A19,19,0,1,1,0,19,19,19,0,0,1,19,0Z" fill="#fff"/>
+      <path id="Icon_material-file-download" data-name="Icon material-file-download" d="M19.588,9.68H16.134V4.5h-5.18V9.68H7.5l6.044,6.044ZM7.5,17.451v1.727H19.588V17.451Z" transform="translate(5.456 7.161)" fill="#1a3081"/>
+    </g>
+  </g>
+</svg>

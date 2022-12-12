@@ -1,0 +1,90 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  box-shadow: none !important;
+}
+
+.header__hamburger__icon {
+  display: flex;
+  width: 24px;
+  height: 17px;
+  position: relative;
+  z-index: 1;
+}
+
+.header__hamburger__icon .line {
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  height: 3px;
+  transition: all 0.4s ease;
+}
+
+.header__hamburger__icon .line.top {
+  top: 0;
+}
+
+.header__hamburger__icon .line.center {
+  top: 7px;
+}
+
+.header__hamburger__icon .line.bottom {
+  bottom: 0;
+}
+
+.header__hamburger.show .item {
+  overflow: hidden
+}
+
+.header__hamburger.show .line.top,
+.header__hamburger.show .line.center {
+  transform: rotate(45deg);
+  top: 6px;
+}
+
+.header__hamburger.show .line.bottom {
+  transform: rotate(135deg);
+  top: 6px;
+}
+
+@keyframes verticalFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-24px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    color: white;
+    background: black;
+  }
+}

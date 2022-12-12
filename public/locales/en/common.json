@@ -1,0 +1,91 @@
+{
+  "cookies-desc1": "In order to provide you with more high-quality content, this website uses cookies analysis technology. By continuing to browse the content of this website, you agree to our use of cookies, please read our ",
+  "cookies-desc2": " for more information on cookies.",
+  "privacy-link": "“Privacy Policy”",
+  "remind-me": "Remind Me",
+  "list-of-exchange-universities": "10/4-17 Mark the Date",
+  "home-1": {
+    "title": "Discover the most prestigious university in Taiwan",
+    "description": "Founded in 1928, NTU is the most prestigious university in Taiwan, and is among the top 100 universities in the world. Guided by independent thought and a pioneering spirit of enterprise, students at NTU become a part of the nation’s richest center of learning and receive a diverse and superlative education.",
+    "partner-universities-globally": "Partner Universities Globally",
+    "partner-universities-unit": ""
+  },
+  "home-2": {
+    "title": "Exchange Selection Timeline",
+    "home-link": "Home",
+    "online-application": "World Semiconductor Technology Development Ranking",
+    "announcement-and-ranking-1st": "QS Asia University Ranking",
+    "announcement": "QS World University Rankings",
+    "ranking-2nd": "THE World UniversityRankings",
+    "a": "World Semiconductor Technology Development Ranking",
+    "b": "QS Asia University Ranking",
+    "c": "QS World University Rankings",
+    "d": "THE World University Rankings",
+    "e": "Collage",
+    "f": "Courses in English",
+    "g": "Overseas Students"
+  },
+  "home-3": {
+    "title": "Highlights: Exchange Universities’ Information, Information Sessions & NTU Study Abroad Expo Points Reward",
+    "content": "The expo gathers all information from our 260 exchange universities, along with the eligibility requirements and testimonials from past participants. The Forum Live Show features information sessions covering exchange student selection, scholarships and more. Also, we are introducing the NTU Study Abroad Expo Points Reward scheme, exclusively for NTU students. Don’t miss out on this great opportunity!"
+  },
+  "home-4": "Participate in the forum to solve your questions. Find your desired live stream and add it to google calendar.",
+  "areas-coming-soon": "Explore Now",
+  "areas": {
+    "north-america": "North America",
+    "south-america": "South America",
+    "europe": "Europe",
+    "africa": "Africa",
+    "middle-east": "Middle East",
+    "north-asia": "North Asia",
+    "greater-china": "Greater China",
+    "south-east-asia": "South-east Asia",
+    "north-east-asia": "North-east Asia",
+    "oceania": "Oceania"
+  },
+  "footer": {
+    "title": "Apply National Taiwan University",
+    "apply-now": "Apply"
+  },
+  "coming-soon": "Apply National Taiwan University",
+  "back": "Back",
+  "login": "Login",
+  "maps": {
+    "area-collapse-1": "List of Areas: ",
+    "area-collapse-2": "",
+    "school-collapse-1": "List of Universities: ",
+    "school-collapse-2": "",
+    "collapse": "Collapse",
+    "current": "Current Area",
+    "world": "Areas to Explore",
+    "others": "Other Areas",
+    "area-list": "List of Areas",
+    "apply-btn": "Application Requirements",
+    "note-btn": "Testimonials",
+    "files-title": "Document Download",
+    "lang-group": "Language group",
+    "main-lang": "Primary language of instruction",
+    "submit": "Submit",
+    "quiz-true": "🎉 Congratulations! You got 200 Expo Points",
+    "quiz-false": "😭 Good luck next time",
+    "quiz-option-sub-1": "options",
+    "quiz-option-sub-2": ""
+  },
+  "nav": {
+    "area-list": "Areas to Explore",
+    "menu": "選單",
+    "login-label": "I am a NTU Student",
+    "login-as-stu": "Student Login",
+    "school-list": "List of Universities",
+    "team": "Team",
+    "orgs": "Partner Institutions & LTTC",
+    "start-with-us": "Start with us",
+    "apply": "Apply",
+    "polish-2nd-anniversary": "The 2nd Ann. 禮品頁",
+    "term-and-condition": "相關條款 & Cookies 授權"
+  },
+  "space": {
+    "title": "My Space",
+    "action": "Go"
+  }
+}
