@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
-import ArrowDownwardIcon from "../../images/home/icons/icon_arrow_downward.svg";
+import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward.svg";
 import appStore from "../../store/store";
 import HomeNav from "./HomeNav.js";
 import WorkNav from "../Work/WorkNav.js";

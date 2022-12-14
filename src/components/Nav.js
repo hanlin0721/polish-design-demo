@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import IconFb from "../images/home/icons/icon-fb.svg";
 import IconIg from "../images/home/icons/icon-ig.svg";
-import IconMedium from "../images/home/icons/icon-medium.svg";
+import IconMedium from "../images/home/icons/Icon-medium.svg";
 import homeLogoWhite from "../images/home/logo_white.png"
 import useControl from "../store/useControl";
 
