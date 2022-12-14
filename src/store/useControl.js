@@ -27,6 +27,13 @@ export default create(subscribeWithSelector((set) => {
                     scene: state.scene - 1
                 }
             })
-        }
+        },
+        goScene: (value) => {
+            set(() => {
+                return {
+                    scene: value
+                }
+            })
+        },
     }
 }))

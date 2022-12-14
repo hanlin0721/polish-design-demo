@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Box, Flex, Image, Text, VStack } from "@chakra-ui/react";
-import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward.svg";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import ArrowDownwardIcon from "../../images/home/icons/icon_arrow_downward.svg";
 import appStore from "../../store/store";
 import HomeNav from "./HomeNav.js";
 import WorkNav from "../Work/WorkNav.js";
@@ -85,11 +85,11 @@ const HomeHeader = () => {
                     transitionDelay={scene !== 2 ? "0s" : "1s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity"}
-                    transform={`translate(-50%, -60%)`}
+                    transform={`translate(-65%, -40%)`}
                     pointerEvents="none"
                 >
                     <Text
-                        fontSize="5vw"
+                        fontSize="4.3vw"
                         fontWeight="bold"
                         letterSpacing="2.2px"
                         transform={`translateX(-30%)`}
@@ -98,20 +98,40 @@ const HomeHeader = () => {
                         WE FOCUS
                     </Text>
                     <Text
-                        fontSize="5vw"
+                        fontSize="4.3vw"
                         fontWeight="bold"
                         letterSpacing="2.2px"
                     >
                         MORE ON
                     </Text>
                     <Text
-                        fontSize="5vw"
+                        fontSize="4.3vw"
                         fontWeight="bold"
                         letterSpacing="2.2px"
                         transform={`translateX(-15%)`}
                         lineHeight="1"
                     >
                         RESULTS
+                    </Text>
+
+                    <Text
+                        mt="5.5%"
+                        fontSize="0.83vw"
+                        fontWeight="bold"
+                        letterSpacing="2.2px"
+                        transform={`translateX(-2%)`}
+                        lineHeight="1.5"
+                    >
+                        Polish Design 更關注於解決方案的成效
+                    </Text>
+                    <Text
+                        fontSize="0.83vw"
+                        fontWeight="bold"
+                        letterSpacing="2.2px"
+                        transform={`translateX(-2%)`}
+                        lineHeight="1.5"
+                    >
+                        我們能達到 KPI 及提出現有資源中能達到的成效方案
                     </Text>
                 </Box>
 

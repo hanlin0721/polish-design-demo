@@ -6,8 +6,9 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import IconFb from "../images/home/icons/icon-fb.svg";
 import IconIg from "../images/home/icons/icon-ig.svg";
-// import IconMedium from "../images/home/icons/icon-medium.svg";
+import IconMedium from "../images/home/icons/icon-medium.svg";
 import homeLogoWhite from "../images/home/logo_white.png"
+import useControl from "../store/useControl";
 
 const SocialLinks = () => {
     return (
@@ -26,13 +27,13 @@ const SocialLinks = () => {
                     </Box>
                 </a>
             </Link>
-            {/* <Link href="https://www.youtube.com/channel/UCekymzo_M63vGMxPiDFV8wg">
+            <Link href="https://www.youtube.com/channel/UCekymzo_M63vGMxPiDFV8wg">
                 <a target="_blank">
                     <Box>
                         <Image src={IconMedium.src} alt="icon_medium" />
                     </Box>
                 </a>
-            </Link> */}
+            </Link>
         </Flex>
     );
 };
@@ -85,7 +86,7 @@ const NavContent = () => {
     const { t } = useTranslation("common");
     const router = useRouter();
 
-    const listItem = lives[0];
+    const goScene = useControl((state) => state.goScene);
     return (
         <Box
             zIndex="10001"
@@ -135,7 +136,19 @@ const NavContent = () => {
                             </Box>
 
                             <Box color="#FFF" mt="11%">
-                                <Text fontSize="64px" fontWeight="bold">Portfolio</Text>
+                                {/* <Text fontSize="64px" fontWeight="bold">Portfolio</Text> */}
+                                <Link href="#">
+                                    <a style={{ display: "block", width: "100%" }}>
+                                        <Box onClick={() => {
+                                            goScene(1)
+                                            appStore.scene = 1
+                                        }}>
+                                            <Text fontSize="64px" fontWeight="bold">
+                                                Portfolio
+                                            </Text>
+                                        </Box>
+                                    </a>
+                                </Link>
                                 <Text fontSize="16px" style={{ "opacity": 0.7 }}>作品集</Text>
                             </Box>
 
@@ -182,7 +195,16 @@ const NavContent = () => {
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
-                                                {t("nav.team")}
+                                                {t("nav.about")}
+                                            </Text>
+                                        </Box>
+                                    </a>
+                                </Link>
+                                <Link href="/info/live">
+                                    <a style={{ display: "block", width: "100%" }}>
+                                        <Box onClick={() => (appStore.isMenu = false)}>
+                                            <Text fontSize="20px" fontWeight="normal">
+                                                {t("nav.how-we-do")}
                                             </Text>
                                         </Box>
                                     </a>
