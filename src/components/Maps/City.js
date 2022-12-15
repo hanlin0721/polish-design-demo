@@ -86,60 +86,60 @@ export default function City(props) {
             }
         )
 
-        // actions.Animation.play()
+        actions.Animation.play()
 
         return () => {
             unsubscribeReset()
         }
     }, [])
 
-    // useFrame((state, delta) => {
-    //     polishManModeTwoRef.current.geometry.center()
-    //     polishManModeTwoRef.current.rotation.y += 0.02
+    useFrame((state, delta) => {
+        polishManModeTwoRef.current.geometry.center()
+        polishManModeTwoRef.current.rotation.y += 0.02
 
-    //     let cameraPosition
-    //     let cameraTarget
+        let cameraPosition
+        let cameraTarget
 
-    //     if (scene === 1 || scene === 3) {
-    //         cameraPosition = new THREE.Vector3(-0.8, 1.2, -1)
-    //         cameraPosition.applyQuaternion(polishManRef.current.quaternion)
-    //         cameraPosition.add(new THREE.Vector3(
-    //             polishManRef.current.position.x,
-    //             polishManRef.current.position.y,
-    //             polishManRef.current.position.z,
-    //         ))
+        if (scene === 1 || scene === 3) {
+            cameraPosition = new THREE.Vector3(-1, 1.2, -1.2)
+            cameraPosition.applyQuaternion(polishManRef.current.quaternion)
+            cameraPosition.add(new THREE.Vector3(
+                polishManRef.current.position.x,
+                polishManRef.current.position.y,
+                polishManRef.current.position.z,
+            ))
 
-    //         cameraTarget = new THREE.Vector3(
-    //             polishManRef.current.position.x + 0,
-    //             polishManRef.current.position.y + 0,
-    //             polishManRef.current.position.z + 0
-    //         )
-    //         // cameraTarget.add(new THREE.Vector3(
-    //         //     polishManRef.current.position.x * 0.1 + state.pointer.x * 0.01,
-    //         //     polishManRef.current.position.y * 0.1 + state.pointer.y * 0.005,
-    //         //     polishManRef.current.position.z * 0.1,
-    //         // ))
-    //     }
+            cameraTarget = new THREE.Vector3(
+                polishManRef.current.position.x + -0.7,
+                polishManRef.current.position.y + 0,
+                polishManRef.current.position.z + 0.8
+            )
+            // cameraTarget.add(new THREE.Vector3(
+            //     polishManRef.current.position.x * 0.1 + state.pointer.x * 0.01,
+            //     polishManRef.current.position.y * 0.1 + state.pointer.y * 0.005,
+            //     polishManRef.current.position.z * 0.1,
+            // ))
+        }
 
-    //     if (scene === 2) {
-    //         cameraPosition = new THREE.Vector3(
-    //             polishManModeTwoGroupRef.current.position.x + 0,
-    //             polishManModeTwoGroupRef.current.position.y + 0,
-    //             polishManModeTwoGroupRef.current.position.z + 0.3
-    //         )
-    //         cameraTarget = new THREE.Vector3(
-    //             polishManModeTwoGroupRef.current.position.x - 0.1,
-    //             polishManModeTwoGroupRef.current.position.y,
-    //             polishManModeTwoGroupRef.current.position.z + 0
-    //         )
-    //     }
+        if (scene === 2) {
+            cameraPosition = new THREE.Vector3(
+                polishManModeTwoGroupRef.current.position.x + 0,
+                polishManModeTwoGroupRef.current.position.y + 0,
+                polishManModeTwoGroupRef.current.position.z + 0.3
+            )
+            cameraTarget = new THREE.Vector3(
+                polishManModeTwoGroupRef.current.position.x - 0.1,
+                polishManModeTwoGroupRef.current.position.y,
+                polishManModeTwoGroupRef.current.position.z + 0
+            )
+        }
 
-    //     smoothCameraPosition.lerp(cameraPosition, 5 * delta)
-    //     smoothCameraTarget.lerp(cameraTarget, 5 * delta)
+        smoothCameraPosition.lerp(cameraPosition, 5 * delta)
+        smoothCameraTarget.lerp(cameraTarget, 5 * delta)
 
-    //     state.camera.position.copy(smoothCameraPosition)
-    //     state.camera.lookAt(smoothCameraTarget)
-    // })
+        state.camera.position.copy(smoothCameraPosition)
+        state.camera.lookAt(smoothCameraTarget)
+    })
 
     return (
         <group ref={group} {...props} dispose={null}>

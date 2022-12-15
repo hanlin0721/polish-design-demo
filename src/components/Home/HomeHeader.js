@@ -33,7 +33,6 @@ const HomeHeader = () => {
                     transition="2.5s ease 1.5s"
                     bgColor="#000"
                     opacity={1}
-
                 >
                     <Map isMap={isMap} />
                 </Box>
