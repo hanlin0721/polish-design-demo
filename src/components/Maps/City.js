@@ -110,15 +110,16 @@ export default function City(props) {
             ))
 
             cameraTarget = new THREE.Vector3(
-                polishManRef.current.position.x + -0.7,
-                polishManRef.current.position.y + 0,
-                polishManRef.current.position.z + 0.8
+                -0.7,
+                0,
+                0.8
             )
-            // cameraTarget.add(new THREE.Vector3(
-            //     polishManRef.current.position.x * 0.1 + state.pointer.x * 0.01,
-            //     polishManRef.current.position.y * 0.1 + state.pointer.y * 0.005,
-            //     polishManRef.current.position.z * 0.1,
-            // ))
+            cameraTarget.applyQuaternion(polishManRef.current.quaternion)
+            cameraTarget.add(new THREE.Vector3(
+                polishManRef.current.position.x,
+                polishManRef.current.position.y,
+                polishManRef.current.position.z,
+            ))
         }
 
         if (scene === 2) {
