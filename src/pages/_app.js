@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider theme={theme}>
         {isAppStoreInit && (
           <>
-            <div id="locked">
+            <div id="locked" style={{ overflow: "hidden" }}>
               <Component {...pageProps} />
               <Nav />
               <StartWithUs />

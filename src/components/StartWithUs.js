@@ -9,10 +9,11 @@ const StartWithUs = () => {
             bg="#2A313A"
             color="white"
             cursor="pointer"
+            borderRadius="36px"
         >
             <Text
-                pt="17px"
-                pb="14px"
+                pt="12px"
+                pb="15px"
                 px="34px"
                 fontWeight="bold"
             >
