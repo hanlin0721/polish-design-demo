@@ -1,4 +1,4 @@
-import { OrbitControls, useTexture, useGLTF, Center, useHelper } from '@react-three/drei'
+import { OrbitControls, useHelper } from '@react-three/drei'
 import { useRef } from 'react'
 import City from '../../components/Maps/City.js'
 import * as THREE from 'three'
@@ -29,12 +29,12 @@ const Experience = () => {
                 ref={directionalLight}
                 castShadow
                 intensity={1}
-                position={[1, 3, 4]}
+                position={[0.1, 0.2, 0.09]}
                 shadow-normalBias={0.04}
                 color={'white'}
             />
 
-            <ambientLight intensity={1} />
+            <ambientLight intensity={0.22} />
             {/* <pointLight color="red" intensity={1} position={[0, 0.1, 0]} /> */}
 
             {/* <group ref={groupRef} position={[-1, 0, 0.2]}>

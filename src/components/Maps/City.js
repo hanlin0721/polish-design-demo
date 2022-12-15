@@ -11,6 +11,8 @@ import useControl from "../../store/useControl.js";
 import gsap from "gsap";
 import appStore from "../../store/store.js";
 import PolishMan from "./PolishMan.js";
+import Test from "./Test.js";
+
 
 export default function City(props) {
     const group = useRef();
@@ -49,7 +51,6 @@ export default function City(props) {
         const unsubscribeReset = useControl.subscribe(
             (state) => state.scene,
             (value) => {
-                console.log(value)
                 if (value === 1) {
                     setScene(() => 1)
                     appStore.scene = 1
@@ -93,6 +94,7 @@ export default function City(props) {
         }
     }, [])
 
+
     useFrame((state, delta) => {
         let cameraPosition
         let cameraTarget
@@ -121,8 +123,8 @@ export default function City(props) {
 
         if (scene === 2) {
             cameraPosition = new THREE.Vector3(
-                polishManTwoRef.current.position.x + 0.18,
-                polishManTwoRef.current.position.y + 0,
+                polishManTwoRef.current.position.x + 0.18 + state.pointer.x * 0.01,
+                polishManTwoRef.current.position.y + state.pointer.y * 0.01,
                 polishManTwoRef.current.position.z + 0.44
             )
             cameraTarget = new THREE.Vector3(
@@ -132,8 +134,8 @@ export default function City(props) {
             )
         }
 
-        smoothCameraPosition.lerp(cameraPosition, 5 * delta)
-        smoothCameraTarget.lerp(cameraTarget, 5 * delta)
+        smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+        smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
 
         const test = new THREE.Vector3(0.05, 0.08, 0)
         test.applyQuaternion(polishManRef.current.quaternion)
@@ -236,33 +238,34 @@ export default function City(props) {
                 </mesh> */}
 
                 {/* 實際要顯示的磨人 原地旋轉-藍色 */}
-                <PolishMan
+                <Test
                     visible={scene == 2}
                     ref={polishManTwoRef}
                     position={[-0.55, 0.13, 1.3]}
                     // rotation={[2.1 * Math.PI, 2 * Math.PI, 2.3 * Math.PI]}
-                    rotation={[2.12 * Math.PI, 2.12 * Math.PI, 2.2 * Math.PI]}
+                    rotation={[2.15 * Math.PI, 2.12 * Math.PI, 2.21 * Math.PI]}
                 >
-                    <meshBasicMaterial map={bakedPolishManBlueTexture} />
-                </PolishMan>
+                    {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
+                </Test>
 
                 {/* 實際要顯示的磨人 原地旋轉-白色 */}
-                <PolishMan
+
+                {/* <PolishMan
                     visible={scene == 2}
-                    position={[-0.42, 0.038, 1.46]}
+                    position={[-0.42, 0.064, 1.46]}
                     rotation={[1.82 * Math.PI, 2.23 * Math.PI, 2.38 * Math.PI]}
                 >
                     <meshBasicMaterial map={bakedPolishManWhiteTexture} />
-                </PolishMan>
+                </PolishMan> */}
 
                 {/* 實際要顯示的磨人 原地旋轉-橘色 */}
-                <PolishMan
+                {/* <PolishMan
                     visible={scene == 2}
                     position={[-0.5, 0.15, 0.8]}
                     rotation={[2 * Math.PI, 3.1 * Math.PI, -2.3 * Math.PI]}
                 >
                     <meshBasicMaterial map={bakedPolishManOrangeTexture} />
-                </PolishMan>
+                </PolishMan> */}
 
 
             </group>

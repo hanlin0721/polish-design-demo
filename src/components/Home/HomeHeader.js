@@ -5,6 +5,8 @@ import appStore from "../../store/store";
 import HomeNav from "./HomeNav.js";
 import WorkNav from "../Work/WorkNav.js";
 import Map from "../../pages/maps/index.js";
+import PolishManWhite from "../../images/home/polish-man-white.png";
+import PolishManOrange from "../../images/home/polish-man-orange.png";
 
 const HomeHeader = () => {
     const { isAnimReady, scene } = appStore;
@@ -80,8 +82,8 @@ const HomeHeader = () => {
                 <Box
                     pos="absolute"
                     opacity={scene === 2 ? 1 : 0}
-                    transitionDuration={scene === 2 ? "0.5s" : "0s"}
-                    transitionDelay={scene !== 2 ? "0s" : "1s"}
+                    transitionDuration={scene === 2 ? "0.8s" : "0s"}
+                    transitionDelay={scene !== 2 ? "0s" : "1.6s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity"}
                     transform={`translate(-65%, -40%)`}
@@ -132,6 +134,38 @@ const HomeHeader = () => {
                     >
                         我們能達到 KPI 及提出現有資源中能達到的成效方案
                     </Text>
+                </Box>
+
+                {/* 磨人-白色 */}
+                <Box
+                    pos="absolute"
+                    right={0}
+                    bottom="-30%"
+                    opacity={scene == 2 ? 1 : 0}
+                    transitionDuration={scene === 2 ? "0.6s" : "0s"}
+                    transitionDelay={scene !== 2 ? "0s" : "0.8s"}
+                    transitionTimingFunction="ease"
+                    transitionProperty={"opacity transform"}
+                    transform={`translateX(${scene === 2 ? "0%" : "150%"})`}
+                    pointerEvents="none"
+                >
+                    <Image src={PolishManWhite.src} alt="white-polish-man" />
+                </Box>
+
+                {/* 磨人-橘色 */}
+                <Box
+                    pos="absolute"
+                    right="5%"
+                    bottom="45%"
+                    opacity={scene == 2 ? 1 : 0}
+                    transitionDuration={scene === 2 ? "0.6s" : "0s"}
+                    transitionDelay={scene !== 2 ? "0s" : "0.8s"}
+                    transform={`translateX(${scene === 2 ? "0%" : "150%"})`}
+                    transitionTimingFunction="ease"
+                    transitionProperty={"opacity transform"}
+                    pointerEvents="none"
+                >
+                    <Image src={PolishManOrange.src} alt="orange-polish-man" />
                 </Box>
 
                 <Flex
