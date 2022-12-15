@@ -50,7 +50,7 @@ const HomeHeader = () => {
                         transitionDelay={scene !== 1 ? "0s" : "1s"}
                         transitionTimingFunction="ease"
                     >
-                        <Box position="relative" transform="translateY(-20%)">
+                        {/* <Box position="relative" transform="translateY(-20%)">
                             <Flex position="relative" left="-10%">
                                 <Text
                                     fontSize="8vw"
@@ -74,6 +74,30 @@ const HomeHeader = () => {
                                 </Box>
                             </Flex>
                             <Text position="relative" left="10%" fontSize="8vw" fontWeight="bold">SOLUTIONS</Text>
+                        </Box> */}
+                        <Box position="relative" transform="translateY(-20%)">
+                            <Text
+                                fontSize="8vw"
+                                letterSpacing="2.2px"
+                            >
+                                CreateDigital
+                            </Text>
+                            <Flex position="relative" top="-40px">
+                                <Text position="relative" fontSize="8vw" >Solutions</Text>
+                                <Box
+                                    textAlign="left"
+                                    alignSelf="center"
+                                    position="relative"
+                                    left="18%"
+                                    top="10px"
+                                    fontSize="14px"
+                                    fontWeight="bold"
+                                    pt="10px"
+                                >
+                                    <Text letterSpacing="1.2px">Polish Design 致力於創意,</Text>
+                                    <Text letterSpacing="1.2px">行得通得數位產品</Text>
+                                </Box>
+                            </Flex>
                         </Box>
                     </Box>
                 </Box>
@@ -86,30 +110,28 @@ const HomeHeader = () => {
                     transitionDelay={scene !== 2 ? "0s" : "1.6s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity"}
-                    transform={`translate(-65%, -40%)`}
+                    transform={`translate(-75%, -40%)`}
                     pointerEvents="none"
                 >
                     <Text
                         fontSize="4.3vw"
-                        fontWeight="bold"
                         letterSpacing="2.2px"
-                        transform={`translateX(-30%)`}
-                        lineHeight="1"
+                        transform={`translateX(-25%)`}
+                        lineHeight="0.8"
                     >
                         WE FOCUS
                     </Text>
                     <Text
                         fontSize="4.3vw"
-                        fontWeight="bold"
                         letterSpacing="2.2px"
+                        lineHeight="1.6"
                     >
                         MORE ON
                     </Text>
                     <Text
                         fontSize="4.3vw"
-                        fontWeight="bold"
                         letterSpacing="2.2px"
-                        transform={`translateX(-15%)`}
+                        transform={`translateX(-14%)`}
                         lineHeight="1"
                     >
                         RESULTS
