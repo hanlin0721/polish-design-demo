@@ -121,13 +121,13 @@ export default function City(props) {
 
         if (scene === 2) {
             cameraPosition = new THREE.Vector3(
-                polishManTwoRef.current.position.x + 0,
+                polishManTwoRef.current.position.x + 0.18,
                 polishManTwoRef.current.position.y + 0,
-                polishManTwoRef.current.position.z + 0.4
+                polishManTwoRef.current.position.z + 0.44
             )
             cameraTarget = new THREE.Vector3(
-                polishManTwoRef.current.position.x - 0.1,
-                polishManTwoRef.current.position.y,
+                polishManTwoRef.current.position.x - 0.09,
+                polishManTwoRef.current.position.y - 0.01,
                 polishManTwoRef.current.position.z + 0
             )
         }
@@ -226,36 +226,44 @@ export default function City(props) {
                     rotation={[2.2 * Math.PI, 0, 0]}
                     isSpinning={true}
                 >
-                    <meshBasicMaterial map={bakedPolishManBlueTexture} transparent={true} />
+                    <meshBasicMaterial map={bakedPolishManBlueTexture} />
+                    {/* <meshStandardMaterial map={bakedPolishManBlueTexture} /> */}
                 </PolishMan>
 
-                {/* 實際要顯示的磨人 原地旋轉 */}
-                {/* <Float> */}
+                {/* <mesh position={[-0.1, 0, 0]}>
+                    <boxGeometry args={[0.1, 0.25, 0.1]} />
+                    <meshStandardMaterial />
+                </mesh> */}
+
+                {/* 實際要顯示的磨人 原地旋轉-藍色 */}
                 <PolishMan
                     visible={scene == 2}
                     ref={polishManTwoRef}
-                    position={[-0.5, 0.1, 1.2]}
-                    rotation={[2.1 * Math.PI, 2 * Math.PI, 2.3 * Math.PI]}
+                    position={[-0.55, 0.13, 1.3]}
+                    // rotation={[2.1 * Math.PI, 2 * Math.PI, 2.3 * Math.PI]}
+                    rotation={[2.12 * Math.PI, 2.12 * Math.PI, 2.2 * Math.PI]}
                 >
                     <meshBasicMaterial map={bakedPolishManBlueTexture} />
                 </PolishMan>
 
+                {/* 實際要顯示的磨人 原地旋轉-白色 */}
                 <PolishMan
                     visible={scene == 2}
-                    position={[-0.46, 0.06, 1.41]}
-                    rotation={[1.95 * Math.PI, 2.1 * Math.PI, 2.3 * Math.PI]}
+                    position={[-0.42, 0.038, 1.46]}
+                    rotation={[1.82 * Math.PI, 2.23 * Math.PI, 2.38 * Math.PI]}
                 >
                     <meshBasicMaterial map={bakedPolishManWhiteTexture} />
                 </PolishMan>
 
-                {/* <PolishMan
-                    // visible={scene == 2}
-                    position={[-0.6, 0.1, 0.8]}
-                    rotation={[2.1 * Math.PI, 2 * Math.PI, 2.3 * Math.PI]}
+                {/* 實際要顯示的磨人 原地旋轉-橘色 */}
+                <PolishMan
+                    visible={scene == 2}
+                    position={[-0.5, 0.15, 0.8]}
+                    rotation={[2 * Math.PI, 3.1 * Math.PI, -2.3 * Math.PI]}
                 >
                     <meshBasicMaterial map={bakedPolishManOrangeTexture} />
-                </PolishMan> */}
-                {/* </Float> */}
+                </PolishMan>
+
 
             </group>
         </group>

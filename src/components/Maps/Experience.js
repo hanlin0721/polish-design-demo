@@ -27,15 +27,15 @@ const Experience = () => {
 
             <directionalLight
                 ref={directionalLight}
-                // castShadow
+                castShadow
                 intensity={1}
                 position={[1, 3, 4]}
                 shadow-normalBias={0.04}
                 color={'white'}
             />
 
-            {/* <ambientLight intensity={1} />
-            <pointLight color="red" intensity={1} position={[0, 0.1, 0]} /> */}
+            <ambientLight intensity={1} />
+            {/* <pointLight color="red" intensity={1} position={[0, 0.1, 0]} /> */}
 
             {/* <group ref={groupRef} position={[-1, 0, 0.2]}>
                 <mesh ref={cubeRef}>

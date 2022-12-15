@@ -27,6 +27,8 @@ const PolishMan = React.forwardRef(({ children, groupRotation, rotation, isSpinn
                 geometry={polishManModel.nodes["polish-man"].geometry}
                 material={polishManModel.nodes["polish-man"].material}
                 rotation={rotation}
+            // castShadow
+            // receiveShadow
             >
                 {children}
             </mesh>
