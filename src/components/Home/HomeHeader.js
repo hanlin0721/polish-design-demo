@@ -50,31 +50,6 @@ const HomeHeader = () => {
                         transitionDelay={scene !== 1 ? "0s" : "1s"}
                         transitionTimingFunction="ease"
                     >
-                        {/* <Box position="relative" transform="translateY(-20%)">
-                            <Flex position="relative" left="-10%">
-                                <Text
-                                    fontSize="8vw"
-                                    fontWeight="bold"
-                                    letterSpacing="2.2px"
-                                >
-                                    Creative
-                                </Text>
-                                <Box
-                                    textAlign="left"
-                                    alignSelf="center"
-                                    position="relative"
-                                    left="3%"
-                                    top="20px"
-                                    fontSize="14px"
-                                    fontWeight="bold"
-                                    pt="10px"
-                                >
-                                    <Text letterSpacing="1.2px">TO CREATE</Text>
-                                    <Text letterSpacing="1.2px">DIGITAL PRODUCTS</Text>
-                                </Box>
-                            </Flex>
-                            <Text position="relative" left="10%" fontSize="8vw" fontWeight="bold">SOLUTIONS</Text>
-                        </Box> */}
                         <Box position="relative" transform="translateY(-20%)">
                             <Text
                                 fontSize="8vw"
@@ -164,8 +139,8 @@ const HomeHeader = () => {
                     right={0}
                     bottom="-30%"
                     opacity={scene == 2 ? 1 : 0}
-                    transitionDuration={scene === 2 ? "0.6s" : "0s"}
-                    transitionDelay={scene !== 2 ? "0s" : "0.8s"}
+                    transitionDuration={scene === 2 ? "0.8s" : "0s"}
+                    transitionDelay={scene !== 2 ? "0s" : "1.5s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity transform"}
                     transform={`translateX(${scene === 2 ? "0%" : "150%"})`}
@@ -180,8 +155,8 @@ const HomeHeader = () => {
                     right="5%"
                     bottom="45%"
                     opacity={scene == 2 ? 1 : 0}
-                    transitionDuration={scene === 2 ? "0.6s" : "0s"}
-                    transitionDelay={scene !== 2 ? "0s" : "0.8s"}
+                    transitionDuration={scene === 2 ? "0.8s" : "0s"}
+                    transitionDelay={scene !== 2 ? "0s" : "1.5s"}
                     transform={`translateX(${scene === 2 ? "0%" : "150%"})`}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity transform"}

@@ -221,23 +221,19 @@ export default function City(props) {
                 />
 
                 {/* 實際要顯示的磨人 */}
-                <PolishMan
+                <Test
                     visible={scene == 1}
                     ref={polishManOneRef}
                     groupRotation={[0, -Math.PI / 6, 0]}
                     rotation={[2.2 * Math.PI, 0, 0]}
                     isSpinning={true}
                 >
-                    <meshBasicMaterial map={bakedPolishManBlueTexture} />
+                    {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
                     {/* <meshStandardMaterial map={bakedPolishManBlueTexture} /> */}
-                </PolishMan>
-
-                {/* <mesh position={[-0.1, 0, 0]}>
-                    <boxGeometry args={[0.1, 0.25, 0.1]} />
-                    <meshStandardMaterial />
-                </mesh> */}
+                </Test>
 
                 {/* 實際要顯示的磨人 原地旋轉-藍色 */}
+
                 <Test
                     visible={scene == 2}
                     ref={polishManTwoRef}

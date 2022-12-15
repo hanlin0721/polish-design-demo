@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Float } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
 
 const PolishMan = React.forwardRef(({ children, groupRotation, rotation, isSpinning, ...props }, ref) => {
@@ -21,17 +21,19 @@ const PolishMan = React.forwardRef(({ children, groupRotation, rotation, isSpinn
             scale={0.14}
             rotation={groupRotation}
         >
-            <mesh
-                ref={mesh}
-                name="polish-man002"
-                geometry={polishManModel.nodes["polish-man001"].geometry}
-                material={polishManModel.nodes["polish-man001"].material}
-                rotation={rotation}
-                castShadow
-                receiveShadow
-            >
-                {children}
-            </mesh>
+            <Float>
+                <mesh
+                    ref={mesh}
+                    name="polish-man002"
+                    geometry={polishManModel.nodes["polish-man001"].geometry}
+                    material={polishManModel.nodes["polish-man001"].material}
+                    rotation={rotation}
+                    castShadow
+                    receiveShadow
+                >
+                    {children}
+                </mesh>
+            </Float>
         </group>
     )
 })
