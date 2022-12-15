@@ -37,7 +37,7 @@ export default function City(props) {
     const bakedPolishManOrangeTexture = useTexture('./orange.png')
     bakedPolishManOrangeTexture.flipY = false
 
-    const bakedPolishManWhiteTexture = useTexture('./White.png')
+    const bakedPolishManWhiteTexture = useTexture('./white.png')
     bakedPolishManWhiteTexture.flipY = false
 
     const bakedPolishManBlueTexture = useTexture('./blue.png')
