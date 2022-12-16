@@ -61,6 +61,8 @@ export default function City(props) {
                     gsap.to(buildingOneRef.current.material, {
                         opacity: 1,
                     })
+                    actions.Animation.reset()
+                    actions.Animation.play()
                 }
                 if (value === 2) {
                     appStore.scene = 2
@@ -100,6 +102,7 @@ export default function City(props) {
         let cameraTarget
 
         if (scene === 1 || scene === 3) {
+
             cameraPosition = new THREE.Vector3(-1, 1.2, -1.2)
             cameraPosition.applyQuaternion(polishManRef.current.quaternion)
             cameraPosition.add(new THREE.Vector3(
@@ -163,7 +166,7 @@ export default function City(props) {
                     >
                         <meshBasicMaterial
                             map={scene === 2 ? bakedBaseTexture : null}
-                            color={scene === 2 ? "#fff" : null}
+                            color="#e7f9fd"
                         />
                     </mesh>
                     <mesh
@@ -185,7 +188,9 @@ export default function City(props) {
                         material={nodes.ROADDD.material}
                         position={[-6.52, -0.476, 4.86]}
                         scale={[81.54, 36.47, 66.14]}
-                    />
+                    >
+                        <meshBasicMaterial color="#D1E3EF" />
+                    </mesh>
                     <mesh
                         ref={buildingRef}
                         name="ARC"
@@ -193,7 +198,7 @@ export default function City(props) {
                         receiveShadow
                         geometry={nodes.ARC.geometry}
                         material={nodes.ARC.material}
-                        position={[-6.61, 0.2, 2.91]}
+                        position={[-6.61, 0.19, 2.91]}
                     >
                         <meshBasicMaterial map={bakedArcTexture} transparent={true} />
                     </mesh>
