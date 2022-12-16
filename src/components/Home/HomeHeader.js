@@ -136,7 +136,7 @@ const HomeHeader = () => {
                 {/* 磨人-白色 */}
                 <Box
                     pos="absolute"
-                    right={0}
+                    right="-2%"
                     bottom="-30%"
                     opacity={scene == 2 ? 1 : 0}
                     transitionDuration={scene === 2 ? "0.8s" : "0s"}
@@ -152,7 +152,7 @@ const HomeHeader = () => {
                 {/* 磨人-橘色 */}
                 <Box
                     pos="absolute"
-                    right="5%"
+                    right="2%"
                     bottom="45%"
                     opacity={scene == 2 ? 1 : 0}
                     transitionDuration={scene === 2 ? "0.8s" : "0s"}
