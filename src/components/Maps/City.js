@@ -21,7 +21,6 @@ export default function City(props) {
     const polishManTwoRef = useRef()
     const buildingRef = useRef()
     const buildingOneRef = useRef()
-    const floorRef = useRef()
 
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
@@ -156,7 +155,7 @@ export default function City(props) {
             <group ref={group} {...props} dispose={null}>
                 <group name="Scene">
                     <mesh
-                        ref={floorRef}
+                        visible={scene == 1}
                         name="BASE"
                         castShadow
                         receiveShadow
@@ -165,7 +164,18 @@ export default function City(props) {
                         position={[-6.22, 0.28, 1.13]}
                     >
                         <meshBasicMaterial
-                            map={scene === 2 ? bakedBaseTexture : null}
+                            map={bakedBaseTexture}
+                        />
+                    </mesh>
+                    <mesh
+                        visible={scene == 2}
+                        castShadow
+                        receiveShadow
+                        geometry={nodes.BASE.geometry}
+                        material={nodes.BASE.material}
+                        position={[-6.22, 0.28, 1.13]}
+                    >
+                        <meshBasicMaterial
                             color="#e7f9fd"
                         />
                     </mesh>
