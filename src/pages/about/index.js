@@ -55,9 +55,143 @@ const About = () => {
         }
     ]
 
+    const processes = [
+        {
+            title: "線上策展",
+            steps: [
+                {
+                    stepTitle: "證實",
+                    processes: [
+                        "客戶訪談",
+                        "評估",
+                        "初步可行性"
+                    ]
+                },
+                {
+                    stepTitle: "原型",
+                    processes: [
+                        "KPI 對焦",
+                        "策略定調",
+                        "設計 Prototye"
+                    ]
+                },
+                {
+                    stepTitle: "開發",
+                    processes: [
+                        "開發 MVP 並迭代",
+                        "上線計畫",
+                        "UX/UI testing",
+                        "Branding"
+                    ]
+                },
+                {
+                    stepTitle: "展前",
+                    processes: [
+                        "產品開發並測試",
+                        "數據追蹤測試",
+                        "展期資安維護"
+                    ]
+                },
+                {
+                    stepTitle: "展後",
+                    processes: [
+                        "數據分析",
+                        "展覽 Roadmap 計畫"
+                    ]
+                }
+            ],
+            caseLink: "",
+            resourceLink: ""
+        },
+        {
+            title: "產品開發",
+            steps: [
+                {
+                    stepTitle: "證實",
+                    processes: [
+                        "調查",
+                        "評估",
+                        "初步可行性",
+                        "競品和市場分析",
+                        "客戶訪談"
+                    ]
+                },
+                {
+                    stepTitle: "原型",
+                    processes: [
+                        "探索工作坊",
+                        "TA 對焦",
+                        "策略定調",
+                        "設計 Prototye",
+                        "財務計畫"
+                    ]
+                },
+                {
+                    stepTitle: "開發",
+                    processes: [
+                        "開發 MVP 並迭代",
+                        "銷售活動",
+                        "上線計畫",
+                        "商務計畫更新",
+                        "UX/UI testing",
+                        "Branding"
+                    ]
+                },
+                {
+                    stepTitle: "成長",
+                    processes: [
+                        "產品開發與管理",
+                        "階段策略、目標設定",
+                        "商務拓展",
+                        "成長營銷",
+                        "產品 Roadmap 計畫",
+                        "團隊和領導力建設"
+                    ]
+                },
+                {
+                    stepTitle: "規模化",
+                    processes: [
+                        "銷售和營銷規模化",
+                        "走向高端市場",
+                        "開發新品\n(相同市場與技術)",
+                        "大規模招聘",
+                        "公司文化建設",
+                        "產品開發與管理"
+                    ]
+                },
+            ],
+            caseLink: "",
+            resourceLink: ""
+        },
+        {
+            title: "設計支援",
+            steps: [
+                {
+                    stepTitle: "訪談",
+                    processes: [
+                        "了解需求",
+                        "評估",
+                        "初步可行性"
+                    ]
+                },
+                {
+                    stepTitle: "設計",
+                    processes: [
+                        "進行設計",
+                        "調整設計",
+                        "定案"
+                    ]
+                }
+            ],
+            caseLink: "",
+            resourceLink: ""
+        },
+    ]
+
     return (
         <Box
             bg="#DBE3E9"
+            pb="10%"
         >
             {/* We polish all day! */}
             <Box>
@@ -114,7 +248,7 @@ const About = () => {
                 mx={{ base: "0%", sm: "0.5%" }}
             >
                 <Flex
-                    pl="25%"
+                    pl={{ base: "15%", sm: "25%" }}
                     pr="10%"
                 >
                     <Box pos="relative">
@@ -218,6 +352,85 @@ const About = () => {
                         </Box>
                     </Box>
                 </Flex>
+            </Box>
+
+            {/* The Process */}
+            <Box>
+                <Box
+                    pt={{ base: "14%", sm: "8%" }}
+                    pl={{ base: "15%", sm: "25%" }}
+                    mb={{ base: "10%", sm: "5%" }}
+                >
+                    <Text
+                        fontSize={{ base: "12vw", sm: "4.4vw" }}
+                        mb="1%"
+                    >
+                        The process
+                    </Text>
+                    <Text
+                        fontWeight="bold"
+                        w={{ base: "80%", sm: "100%" }}
+                    >
+                        無論是哪個領域或行業，我們都可以創造、擴展它。
+                    </Text>
+                </Box>
+
+                <Box pl={{ base: "15%", sm: "25%" }} >
+                    {
+                        processes.map((process, index) => {
+                            return (
+                                <>
+                                    <Text mb="47px">{process.title}</Text>
+                                    <Flex mb="5%">
+                                        {
+                                            process.steps.map((step, index) => {
+                                                return (
+                                                    <Box mr="40px">
+                                                        <Box borderBottom="1px">
+                                                            <Text fontWeight="bold" pb="20px">{step.stepTitle}</Text>
+                                                        </Box>
+                                                        {
+                                                            step.processes.map((processe, index) => {
+                                                                return (
+                                                                    <Box borderBottom="1px" py="10px">
+                                                                        <Text>
+                                                                            {processe}
+                                                                        </Text>
+                                                                    </Box>
+                                                                )
+                                                            })
+                                                        }
+                                                    </Box>
+                                                )
+                                            })
+                                        }
+                                    </Flex>
+
+                                    <Flex
+                                        bg="#EAF1F7"
+                                        w="308px"
+                                        borderRadius="53px"
+                                        justifyContent="space-around"
+                                        mb="10%"
+                                    >
+                                        <Flex>
+                                            <Text>
+                                                相關案例
+                                            </Text>
+                                            <Image />
+                                        </Flex>
+                                        <Flex>
+                                            <Text>
+                                                相關資源
+                                            </Text>
+                                            <Image />
+                                        </Flex>
+                                    </Flex>
+                                </>
+                            )
+                        })
+                    }
+                </Box>
             </Box>
         </Box>
     )
