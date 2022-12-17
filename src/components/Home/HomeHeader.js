@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
-import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward.svg";
+import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward_black.svg";
 import appStore from "../../store/store";
 import HomeNav from "./HomeNav.js";
 import WorkNav from "../Work/WorkNav.js";
@@ -50,7 +50,7 @@ const HomeHeader = () => {
                         transitionDelay={scene !== 1 ? "0s" : "1s"}
                         transitionTimingFunction="ease"
                     >
-                        <Box position="relative" transform="translateY(-20%)">
+                        <Box position="relative" transform="translateY(-25%)">
                             <Text
                                 fontSize="8vw"
                                 letterSpacing="2.2px"
@@ -137,7 +137,8 @@ const HomeHeader = () => {
                 <Box
                     pos="absolute"
                     right="-2%"
-                    bottom="-30%"
+                    // bottom="-35%"
+                    bottom="-330px"
                     opacity={scene == 2 ? 1 : 0}
                     transitionDuration={scene === 2 ? "0.8s" : "0s"}
                     transitionDelay={scene !== 2 ? "0s" : "1.5s"}
@@ -165,35 +166,31 @@ const HomeHeader = () => {
                     <Image src={PolishManOrange.src} alt="orange-polish-man" />
                 </Box>
 
-                <Flex
-                    bg="rgba(33, 41, 50, 0.3)"
-                    w="164px"
-                    h="164px"
+                <Box
                     pos="fixed"
                     left="0px"
                     right="0px"
-                    mx="auto"
                     bottom="0"
-                    transform="translateY(50%)"
-                    mt="65px"
-                    justifyContent="center"
-                    borderRadius="50%"
-                    opacity={isAnimReady && scene !== 3 ? 1 : 0}
+                    textAlign="center"
+                    pointerEvents="none"
+                    animation="verticalFloat 1s ease-in-out infinite"
                 >
+                    <Text
+                        fontWeight="bold"
+                        mb="16px"
+                    >下一頁</Text>
                     <Image
-                        pos="fixed"
-                        left="0px"
-                        right="0px"
-                        mx="auto"
-                        bottom="90px"
                         w="24px"
                         h="24px"
-                        animation="verticalFloat 1s ease-in-out infinite"
+                        mx="auto"
+                        // animation="verticalFloat 1s ease-in-out infinite"
                         src={ArrowDownwardIcon.src}
                         alt="arrowDownwardIcon"
                         pointerEvents="none"
+                        mb="21px"
                     />
-                </Flex>
+                </Box>
+
             </Flex>
 
             {!isMap && <HomeNav />}

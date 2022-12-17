@@ -10,7 +10,8 @@ const HomeLogo = () => {
             pos="fixed"
             left="42px"
             top="48px"
-            transform={`translateX(${isAnimReady ? "0" : "calc(-100% - 42px)"})`}
+            // transform={`translateX(${isAnimReady ? "0" : "calc(-100% - 42px)"})`}
+            opacity={isAnimReady ? 1 : 0}
             transition="1s ease 1s"
             zIndex={10}
             cursor="pointer"

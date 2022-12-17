@@ -7,7 +7,7 @@ import { useFrame } from '@react-three/fiber'
 const Experience = () => {
 
     const directionalLight = useRef()
-    useHelper(directionalLight, THREE.DirectionalLightHelper, 1)
+    // useHelper(directionalLight, THREE.DirectionalLightHelper, 1)
 
     const backgroundRef = useRef()
 

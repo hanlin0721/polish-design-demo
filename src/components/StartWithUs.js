@@ -1,6 +1,8 @@
 import { Flex, Text } from "@chakra-ui/react";
+import appStore from "../store/store";
 
 const StartWithUs = () => {
+    const { isAnimReady } = appStore;
     return (
         <Flex
             pos="fixed"
@@ -10,6 +12,8 @@ const StartWithUs = () => {
             color="white"
             cursor="pointer"
             borderRadius="36px"
+            opacity={isAnimReady ? 1 : 0}
+            transition="1s ease 1s"
         >
             <Text
                 pt="12px"

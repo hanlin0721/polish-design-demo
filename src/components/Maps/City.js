@@ -139,7 +139,7 @@ export default function City(props) {
         smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
         smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
 
-        const test = new THREE.Vector3(0.05, 0.08, 0)
+        const test = new THREE.Vector3(-0.025, 0.08, 0)
         test.applyQuaternion(polishManRef.current.quaternion)
         test.add(new THREE.Vector3(polishManRef.current.position.x, polishManRef.current.position.y, polishManRef.current.position.z))
 

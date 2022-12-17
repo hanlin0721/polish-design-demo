@@ -167,31 +167,16 @@ const NavContent = () => {
                                 spacing="28px"
                                 color="#fff"
                             >
-                                <Box
-                                    w="100%"
-                                    cursor="pointer"
-                                    onClick={() => {
-                                        if (router.asPath?.includes("/maps")) {
-                                            mapExp?.camera?.transitionOut();
-                                            appStore.mapOpacity = 0;
-                                            appStore.isMenu = false;
-                                            setTimeout(() => {
-                                                window.location.href = "/maps";
-                                            }, 1000);
-                                        } else {
-                                            appStore.isMenu = false;
-                                            appStore.mapExp = null;
-                                            // router.push("/maps");
-                                            window.location.href = "/maps";
-                                        }
-                                    }}
-                                >
-
-                                    <Text fontSize="20px" fontWeight="normal">
-                                        {t("home-2.home-link")}
-                                    </Text>
-                                </Box>
-                                <Link href="/info/live">
+                                <Link href="/">
+                                    <a style={{ display: "block", width: "100%" }}>
+                                        <Box onClick={() => (appStore.isMenu = false)}>
+                                            <Text fontSize="20px" fontWeight="normal">
+                                                {t("home-2.home-link")}
+                                            </Text>
+                                        </Box>
+                                    </a>
+                                </Link>
+                                <Link href="/about">
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
