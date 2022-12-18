@@ -25,14 +25,14 @@ export default function City(props) {
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
 
-    const { nodes, animations } = useGLTF("./new_city.glb")
+    const { nodes, animations } = useGLTF("./221208_city.glb")
 
     const { actions } = useAnimations(animations, group);
 
-    const bakedBaseTexture = useTexture('./new_base.png')
+    const bakedBaseTexture = useTexture('./base.png')
     bakedBaseTexture.flipY = false
 
-    const bakedArcTexture = useTexture('./building_1.png')
+    const bakedArcTexture = useTexture('./building.png')
     bakedArcTexture.flipY = false
 
     const bakedPolishManOrangeTexture = useTexture('./orange.png')
@@ -196,7 +196,7 @@ export default function City(props) {
                         receiveShadow
                         geometry={nodes.ROADDD.geometry}
                         material={nodes.ROADDD.material}
-                        position={[-6.52, -0.476, 4.86]}
+                        position={[-6.52, -0.47, 4.86]}
                         scale={[81.54, 36.47, 66.14]}
                     >
                         <meshBasicMaterial color="#D1E3EF" />
@@ -208,7 +208,7 @@ export default function City(props) {
                         receiveShadow
                         geometry={nodes.ARC.geometry}
                         material={nodes.ARC.material}
-                        position={[-6.61, 0.19, 2.91]}
+                        position={[-6.61, 0.18, 2.91]}
                     >
                         <meshBasicMaterial map={bakedArcTexture} transparent={true} />
                     </mesh>
@@ -234,7 +234,6 @@ export default function City(props) {
                         {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
                         {/* <meshStandardMaterial map={bakedPolishManBlueTexture} /> */}
                     </Test>
-
                     {/* 實際要顯示的磨人 原地旋轉-藍色 */}
 
                     <Test
