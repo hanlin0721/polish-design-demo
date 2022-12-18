@@ -3,6 +3,7 @@ import Experience from '../../components/Maps/Experience.js'
 import { memo, useState, useEffect } from 'react'
 import useControl from "../../store/useControl.js";
 import _ from 'lodash';
+import * as THREE from 'three'
 
 const Map = memo(() => {
     const nextScene = useControl((state) => state.nextScene)
@@ -56,7 +57,12 @@ const Map = memo(() => {
     return (
         <>
             <Canvas
-                shadows
+                // flat
+                // shadows
+                gl={{
+                    toneMapping: THREE.ACESFilmicToneMapping,
+                    // toneMappingExposure: 0.8
+                }}
                 camera={{
                     fov: 45,
                     near: 0.01,

@@ -37,14 +37,6 @@ const Experience = () => {
             <ambientLight intensity={0.22} />
             {/* <pointLight color="red" intensity={1} position={[0, 0.1, 0]} /> */}
 
-            {/* <group ref={groupRef} position={[-1, 0, 0.2]}>
-                <mesh ref={cubeRef}>
-                    <boxGeometry />
-                    <meshStandardMaterial />
-                </mesh>
-            </group> */}
-
-
             <City position={[0, 0, 0]} />
         </>
     )

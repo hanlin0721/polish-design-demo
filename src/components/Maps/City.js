@@ -25,7 +25,7 @@ export default function City(props) {
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
 
-    const { nodes, animations } = useGLTF("./221208_city.glb")
+    const { nodes, animations } = useGLTF("./221209_city.glb")
 
     const { actions } = useAnimations(animations, group);
 
@@ -34,6 +34,9 @@ export default function City(props) {
 
     const bakedArcTexture = useTexture('./building.png')
     bakedArcTexture.flipY = false
+
+    const bakedRoadTexture = useTexture('./road.png')
+    bakedRoadTexture.flipY = false
 
     const bakedPolishManOrangeTexture = useTexture('./orange.png')
     bakedPolishManOrangeTexture.flipY = false
@@ -151,102 +154,100 @@ export default function City(props) {
     })
 
     return (
-        <>
-            <group ref={group} {...props} dispose={null}>
-                <group name="Scene">
-                    <mesh
-                        visible={scene == 1}
-                        name="BASE"
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.BASE.geometry}
-                        material={nodes.BASE.material}
-                        position={[-6.22, 0.28, 1.13]}
-                    >
-                        <meshBasicMaterial
-                            map={bakedBaseTexture}
-                        />
-                    </mesh>
-                    <mesh
-                        visible={scene == 2}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.BASE.geometry}
-                        material={nodes.BASE.material}
-                        position={[-6.22, 0.28, 1.13]}
-                    >
-                        <meshBasicMaterial
-                            color="#e7f9fd"
-                        />
-                    </mesh>
-                    <mesh
-                        ref={buildingOneRef}
-                        name="B_01"
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.B_01.geometry}
-                        material={nodes.B_01.material}
-                        position={[-6.54, 0.18, 2.9]}
-                    >
-                        <meshBasicMaterial map={bakedArcTexture} transparent={true} />
-                    </mesh>
-                    <mesh
-                        name="ROADDD"
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.ROADDD.geometry}
-                        material={nodes.ROADDD.material}
-                        position={[-6.52, -0.47, 4.86]}
-                        scale={[81.54, 36.47, 66.14]}
-                    >
-                        <meshBasicMaterial color="#D1E3EF" />
-                    </mesh>
-                    <mesh
-                        ref={buildingRef}
-                        name="ARC"
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.ARC.geometry}
-                        material={nodes.ARC.material}
-                        position={[-6.61, 0.18, 2.91]}
-                    >
-                        <meshBasicMaterial map={bakedArcTexture} transparent={true} />
-                    </mesh>
-                    <mesh
-                        visible={false}
-                        ref={polishManRef}
-                        name="polish-man001"
-                        castShadow
-                        receiveShadow
-                        geometry={nodes["polish-man001"].geometry}
-                        material={nodes["polish-man001"].material}
-                        rotation={[0, -Math.PI / 6, 0]}
-                        scale={0.14}
+        <group ref={group} {...props} dispose={null}>
+            <group name="Scene">
+                <mesh
+                    visible={scene == 1}
+                    name="BASE"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.BASE.geometry}
+                    material={nodes.BASE.material}
+                    position={[-6.22, 0.28, 1.13]}
+                >
+                    <meshBasicMaterial
+                        map={bakedBaseTexture}
                     />
-                    {/* 實際要顯示的磨人 */}
-                    <Test
-                        visible={scene == 1}
-                        ref={polishManOneRef}
-                        groupRotation={[0, -Math.PI / 6, 0]}
-                        rotation={[2.2 * Math.PI, 0, 0]}
-                        isSpinning={true}
-                    >
-                        {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
-                        {/* <meshStandardMaterial map={bakedPolishManBlueTexture} /> */}
-                    </Test>
-                    {/* 實際要顯示的磨人 原地旋轉-藍色 */}
+                </mesh>
+                <mesh
+                    visible={scene == 2}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.BASE.geometry}
+                    material={nodes.BASE.material}
+                    position={[-6.22, 0.28, 1.13]}
+                >
+                    <meshBasicMaterial
+                        color="#e7f9fd"
+                    />
+                </mesh>
+                <mesh
+                    name="ROADDD"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.ROADDD.geometry}
+                    material={nodes.ROADDD.material}
+                    position={[-6.52, -0.476, 4.86]}
+                    scale={[81.54, 36.47, 66.14]}
+                >
+                    <meshBasicMaterial map={bakedRoadTexture} />
+                </mesh>
+                <mesh
+                    ref={buildingOneRef}
+                    name="B_01"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.B_01.geometry}
+                    // material={nodes.B_01.material}
+                    position={[-6.54, 0.18, 2.9]}
+                >
+                    <meshBasicMaterial map={bakedArcTexture} transparent={true} />
+                </mesh>
+                <mesh
+                    ref={buildingRef}
+                    name="ARC"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.ARC.geometry}
+                    // material={nodes.ARC.material}
+                    position={[-6.61, 0.16, 2.91]}
+                >
+                    <meshBasicMaterial map={bakedArcTexture} transparent={true} />
+                </mesh>
+                <mesh
+                    visible={false}
+                    ref={polishManRef}
+                    name="polish-man001"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["polish-man001"].geometry}
+                    material={nodes["polish-man001"].material}
+                    rotation={[0, -Math.PI / 6, 0]}
+                    scale={0.14}
+                />
+                {/* 實際要顯示的磨人 */}
+                <Test
+                    visible={scene == 1}
+                    ref={polishManOneRef}
+                    groupRotation={[0, -Math.PI / 6, 0]}
+                    rotation={[2.2 * Math.PI, 0, 0]}
+                    isSpinning={true}
+                >
+                    {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
+                    {/* <meshStandardMaterial map={bakedPolishManBlueTexture} /> */}
+                </Test>
+                {/* 實際要顯示的磨人 原地旋轉-藍色 */}
 
-                    <Test
-                        visible={scene == 2}
-                        ref={polishManTwoRef}
-                        position={[-0.55, 0.13, 1.3]}
-                        rotation={[2.15 * Math.PI, 2.12 * Math.PI, 2.21 * Math.PI]}
-                    >
-                        {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
-                    </Test>
-                </group>
+                <Test
+                    visible={scene == 2}
+                    ref={polishManTwoRef}
+                    position={[-0.55, 0.13, 1.3]}
+                    rotation={[2.15 * Math.PI, 2.12 * Math.PI, 2.21 * Math.PI]}
+                >
+                    {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
+                </Test>
             </group>
-        </>
+        </group>
     );
 }
 
