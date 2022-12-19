@@ -213,7 +213,7 @@ export default function City(props) {
                     // receiveShadow
                     geometry={nodes.ARC.geometry}
                     // material={nodes.ARC.material}
-                    position={[-6.61, 0.16, 2.91]}
+                    position={[-6.61, 0.14, 2.91]}
                 >
                     <meshBasicMaterial map={bakedArcTexture} transparent={true} />
                 </mesh>
