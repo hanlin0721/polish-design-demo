@@ -35,7 +35,7 @@ export default function City(props) {
     const bakedBaseTexture = useTexture('./221220_base.png')
     bakedBaseTexture.flipY = false
 
-    const bakedArcTexture = useTexture('./221220_building.png')
+    const bakedArcTexture = useTexture('./221220_building_test.png')
     bakedArcTexture.flipY = false
 
     const bakedRoadTexture = useTexture('./221220_road.png')
