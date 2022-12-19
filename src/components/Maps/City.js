@@ -28,11 +28,11 @@ export default function City(props) {
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
 
-    const { nodes, animations } = useGLTF("./221220_city.glb")
+    const { nodes, animations } = useGLTF("./221220_02.glb")
 
     const { actions } = useAnimations(animations, group);
 
-    const bakedBaseTexture = useTexture('./221220_base.png')
+    const bakedBaseTexture = useTexture('./221220_base_test.png')
     bakedBaseTexture.flipY = false
 
     const bakedArcTexture = useTexture('./221220_building_test.png')
@@ -254,4 +254,4 @@ export default function City(props) {
     );
 }
 
-useGLTF.preload("./221220_city.glb");
+useGLTF.preload("./221220_02.glb");
