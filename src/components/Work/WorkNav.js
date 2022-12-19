@@ -17,12 +17,12 @@ const WorkNav = () => {
             onScroll={scrollhandler}
             h="100%"
             overflow="hidden"
+            transform={`translateX(${scene === 3 ? "0%" : "-100%"})`}
         >
             <Box
                 bg="white"
                 h="100vh"
                 w="150px"
-                transform={`translateX(${scene === 3 ? "0%" : "-100%"})`}
                 transitionProperty="opacity transform"
                 transitionDuration={"0.5s"}
                 transitionTimingFunction="ease"

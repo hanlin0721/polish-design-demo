@@ -8,7 +8,7 @@ const HomeLogo = () => {
     return (
         <Box
             pos="fixed"
-            left="42px"
+            left={{ base: "29px", sm: "42px" }}
             top="48px"
             // transform={`translateX(${isAnimReady ? "0" : "calc(-100% - 42px)"})`}
             opacity={isAnimReady ? 1 : 0}

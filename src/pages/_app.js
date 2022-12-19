@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
           <>
             <div id="locked" style={{ overflow: "hidden" }}>
               <Component {...pageProps} />
-              <Nav />
+              {/* <Nav /> */}
               <StartWithUs />
               <GiftBox />
             </div>

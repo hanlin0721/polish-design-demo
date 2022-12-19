@@ -5,7 +5,7 @@ const StartWithUs = () => {
     const { isAnimReady } = appStore;
     return (
         <Flex
-            pos="fixed"
+            pos={{ base: "none", sm: "fixed" }}
             right="42px"
             top="35px"
             bg="#2A313A"

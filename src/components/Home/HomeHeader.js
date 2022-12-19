@@ -39,8 +39,13 @@ const HomeHeader = () => {
                     <Map isMap={isMap} />
                 </Box>
 
-                {/* Slogan - Creative Solutions */}
-                <Box pointerEvents={"none"}>
+                {/* Slogan - Creative Digital Solutions */}
+                <Box
+                    pos={{ base: "absolute", sm: "relative" }}
+                    left={{ base: "29px", sm: "42px" }}
+                    pointerEvents={"none"}
+                    transform={{ base: "translateY(-35%)", sm: "translateY(-15%)" }}
+                >
                     <Box
                         textAlign="center"
                         mt={{ md: "12vw", base: "100px" }}
@@ -50,29 +55,54 @@ const HomeHeader = () => {
                         transitionDelay={scene !== 1 ? "0s" : "1s"}
                         transitionTimingFunction="ease"
                     >
-                        <Box position="relative" transform="translateY(-25%)">
+                        <Box position="relative">
                             <Text
-                                fontSize="8vw"
-                                letterSpacing="2.2px"
+                                fontSize={{ base: "36px", sm: "7vw" }}
+                                letterSpacing="1.4px"
+                                fontWeight="bold"
+                                textAlign="left"
                             >
                                 CreateDigital
                             </Text>
-                            <Flex position="relative" top="-40px">
-                                <Text position="relative" fontSize="8vw" >Solutions</Text>
+
+                            <Flex position="relative" textAlign="left" top={{ base: "-5px", lg: "-40px" }}>
+                                <Text
+                                    textAlign="left"
+                                    position="relative"
+                                    fontSize={{ base: "36px", sm: "7vw" }}
+                                    fontWeight="bold"
+                                >
+                                    Solutions
+                                </Text>
+                                {/* 電腦版 - Polish Design 致力於創意行得通得數位產品 */}
                                 <Box
+                                    display={{ base: "none", lg: "block" }}
                                     textAlign="left"
                                     alignSelf="center"
-                                    position="relative"
-                                    left="18%"
-                                    top="10px"
-                                    fontSize="14px"
+                                    pos="relative"
+                                    fontSize={{ base: "14px", sm: "0.8vw" }}
                                     fontWeight="bold"
-                                    pt="10px"
+                                    ml="4%"
+                                    pt="2%"
                                 >
-                                    <Text letterSpacing="1.2px">Polish Design 致力於創意,</Text>
-                                    <Text letterSpacing="1.2px">行得通得數位產品</Text>
+                                    <Text letterSpacing="1.2px" fontWeight="bold">Polish Design 致力於創意</Text>
+                                    <Text letterSpacing="1.2px" fontWeight="bold">行得通得數位產品</Text>
                                 </Box>
                             </Flex>
+
+                            {/* 手機版 - Polish Design 致力於創意行得通得數位產品 */}
+                            <Box
+                                display={{ md: "block", lg: "none" }}
+                                textAlign="left"
+                                fontSize={{ base: "14px", sm: "0.8vw" }}
+                                fontWeight="bold"
+                                position="relative"
+                                top={{ base: "-5px", lg: "-40px" }}
+                                left={{ base: "0px", lg: "-10px" }}
+                            >
+                                <Text letterSpacing="1.2px" fontWeight="bold">Polish Design 致力於創意</Text>
+                                <Text letterSpacing="1.2px" fontWeight="bold">行得通得數位產品</Text>
+                            </Box>
                         </Box>
                     </Box>
                 </Box>

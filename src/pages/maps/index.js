@@ -4,8 +4,10 @@ import { memo, useState, useEffect } from 'react'
 import useControl from "../../store/useControl.js";
 import _ from 'lodash';
 import * as THREE from 'three'
+import { useTouch } from '../../utils/useTouch.js'
 
 const Map = memo(() => {
+
     const nextScene = useControl((state) => state.nextScene)
     const prevScene = useControl((state) => state.prevScene)
 
@@ -54,6 +56,8 @@ const Map = memo(() => {
         }
     }
 
+    const { swipeStart, swipeEnd } = useTouch(next)
+
     return (
         <>
             <Canvas
@@ -67,6 +71,10 @@ const Map = memo(() => {
                     fov: 45,
                     near: 0.01,
                 }}
+                onTouchStart={swipeStart}
+                // onMouseDown={(e) => { console.log(e) }}
+                // onMouseUp={swipeEnd}
+                onTouchEnd={swipeEnd}
                 onWheel={scrollHandler}
             >
                 <Experience />
