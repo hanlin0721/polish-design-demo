@@ -21,7 +21,9 @@ const PolishMan = React.forwardRef(({ children, groupRotation, rotation, isSpinn
             scale={0.14}
             rotation={groupRotation}
         >
-            <Float>
+            <Float
+                rotationIntensity={0.4}
+            >
                 <mesh
                     ref={mesh}
                     name="polish-man002"

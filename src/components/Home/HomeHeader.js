@@ -7,6 +7,7 @@ import WorkNav from "../Work/WorkNav.js";
 import Map from "../../pages/maps/index.js";
 import PolishManWhite from "../../images/home/polish-man-white.png";
 import PolishManOrange from "../../images/home/polish-man-orange.png";
+import CircleActionIcon from "../../images/home/icons/action_circle_button.svg"
 
 const HomeHeader = () => {
     const { isAnimReady, scene } = appStore;
@@ -21,6 +22,7 @@ const HomeHeader = () => {
                 pos="relative"
                 justify="center"
                 align="center"
+                w="100%"
                 minH="100vh"
                 bgColor="#000"
             >
@@ -44,7 +46,7 @@ const HomeHeader = () => {
                     pos={{ base: "absolute", sm: "relative" }}
                     left={{ base: "29px", sm: "42px" }}
                     pointerEvents={"none"}
-                    transform={{ base: "translateY(-35%)", sm: "translateY(-15%)" }}
+                    transform={{ base: "translateY(-40%)", sm: "translateY(-15%)" }}
                 >
                     <Box
                         textAlign="center"
@@ -110,65 +112,114 @@ const HomeHeader = () => {
                 {/* Slogan - We Focus More On Results */}
                 <Box
                     pos="absolute"
+                    top={{ base: "15%", sm: "11%" }}
+                    left={{ base: "7%", sm: "18.1875%" }}
                     opacity={scene === 2 ? 1 : 0}
                     transitionDuration={scene === 2 ? "0.8s" : "0s"}
                     transitionDelay={scene !== 2 ? "0s" : "1.6s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity"}
-                    transform={`translate(-75%, -40%)`}
-                    pointerEvents="none"
                 >
-                    <Text
-                        fontSize="4.3vw"
-                        letterSpacing="2.2px"
-                        transform={`translateX(-25%)`}
-                        lineHeight="0.8"
+                    {/* Desktop - We Focus More On Results*/}
+                    <Box
+                        display={{ base: "none", sm: "block" }}
                     >
-                        WE FOCUS
-                    </Text>
-                    <Text
-                        fontSize="4.3vw"
-                        letterSpacing="2.2px"
-                        lineHeight="1.6"
+                        <Text
+                            fontSize="4.4vw"
+                            letterSpacing="2.2px"
+                            transform={`translateX(-20%)`}
+                            lineHeight="1"
+                            fontWeight="bold"
+                        >
+                            We Focus
+                        </Text>
+                        <Text
+                            fontSize="4.4vw"
+                            letterSpacing="2.2px"
+                            lineHeight="1.2"
+                            fontWeight="bold"
+                        >
+                            More on
+                        </Text>
+                        <Text
+                            fontSize="4.4vw"
+                            letterSpacing="2.2px"
+                            transform={`translateX(-12%)`}
+                            lineHeight="1"
+                            fontWeight="bold"
+                        >
+                            Results
+                        </Text>
+                    </Box>
+
+                    {/* Mobile - We Focus More On Results */}
+                    <Box
+                        display={{ base: "block", sm: "none" }}
                     >
-                        MORE ON
-                    </Text>
-                    <Text
-                        fontSize="4.3vw"
-                        letterSpacing="2.2px"
-                        transform={`translateX(-14%)`}
-                        lineHeight="1"
-                    >
-                        RESULTS
-                    </Text>
+                        <Text
+                            fontSize="36px"
+                            lineHeight="1"
+                            fontWeight="bold"
+                        >
+                            We Focus More <br />on Results
+                        </Text>
+                    </Box>
 
                     <Text
+                        w={{ base: "86%", sm: "100%" }}
                         mt="5.5%"
-                        fontSize="0.83vw"
+                        fontSize={{ base: "14px", sm: "0.83vw" }}
                         fontWeight="bold"
-                        letterSpacing="2.2px"
-                        transform={`translateX(-2%)`}
+                        letterSpacing={{ base: "1px", sm: "2.2px" }}
+                        transform={{ base: "0", sm: `translateX(-12%)` }}
                         lineHeight="1.5"
                     >
-                        Polish Design 更關注於解決方案的成效
+                        Polish Design 更關注於解決方案的成效<br />我們能達到 KPI 及提出現有資源中能達到的成效方案
                     </Text>
-                    <Text
-                        fontSize="0.83vw"
-                        fontWeight="bold"
-                        letterSpacing="2.2px"
-                        transform={`translateX(-2%)`}
-                        lineHeight="1.5"
+                    {/* 
+                        Portfolio
+                        How we do
+                    */}
+                    <Box
+                        mt={{ base: "22px", sm: "60px" }}
+                        transform={{ base: "0", sm: `translateX(-12%)` }}
+                        w={{ base: "45%", sm: "100%" }}
                     >
-                        我們能達到 KPI 及提出現有資源中能達到的成效方案
-                    </Text>
+                        <Flex
+                            pt={{ base: "14px", sm: "23px" }}
+                            pb={{ base: "11px", sm: "21px" }}
+                            pl={{ base: "0px", sm: "12px" }}
+                            pr={{ base: "0px", sm: "12px" }}
+                            borderTop="1px"
+                            borderBottom="1px"
+                            borderColor="rgba(33,41,50,0.3)"
+                            justifyContent="space-between"
+                            cursor="pointer"
+                        >
+                            <Text fontWeight="bold" fontSize={{ base: "14px", sm: "0.83vw" }}>Portfolio</Text>
+                            <Image src={CircleActionIcon.src} />
+                        </Flex>
+                        <Flex
+                            pt={{ base: "14px", sm: "23px" }}
+                            pb={{ base: "11px", sm: "21px" }}
+                            pl={{ base: "0px", sm: "12px" }}
+                            pr={{ base: "0px", sm: "12px" }}
+                            borderBottom="1px"
+                            borderColor="rgba(33,41,50,0.3)"
+                            justifyContent="space-between"
+                            cursor="pointer"
+                        >
+                            <Text fontWeight="bold" fontSize={{ base: "14px", sm: "0.83vw" }}>How we do</Text>
+                            <Image src={CircleActionIcon.src} />
+                        </Flex>
+                    </Box>
                 </Box>
+
 
                 {/* 磨人-白色 */}
                 <Box
                     pos="absolute"
-                    right="-2%"
-                    // bottom="-35%"
-                    bottom="-330px"
+                    bottom={{ base: "-100px", sm: "-360px" }}
                     opacity={scene == 2 ? 1 : 0}
                     transitionDuration={scene === 2 ? "0.8s" : "0s"}
                     transitionDelay={scene !== 2 ? "0s" : "1.5s"}
@@ -177,23 +228,29 @@ const HomeHeader = () => {
                     transform={`translateX(${scene === 2 ? "0%" : "150%"})`}
                     pointerEvents="none"
                 >
-                    <Image src={PolishManWhite.src} alt="white-polish-man" />
+                    <Image pos="relative" right={{ base: "-45%", sm: "-80%" }} src={PolishManWhite.src} alt="white-polish-man" />
                 </Box>
 
                 {/* 磨人-橘色 */}
                 <Box
                     pos="absolute"
-                    right="2%"
-                    bottom="45%"
+                    bottom={{ base: "24%", sm: "45%" }}
                     opacity={scene == 2 ? 1 : 0}
                     transitionDuration={scene === 2 ? "0.8s" : "0s"}
                     transitionDelay={scene !== 2 ? "0s" : "1.5s"}
-                    transform={`translateX(${scene === 2 ? "0%" : "150%"})`}
+                    transform={{
+                        base: `translateX(${scene === 2 ? "0%" : "150%"}) scale(0.3)`,
+                        sm: `translateX(${scene === 2 ? "0%" : "150%"}) scale(1)`
+                    }}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity transform"}
                     pointerEvents="none"
                 >
-                    <Image src={PolishManOrange.src} alt="orange-polish-man" />
+                    <Image
+                        pos="relative"
+                        right={{ base: "-150%", sm: "-150%" }}
+                        src={PolishManOrange.src} alt="orange-polish-man"
+                    />
                 </Box>
 
                 <Box

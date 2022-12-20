@@ -131,14 +131,14 @@ export default function City(props) {
 
         if (scene === 2) {
             cameraPosition = new THREE.Vector3(
-                polishManTwoRef.current.position.x + 0.18 + state.pointer.x * 0.01,
+                polishManTwoRef.current.position.x + (device !== "desktop" ? 0.3 : 0.18) + state.pointer.x * 0.01,
                 polishManTwoRef.current.position.y + state.pointer.y * 0.01,
-                polishManTwoRef.current.position.z + 0.44
+                polishManTwoRef.current.position.z + (device !== "desktop" ? 0.9 : 0.38)
             )
             cameraTarget = new THREE.Vector3(
-                polishManTwoRef.current.position.x - 0.09,
-                polishManTwoRef.current.position.y - 0.01,
-                polishManTwoRef.current.position.z + 0
+                polishManTwoRef.current.position.x - (device !== "desktop" ? 0.08 : 0.09),
+                polishManTwoRef.current.position.y - (device !== "desktop" ? -0.05 : 0.01),
+                polishManTwoRef.current.position.z + (device !== "desktop" ? 0 : 0)
             )
         }
 
@@ -204,7 +204,7 @@ export default function City(props) {
                     material={nodes.B_01.material}
                     position={[-6.54, 0.18, 2.9]}
                 >
-                    {/* <meshBasicMaterial map={bakedArcTexture} transparent={true} /> */}
+                    <meshBasicMaterial map={bakedArcTexture} transparent={true} />
                 </mesh>
                 <mesh
                     ref={buildingRef}
@@ -228,6 +228,7 @@ export default function City(props) {
                     rotation={[0, -Math.PI / 6, 0]}
                     scale={0.14}
                 />
+
                 {/* 實際要顯示的磨人 */}
                 <Test
                     visible={scene == 1}
@@ -239,8 +240,8 @@ export default function City(props) {
                     {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
                     {/* <meshStandardMaterial map={bakedPolishManBlueTexture} /> */}
                 </Test>
-                {/* 實際要顯示的磨人 原地旋轉-藍色 */}
 
+                {/* 實際要顯示的磨人 原地漂浮-藍色 */}
                 <Test
                     visible={scene == 2}
                     ref={polishManTwoRef}

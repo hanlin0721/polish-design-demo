@@ -16,12 +16,12 @@ const StartWithUs = () => {
             transition="1s ease 1s"
         >
             <Text
-                pt="12px"
-                pb="15px"
-                px="34px"
+                pt="15px"
+                pb="14px"
+                px="42px"
                 fontWeight="bold"
             >
-                Start with us
+                與我們合作
             </Text>
         </Flex>
     )

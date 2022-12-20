@@ -9,10 +9,12 @@ import IconIg from "../images/home/icons/icon-ig.svg";
 import IconMedium from "../images/home/icons/Icon-medium.svg";
 import homeLogoWhite from "../images/home/logo_white.png"
 import useControl from "../store/useControl";
+import PolishMans from "../images/common/polish-mans.png"
+import { useDeviceType } from "../utils/window.js"
 
 const SocialLinks = () => {
     return (
-        <Flex align="center" mb="11.9%">
+        <Flex align="center" mb={{ base: "20%", sm: "11.9%" }}>
             <Link href="https://www.instagram.com/ntu_studyabroad/">
                 <a target="_blank">
                     <Box>
@@ -50,9 +52,9 @@ const NavFooter = () => {
                 justify="center"
                 align="center"
                 fontWeight="bold"
-                spacing="17px"
+                spacing="25px"
                 color="#fff"
-                mb="8.3%"
+                mb={{ base: "17%", sm: "8.3%" }}
             >
                 <Link href="/info/live">
                     <a style={{ display: "block", width: "100%" }}>
@@ -74,7 +76,7 @@ const NavFooter = () => {
                 </Link>
             </VStack>
 
-            <Text fontSize="16px" color="rgba(255,255,255,0.5)">
+            <Text fontSize="16px" color="rgba(255,255,255,0.5)" mb={{ base: "32px", sm: "" }}>
                 ©Polish Design
             </Text>
         </>
@@ -83,6 +85,7 @@ const NavFooter = () => {
 
 const NavContent = () => {
     const { isMenu, lives, mapExp } = appStore;
+    const [device] = useDeviceType()
     const { t } = useTranslation("common");
     const router = useRouter();
 
@@ -102,60 +105,94 @@ const NavContent = () => {
             overflowY="hidden"
         >
             <Box
-                bgColor={{ base: "rgba(0, 0, 0, .65)", md: "transparent" }}
+                bgColor={{ base: "rgba(0, 0, 0, 0.65)", md: "transparent" }}
                 w="100%"
                 h="100%"
                 onClick={() => (appStore.isMenu = false)}
             />
+
             <Box
                 pos="absolute"
                 zIndex="1"
                 left="0"
-                w={{ base: "100%", md: "70%" }}
+                w={{ base: "100%", sm: "100%" }}
+                pr={{ base: "0%", sm: "30%" }}
                 h="100%"
-                overflow="auto"
                 top="0"
                 bgColor="#212932"
                 backdropFilter="blur(30px)"
                 transform={`translateX(${isMenu ? "0%" : "-100%"})`}
                 transition="0.3s ease"
+                overflow={{ base: "scroll", lg: "hidden" }}
             >
                 <Flex
                     h="100%"
+                    flexDir={{ base: "column", lg: "row" }}
                 >
                     {/* Left Nav */}
                     <Box flex={1.28}>
                         <Box
                             w="100%"
                             h="100%"
-                            pl="30%"
-                            pt="12.35%"
+                            pl={{ base: "9%", sm: "30%" }}
+                            pt={{ base: "8%", sm: "12.35%" }}
                         >
                             <Box>
                                 <Image src={homeLogoWhite.src} alt="homeLogoWhite" />
                             </Box>
 
-                            <Box color="#FFF" mt="11%">
-                                {/* <Text fontSize="64px" fontWeight="bold">Portfolio</Text> */}
+                            <Flex
+                                color="#FFF"
+                                mt="11%"
+                                flexDir={{ base: "row", sm: "column" }}
+                                alignItems={{ base: "center", sm: "flex-start" }}
+                            >
                                 <Link href="#">
-                                    <a style={{ display: "block", width: "100%" }}>
+                                    <a style={{ display: "block" }}>
                                         <Box onClick={() => {
                                             goScene(1)
                                             appStore.scene = 1
                                         }}>
-                                            <Text fontSize="64px" fontWeight="bold">
+                                            <Text
+                                                fontSize={{ base: "30px", sm: "64px" }}
+                                                fontWeight="bold"
+                                            >
                                                 Portfolio
                                             </Text>
                                         </Box>
                                     </a>
                                 </Link>
-                                <Text fontSize="16px" style={{ "opacity": 0.7 }}>作品集</Text>
-                            </Box>
+                                <Text
+                                    fontSize="16px"
+                                    style={{ "opacity": 0.7 }}
+                                    ml={{ base: "13px", sm: "0px" }}
+                                    pt={{ base: "4px", sm: "" }}
+                                >
+                                    作品集
+                                </Text>
+                            </Flex>
 
-                            <Box color="#FFF" mt="8.4%">
-                                <Text fontSize="64px" fontWeight="bold">Resources</Text>
-                                <Text fontSize="16px" style={{ "opacity": 0.7 }}>部落格</Text>
-                            </Box>
+                            <Flex
+                                color="#FFF"
+                                mt="8.4%"
+                                flexDir={{ base: "row", sm: "column" }}
+                                alignItems={{ base: "center", sm: "flex-start" }}
+                            >
+                                <Text
+                                    fontSize={{ base: "30px", sm: "64px" }}
+                                    fontWeight="bold"
+                                >
+                                    Resources
+                                </Text>
+                                <Text
+                                    fontSize="16px"
+                                    style={{ "opacity": 0.7 }}
+                                    ml={{ base: "13px", sm: "0px" }}
+                                    pt={{ base: "4px", sm: "" }}
+                                >
+                                    部落格
+                                </Text>
+                            </Flex>
 
                             <VStack
                                 w="100%"
@@ -176,7 +213,7 @@ const NavContent = () => {
                                         </Box>
                                     </a>
                                 </Link>
-                                <Link href="/about">
+                                {/* <Link href="/about">
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
@@ -184,8 +221,8 @@ const NavContent = () => {
                                             </Text>
                                         </Box>
                                     </a>
-                                </Link>
-                                <Link href="/info/live">
+                                </Link> */}
+                                <Link href="/about">
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
@@ -194,7 +231,7 @@ const NavContent = () => {
                                         </Box>
                                     </a>
                                 </Link>
-                                <Link href="/info/news">
+                                <Link href="/about">
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
@@ -210,13 +247,15 @@ const NavContent = () => {
                     {/* Right Nav */}
                     <Box
                         flex={1}
-                        borderLeft="1px"
+                        borderLeft={{ base: "0", sm: "1px" }}
                         borderColor="rgba(255,255,255,0.15)"
                     >
                         <Box
                             position="relative"
-                            bottom="-52%"
-                            pl="7%"
+                            bottom={{ base: "", sm: "-52%" }}
+                            mt={{ base: "90px", sm: "" }}
+                            pl={{ base: "9%", sm: "30%", lg: "7%" }}
+                            pb={{ xs: "4%" }}
                         >
                             <Flex mb="20px">
                                 <Box
@@ -231,8 +270,8 @@ const NavContent = () => {
                                 <Text color="white">收到我們的動態</Text>
                             </Flex>
                             <InputGroup
-                                mb="62.5px"
-                                w="80%"
+                                mb={{ base: "70px", sm: "62.5px" }}
+                                w={{ base: "90%", sm: "80%" }}
                                 borderRadius="14px"
                                 overflow="hidden"
                                 color="white"
@@ -258,8 +297,45 @@ const NavContent = () => {
                         </Box>
                     </Box>
                 </Flex>
+
+                <Box
+                    display={{ base: "none", lg: "block" }}
+                    pos="absolute"
+                    zIndex="2"
+                    w={{ base: "0%", sm: "30%" }}
+                    h="100vh"
+                    bgColor="#EBF9FD"
+                    top="0"
+                    right="0"
+                    border="0px"
+                />
+
+                <Image
+                    display={{ base: "none", lg: "block" }}
+                    src={PolishMans.src}
+                    pos="absolute"
+                    zIndex="3"
+                    bottom="-10%"
+                    right="-10%"
+                />
+
+                <Box
+                    display={{ base: "none", lg: "block" }}
+                    pos="absolute"
+                    zIndex="4"
+                    w={{ base: "0%", sm: isMenu ? "0%" : "31%" }}
+                    transitionDuration={"0.25s"}
+                    transitionDelay={"0.2s"}
+                    transitionTimingFunction="ease-out"
+                    transitionProperty={"opacity width"}
+                    h="100vh"
+                    bgColor="#212932"
+                    top="0"
+                    right="0"
+                    border="0px"
+                />
             </Box>
-        </Box>
+        </Box >
     );
 };
 
@@ -270,15 +346,16 @@ const Nav = () => {
         <>
             <Flex
                 pos="fixed"
-                left={{ base: "42px", md: "42px" }}
-                top={{ base: "50%", md: "50%" }}
-                transform={`translateY(-50%)`}
+                left={{ md: "42px" }}
+                right={{ base: "14px", sm: "5%" }}
+                top={{ base: "12px", sm: "4%", md: "50%" }}
+                transform={{ sm: `translateY(-50%)` }}
                 cursor="pointer"
                 zIndex="10002"
                 onClick={() => (appStore.isMenu = !isMenu)}
                 opacity={isAnimReady ? mapOpacity : 0}
-                w="60px"
-                h="60px"
+                w="50px"
+                h="50px"
                 borderRadius="50%"
                 bg={isMenu ? "#2A313A" : "white"}
                 justifyContent="center"

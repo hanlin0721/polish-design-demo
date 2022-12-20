@@ -72,8 +72,6 @@ const Map = memo(() => {
                     near: 0.01,
                 }}
                 onTouchStart={swipeStart}
-                // onMouseDown={(e) => { console.log(e) }}
-                // onMouseUp={swipeEnd}
                 onTouchEnd={swipeEnd}
                 onWheel={scrollHandler}
             >
