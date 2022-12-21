@@ -190,7 +190,7 @@ const About = () => {
 
     return (
         <Box
-            bg="#DBE3E9"
+            bg="#EDF6FF"
             pb="10%"
         >
             {/* We polish all day! */}
@@ -202,15 +202,17 @@ const About = () => {
                 >
                     <Text
                         fontSize={{ base: "12vw", sm: "4.4vw" }}
-                        mb="1%"
+                        mb="5%"
+                        fontWeight="bold"
                     >
                         We polish<br />all day!
                     </Text>
                     <Text
                         fontWeight="bold"
+                        maxW="575px"
                         w={{ base: "80%", sm: "100%" }}
                     >
-                        Polish Design. 是一家提供數位解決方案的軟體設計公司<br />致力於為企業開發創意、行得通的數位產品，以實現任何商業挑戰及有趣的點子。
+                        Polish Design. 是一家提供數位解決方案的軟體設計公司，致力於為企業開發創意、行得通的數位產品，以實現任何商業挑戰及有趣的點子。
                     </Text>
                 </Box>
 
@@ -241,20 +243,24 @@ const About = () => {
 
             {/* What we provide */}
             <Box
-                bg="#EAF1F7"
+                bg="#FFFFFF"
                 borderRadius={{ base: "0px", sm: "100px" }}
-                pt="8%"
-                pb="12%"
-                mx={{ base: "0%", sm: "0.5%" }}
+                borderTopLeftRadius={{ base: "50px" }}
+                borderBottomLeftRadius={{ base: "50px" }}
+                pt="5.5%"
+                pb="7.2%"
+                ml={{ base: "5.4%", sm: "12%" }}
+                mb="24px"
             >
                 <Flex
-                    pl={{ base: "15%", sm: "25%" }}
+                    pl={{ base: "15%", sm: "15%" }}
                     pr="10%"
                 >
                     <Box pos="relative">
                         <Text
                             fontSize={{ base: "10vw", sm: "4.4vw" }}
                             mb="1%"
+                            fontWeight="bold"
                         >
                             What we<br />provide
                         </Text>
@@ -263,6 +269,7 @@ const About = () => {
                             pos="absolute"
                             right={{ base: "-55%", sm: "-22%" }}
                             bottom={{ base: "10%", sm: "14%" }}
+                            fontWeight="bold"
                         >
                             我們的服務
                         </Text>
@@ -270,7 +277,8 @@ const About = () => {
                 </Flex>
 
                 <Flex
-                    pl={{ base: "15%", sm: "25%" }}
+                    mt="40px"
+                    pl={{ base: "15%", sm: "15%" }}
                     pr="10%"
                     flexWrap="wrap"
                     justifyContent="space-between"
@@ -302,16 +310,16 @@ const About = () => {
             {/* Kevin */}
             <Box
                 bg="#212932"
-                borderRadius={{ base: "0px", sm: "100px" }}
-                mx={{ base: "0%", sm: "0.5%" }}
+                borderRadius={{ base: "50px", sm: "100px" }}
+                mx={{ base: "1%", sm: "0.5%" }}
                 overflow="hidden"
             >
                 <Flex
                     pl={{ base: "5%", sm: "6%" }}
-                    pr={{ base: "5%", sm: "16%" }}
-                    pt={{ base: "12%", sm: "0%" }}
+                    pr={{ base: "5%", sm: "14%", md: "8%" }}
+                    pt={{ base: "12%", sm: "5%" }}
                     flexDirection={{ base: "column", sm: "row" }}
-                    justifyContent="space-between"
+                    justifyContent="center"
                     alignItems="center"
                 >
                     <Flex
@@ -319,38 +327,51 @@ const About = () => {
                         color="white"
                         justifyContent="center"
                         alignItems="center"
+                        pos="relative"
                     >
                         <Image pointerEvents="none"
                             src={KevinWithPolishModel.src}
                             order={{ base: "1", sm: "0" }}
-                            w={{ base: "80%", sm: "100%" }}
+                            w={{ base: "100%", sm: "90%" }}
+                            transform={{ base: "scale(1.2)" }}
                         />
                         <Box
-                            display={{ base: "block", sm: "none" }}
+                            pos="absolute"
+                            top="-12%"
+                            right="0"
+                            display={{ base: "flex", sm: "none" }}
+                            alignItems="flex-end"
+                            flexDir="column"
                         >
-                            <Text>Founder</Text>
+                            <Text mb="19px">Founder</Text>
                             <Text>Kevin Hsu</Text>
                             <Text>許 家豪</Text>
                         </Box>
                     </Flex>
+
+
                     <Box
+                        ml={{ base: "0%", sm: "14%" }}
                         color="white"
                     >
                         <Text
-                            mb="5%"
+                            mb={{ base: "120px", sm: "5%" }}
                             fontWeight="bold"
-                            fontSize={{ base: "6vw", sm: "1vw" }}
+                            fontSize={{ base: "6vw", sm: "1.8vw" }}
+                            w={{ base: "80vw", sm: "100%" }}
+                            maxW="580px"
                         >
                             “ 我們的使命是創造、擴展線上化的各種可能，幫助人們取得持續地成功 ”
                         </Text>
                         <Box
                             display={{ base: "none", sm: "block" }}
                         >
-                            <Text>Founder</Text>
+                            <Text mb="19px">Founder</Text>
                             <Text>Kevin Hsu</Text>
                             <Text>許 家豪</Text>
                         </Box>
                     </Box>
+
                 </Flex>
             </Box>
 

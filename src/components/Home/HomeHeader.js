@@ -2,9 +2,8 @@ import { useState } from "react";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward_black.svg";
 import appStore from "../../store/store";
-import HomeNav from "./HomeNav.js";
 import WorkNav from "../Work/WorkNav.js";
-import Map from "../../pages/maps/index.js";
+import Map from "../../pages/work/index.js";
 import PolishManWhite from "../../images/home/polish-man-white.png";
 import PolishManOrange from "../../images/home/polish-man-orange.png";
 import CircleActionIcon from "../../images/home/icons/action_circle_button.svg"
@@ -280,9 +279,7 @@ const HomeHeader = () => {
 
             </Flex>
 
-            {!isMap && <HomeNav />}
-
-            <WorkNav />
+            {/* <WorkNav /> */}
 
         </>
     );

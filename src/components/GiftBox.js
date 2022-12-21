@@ -7,6 +7,7 @@ const GiftBox = () => {
     return (
         <>
             <Box
+                display={{ base: "none" }}
                 pos={{ base: "none", sm: "fixed" }}
                 right="42px"
                 bottom="39px"

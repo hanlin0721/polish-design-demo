@@ -15,21 +15,21 @@ import { useDeviceType } from "../utils/window.js"
 const SocialLinks = () => {
     return (
         <Flex align="center" mb={{ base: "20%", sm: "11.9%" }}>
-            <Link href="https://www.instagram.com/ntu_studyabroad/">
+            <Link href="https://www.instagram.com/polishdesigntw/">
                 <a target="_blank">
                     <Box>
                         <Image src={IconIg.src} alt="icon_ig" />
                     </Box>
                 </a>
             </Link>
-            <Link href="https://www.facebook.com/NTUOIAstudyabroad">
+            <Link href="https://www.facebook.com/polishdesigntw/">
                 <a target="_blank">
                     <Box mx="26px">
                         <Image src={IconFb.src} alt="icon_fb" />
                     </Box>
                 </a>
             </Link>
-            <Link href="https://www.youtube.com/channel/UCekymzo_M63vGMxPiDFV8wg">
+            <Link href="https://medium.com/@polish-design">
                 <a target="_blank">
                     <Box>
                         <Image src={IconMedium.src} alt="icon_medium" />
@@ -56,8 +56,8 @@ const NavFooter = () => {
                 color="#fff"
                 mb={{ base: "17%", sm: "8.3%" }}
             >
-                <Link href="/info/live">
-                    <a style={{ display: "block", width: "100%" }}>
+                <Link href="https://polish-design.com.tw/">
+                    <a style={{ display: "block", width: "100%" }} target="_blank">
                         <Box onClick={() => (appStore.isMenu = false)}>
                             <Text fontSize="16px" fontWeight="normal">
                                 {t("nav.polish-2nd-anniversary")}
@@ -65,7 +65,7 @@ const NavFooter = () => {
                         </Box>
                     </a>
                 </Link>
-                <Link href="/info/news">
+                <Link href="/privacy-policy">
                     <a style={{ display: "block", width: "100%" }}>
                         <Box onClick={() => (appStore.isMenu = false)}>
                             <Text fontSize="16px" fontWeight="normal">
@@ -213,16 +213,7 @@ const NavContent = () => {
                                         </Box>
                                     </a>
                                 </Link>
-                                {/* <Link href="/about">
-                                    <a style={{ display: "block", width: "100%" }}>
-                                        <Box onClick={() => (appStore.isMenu = false)}>
-                                            <Text fontSize="20px" fontWeight="normal">
-                                                {t("nav.about")}
-                                            </Text>
-                                        </Box>
-                                    </a>
-                                </Link> */}
-                                <Link href="/about">
+                                <Link href="/services">
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
@@ -231,7 +222,7 @@ const NavContent = () => {
                                         </Box>
                                     </a>
                                 </Link>
-                                <Link href="/about">
+                                <Link href="/contact">
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
@@ -315,8 +306,8 @@ const NavContent = () => {
                     src={PolishMans.src}
                     pos="absolute"
                     zIndex="3"
-                    bottom="-10%"
-                    right="-10%"
+                    bottom="-15%"
+                    right="-15%"
                 />
 
                 <Box
@@ -346,9 +337,9 @@ const Nav = () => {
         <>
             <Flex
                 pos="fixed"
-                left={{ md: "42px" }}
-                right={{ base: "14px", sm: "5%" }}
-                top={{ base: "12px", sm: "4%", md: "50%" }}
+                left={{ sm: "42px", md: "42px" }}
+                right={{ base: "2%", sm: "14px" }}
+                top={{ base: "1.1%", sm: "50%" }}
                 transform={{ sm: `translateY(-50%)` }}
                 cursor="pointer"
                 zIndex="10002"

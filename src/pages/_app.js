@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import '../styles/globals.css'
 
-import StatusLoading from "../components/StatusLoading";
-import MapsLoading from "../components/MapsLoading";
-import PageLoading from "../components/PageLoading";
-import Nav from "../components/Nav";
-import StartWithUs from "../components/StartWithUs";
-import GiftBox from "../components/GiftBox";
+import HomeNav from "../components/Home/HomeNav.js";
+import StatusLoading from "../components/StatusLoading.js";
+import MapsLoading from "../components/MapsLoading.js";
+import PageLoading from "../components/PageLoading.js";
+import Nav from "../components/Nav.js";
+import StartWithUs from "../components/StartWithUs.js";
+import GiftBox from "../components/GiftBox.js";
 import { appWithTranslation } from "next-i18next";
 
 function MyApp({ Component, pageProps }) {
@@ -54,6 +55,7 @@ function MyApp({ Component, pageProps }) {
               <StartWithUs />
               <GiftBox />
             </div>
+            <HomeNav />
             <Nav />
             <StatusLoading />
             <MapsLoading />

@@ -6,6 +6,7 @@ const StartWithUs = () => {
     return (
         <Flex
             pos={{ base: "none", sm: "fixed" }}
+            display={{ base: "none" }}
             right="42px"
             top="35px"
             bg="#2A313A"
