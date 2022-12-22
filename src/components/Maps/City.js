@@ -28,17 +28,17 @@ export default function City(props) {
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
 
-    const { nodes, animations } = useGLTF("./221220_02.glb")
+    const { nodes, animations } = useGLTF("./221222_city.glb")
 
     const { actions } = useAnimations(animations, group);
 
-    const bakedBaseTexture = useTexture('./221220_base_test.png')
+    const bakedBaseTexture = useTexture('./221222_base.png')
     bakedBaseTexture.flipY = false
 
-    const bakedArcTexture = useTexture('./221220_building_test.png')
+    const bakedArcTexture = useTexture('./221222_building.png')
     bakedArcTexture.flipY = false
 
-    const bakedRoadTexture = useTexture('./221220_road.png')
+    const bakedRoadTexture = useTexture('./221222_road.png')
     bakedRoadTexture.flipY = false
 
     const bakedPolishManOrangeTexture = useTexture('./orange.png')
@@ -160,10 +160,21 @@ export default function City(props) {
         <group ref={group} {...props} dispose={null}>
             <group name="Scene">
                 <mesh
+                    ref={buildingOneRef}
+                    name="B_01"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.B_01.geometry}
+                    material={nodes.B_01.material}
+                    position={[-6.54, 0.18, 2.9]}
+                >
+                    {/* <meshBasicMaterial map={bakedArcTexture} transparent={true} /> */}
+                </mesh>
+                <mesh
                     visible={scene == 1}
                     name="BASE"
-                    // castShadow
-                    // receiveShadow
+                    castShadow
+                    receiveShadow
                     geometry={nodes.BASE.geometry}
                     material={nodes.BASE.material}
                     position={[-6.22, 0.28, 1.13]}
@@ -186,37 +197,36 @@ export default function City(props) {
                 </mesh>
                 <mesh
                     name="ROADDD"
-                    // castShadow
-                    // receiveShadow
+                    castShadow
+                    receiveShadow
                     geometry={nodes.ROADDD.geometry}
                     material={nodes.ROADDD.material}
-                    position={[-6.52, -0.476, 4.86]}
+                    position={[-6.52, -0.47, 4.86]}
                     scale={[81.54, 36.47, 66.14]}
                 >
                     <meshBasicMaterial map={bakedRoadTexture} />
                 </mesh>
                 <mesh
-                    ref={buildingOneRef}
-                    name="B_01"
+                    ref={buildingRef}
+                    name="ARC"
                     castShadow
                     receiveShadow
-                    geometry={nodes.B_01.geometry}
-                    material={nodes.B_01.material}
-                    position={[-6.54, 0.18, 2.9]}
+                    geometry={nodes.ARC.geometry}
+                    material={nodes.ARC.material}
+                    position={[-6.61, 0.15, 2.91]}
                 >
                     <meshBasicMaterial map={bakedArcTexture} transparent={true} />
                 </mesh>
                 <mesh
-                    ref={buildingRef}
-                    name="ARC"
-                    // castShadow
-                    // receiveShadow
-                    geometry={nodes.ARC.geometry}
-                    // material={nodes.ARC.material}
-                    position={[-6.61, 0.14, 2.91]}
-                >
-                    <meshBasicMaterial map={bakedArcTexture} transparent={true} />
-                </mesh>
+                    name="polish-man002"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["polish-man002"].geometry}
+                    material={nodes["polish-man002"].material}
+                    position={[-8.58, 0.16, 6.71]}
+                    rotation={[-2.62, -0.86, -Math.PI]}
+                    scale={0.84}
+                />
                 <mesh
                     visible={false}
                     ref={polishManRef}
