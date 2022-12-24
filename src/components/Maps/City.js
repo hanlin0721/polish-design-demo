@@ -50,6 +50,9 @@ export default function City(props) {
     const bakedPolishManBlueTexture = useTexture('./blue.png')
     bakedPolishManBlueTexture.flipY = false
 
+    const bakedPolishManYellowTexture = useTexture('./yellow.png')
+    bakedPolishManYellowTexture.flipY = false
+
     const [scene, setScene] = useState(1)
 
     useEffect(() => {
@@ -226,7 +229,9 @@ export default function City(props) {
                     position={[-8.58, 0.16, 6.71]}
                     rotation={[-2.62, -0.86, -Math.PI]}
                     scale={0.84}
-                />
+                >
+                    {/* <meshBasicMaterial map={bakedPolishManYellowTexture} /> */}
+                </mesh>
                 <mesh
                     visible={false}
                     ref={polishManRef}

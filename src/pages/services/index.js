@@ -1,16 +1,22 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import TechTeam from '../../images/about/tech-team.png'
-import Creator from '../../images/about/creator.png'
-import Processing from '../../images/about/processing.png'
-import BussinessExp from '../../images/about/bussiness-exp.png'
+import TechTeam from '../../images/services/tech-team.png'
+import Creator from '../../images/services/creator.png'
+import Processing from '../../images/services/processing.png'
+import BussinessExp from '../../images/services/bussiness-exp.png'
 
-import OpenedEgg from '../../images/about/opened-egg.png'
-import Bag from '../../images/about/bag.png'
-import Drawing from '../../images/about/drawing.png'
+import OpenedEgg from '../../images/services/opened-egg.png'
+import Bag from '../../images/services/bag.png'
+import Drawing from '../../images/services/drawing.png'
 
-import KevinWithPolishModel from '../../images/about/kevin-with-polish-model.png'
+import KevinWithPolishModel from '../../images/services/kevin-with-polish-model.png'
+import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward_black.svg";
+
+import ZoraSmile from "../../images/services/banner.png";
+
+import Subscription from "../../components/Nav/Subscription.js"
+import SocialLinks from "../../components/Nav/SocialLinks.js"
 
 const About = () => {
 
@@ -60,7 +66,8 @@ const About = () => {
             title: "線上策展",
             steps: [
                 {
-                    stepTitle: "證實",
+                    id: 0,
+                    stepTitle: "實證",
                     processes: [
                         "客戶訪談",
                         "評估",
@@ -68,6 +75,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 1,
                     stepTitle: "原型",
                     processes: [
                         "KPI 對焦",
@@ -76,6 +84,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 2,
                     stepTitle: "開發",
                     processes: [
                         "開發 MVP 並迭代",
@@ -85,6 +94,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 3,
                     stepTitle: "展前",
                     processes: [
                         "產品開發並測試",
@@ -93,6 +103,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 4,
                     stepTitle: "展後",
                     processes: [
                         "數據分析",
@@ -107,7 +118,8 @@ const About = () => {
             title: "產品開發",
             steps: [
                 {
-                    stepTitle: "證實",
+                    id: 5,
+                    stepTitle: "實證",
                     processes: [
                         "調查",
                         "評估",
@@ -117,6 +129,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 6,
                     stepTitle: "原型",
                     processes: [
                         "探索工作坊",
@@ -127,6 +140,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 7,
                     stepTitle: "開發",
                     processes: [
                         "開發 MVP 並迭代",
@@ -138,6 +152,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 8,
                     stepTitle: "成長",
                     processes: [
                         "產品開發與管理",
@@ -149,6 +164,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 9,
                     stepTitle: "規模化",
                     processes: [
                         "銷售和營銷規模化",
@@ -167,6 +183,7 @@ const About = () => {
             title: "設計支援",
             steps: [
                 {
+                    id: 10,
                     stepTitle: "訪談",
                     processes: [
                         "了解需求",
@@ -175,6 +192,7 @@ const About = () => {
                     ]
                 },
                 {
+                    id: 11,
                     stepTitle: "設計",
                     processes: [
                         "進行設計",
@@ -191,13 +209,12 @@ const About = () => {
     return (
         <Box
             bg="#EDF6FF"
-            pb="10%"
         >
             {/* We polish all day! */}
             <Box>
                 <Box
                     pt={{ base: "28%", sm: "8%" }}
-                    pl={{ base: "15%", sm: "25%" }}
+                    pl={{ base: "15%", sm: "20%" }}
                     mb={{ base: "10%", sm: "5%" }}
                 >
                     <Text
@@ -218,7 +235,7 @@ const About = () => {
 
                 <Flex
                     flexWrap="wrap"
-                    pl={{ base: "15%", sm: "25%" }}
+                    pl={{ base: "15%", sm: "20%" }}
                     pr="10%"
                     justifyContent="space-between"
                 >
@@ -247,13 +264,13 @@ const About = () => {
                 borderRadius={{ base: "0px", sm: "100px" }}
                 borderTopLeftRadius={{ base: "50px" }}
                 borderBottomLeftRadius={{ base: "50px" }}
-                pt="5.5%"
-                pb="7.2%"
+                pt="5%"
+                pb="8%"
                 ml={{ base: "5.4%", sm: "12%" }}
                 mb="24px"
             >
                 <Flex
-                    pl={{ base: "15%", sm: "15%" }}
+                    pl={{ base: "15%", sm: "10%" }}
                     pr="10%"
                 >
                     <Box pos="relative">
@@ -278,7 +295,7 @@ const About = () => {
 
                 <Flex
                     mt="40px"
-                    pl={{ base: "15%", sm: "15%" }}
+                    pl={{ base: "15%", sm: "10%" }}
                     pr="10%"
                     flexWrap="wrap"
                     justifyContent="space-between"
@@ -379,11 +396,12 @@ const About = () => {
             <Box>
                 <Box
                     pt={{ base: "14%", sm: "8%" }}
-                    pl={{ base: "15%", sm: "25%" }}
+                    pl={{ base: "15%", sm: "20%" }}
                     mb={{ base: "10%", sm: "5%" }}
                 >
                     <Text
                         fontSize={{ base: "12vw", sm: "4.4vw" }}
+                        fontWeight="bold"
                         mb="1%"
                     >
                         The process
@@ -396,24 +414,46 @@ const About = () => {
                     </Text>
                 </Box>
 
-                <Box pl={{ base: "15%", sm: "25%" }} >
+                <Box pl={{ base: "15%", sm: "20%" }} >
                     {
-                        processes.map((process, index) => {
+                        processes.map((process, processIndex) => {
                             return (
                                 <>
-                                    <Text mb="47px">{process.title}</Text>
-                                    <Flex mb="5%">
+                                    <Text mb="45px" fontSize="24px">{process.title}</Text>
+                                    <Flex
+                                        mb="5%"
+                                        pr={{ base: "15%", sm: "10%" }}
+                                        flexDir={{ base: "column", sm: "row" }}
+                                    >
                                         {
-                                            process.steps.map((step, index) => {
+                                            process.steps.map((step) => {
                                                 return (
-                                                    <Box mr="40px">
-                                                        <Box borderBottom="1px">
-                                                            <Text fontWeight="bold" pb="20px">{step.stepTitle}</Text>
+                                                    <Box
+                                                        w={processIndex == 2 ? { base: "100%", sm: "15%" } : "100%"}
+                                                        mr="4%"
+                                                        mb={{ base: "20px", sm: "0px" }}
+                                                    >
+                                                        <Box
+                                                            borderBottom="1px"
+                                                            borderColor="rgba(33,41,50,0.2)"
+                                                            onClick={() => console.log(step.id)}
+                                                        >
+                                                            <Text fontSize="16px" fontWeight="bold" pb="20px">{step.stepTitle}</Text>
                                                         </Box>
                                                         {
                                                             step.processes.map((processe, index) => {
                                                                 return (
-                                                                    <Box borderBottom="1px" py="10px">
+                                                                    <Box
+                                                                        // display={{ base: "none", sm: "block" }}
+                                                                        // transition="all .4s ease"
+                                                                        // maxH="0"
+                                                                        // overflow="hidden"
+                                                                        // opacity="0"
+                                                                        fontSize="16px"
+                                                                        borderBottom="1px"
+                                                                        borderColor="rgba(33,41,50,0.2)"
+                                                                        py="10px"
+                                                                    >
                                                                         <Text>
                                                                             {processe}
                                                                         </Text>
@@ -426,33 +466,102 @@ const About = () => {
                                             })
                                         }
                                     </Flex>
-
-                                    <Flex
-                                        bg="#EAF1F7"
-                                        w="308px"
-                                        borderRadius="53px"
-                                        justifyContent="space-around"
-                                        mb="10%"
-                                    >
-                                        <Flex>
-                                            <Text>
-                                                相關案例
-                                            </Text>
-                                            <Image />
-                                        </Flex>
-                                        <Flex>
-                                            <Text>
-                                                相關資源
-                                            </Text>
-                                            <Image />
-                                        </Flex>
-                                    </Flex>
                                 </>
                             )
                         })
                     }
                 </Box>
+
+                <Box mt="10%" pl={{ base: "15%", sm: "20%" }}>
+                    <Flex
+                        bg="white"
+                        w="308px"
+                        borderRadius="53px"
+                        justifyContent="space-around"
+                        pt="18px"
+                        pb="17px"
+                        mb="10%"
+                    >
+                        <Flex cursor="pointer">
+                            <Text fontWeight="bold" mr="8px">
+                                相關案例
+                            </Text>
+                            <Image w="12px" src={ArrowDownwardIcon.src} transform="rotate(-90deg)" />
+                        </Flex>
+                        <Flex cursor="pointer">
+                            <Text fontWeight="bold" mr="8px">
+                                相關資源
+                            </Text>
+                            <Image w="12px" src={ArrowDownwardIcon.src} transform="rotate(-90deg)" />
+                        </Flex>
+                    </Flex>
+                </Box>
+
             </Box>
+
+            {/* Zora Banner */}
+            <Image src={ZoraSmile.src} transform="scale(1)" w="100%" bg="#212932" />
+
+            <Box
+                bg="#212932"
+                w="100%"
+                color="white"
+            >
+                <Flex
+                    pl={{ base: "15%", sm: "20%" }}
+                    pt="5%"
+                    flexDir="column"
+
+                >
+                    <Box pos="relative">
+                        <Text
+                            fontSize={{ base: "10vw", sm: "4.4vw" }}
+                            mb="1%"
+                            color="white"
+                        >
+                            Let's polish<br />today!
+                        </Text>
+                    </Box>
+
+                    <Box>
+                        <Flex
+                            pt="2.8%"
+                            borderTop="1px"
+                            borderBottom="1px"
+                            borderColor="rgba(255,255,255,0.15)"
+                        >
+                            <Box w="100%">
+                                <Text pt="28px">首頁</Text>
+                                <Text pt="28px">關於我們</Text>
+                                <Text pt="28px">專案</Text>
+                                <Text pt="28px">資源</Text>
+                            </Box>
+
+                            <Box w="100%">
+                                <Text pt="28px">與我們合作</Text>
+                                <Text pt="28px">The 2nd Ann. 禮品頁</Text>
+                            </Box>
+
+                            <Box w="100%">
+                                <Text pt="28px" fontSize="18px">一起創造!</Text>
+                                <Text color="#A9ACB0" fontSize="14px" mt="12px">hello@polish-design.com.tw</Text>
+                            </Box>
+
+                            <Box w="100%" pt="28px">
+                                <Subscription />
+                                <SocialLinks />
+                            </Box>
+                        </Flex>
+
+                        <Flex justifyContent="space-between" pt="20px" pb="40px">
+                            <Text>相關條款 & Cookies 授權</Text>
+                            <Text pr="10%" color="rgba(255,255,255,0.5)">©Polish Design</Text>
+                        </Flex>
+                    </Box>
+                </Flex>
+
+            </Box>
+
         </Box>
     )
 }

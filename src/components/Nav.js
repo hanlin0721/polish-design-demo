@@ -1,44 +1,14 @@
 import appStore from "../store/store";
-import { Box, Image, Flex, Text, VStack, InputGroup, Input, InputRightElement } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons"
+import { Box, Image, Flex, Text, VStack } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import IconFb from "../images/home/icons/icon-fb.svg";
-import IconIg from "../images/home/icons/icon-ig.svg";
-import IconMedium from "../images/home/icons/Icon-medium.svg";
 import homeLogoWhite from "../images/home/logo_white.png"
 import useControl from "../store/useControl";
 import PolishMans from "../images/common/polish-mans.png"
 import { useDeviceType } from "../utils/window.js"
-
-const SocialLinks = () => {
-    return (
-        <Flex align="center" mb={{ base: "20%", sm: "11.9%" }}>
-            <Link href="https://www.instagram.com/polishdesigntw/">
-                <a target="_blank">
-                    <Box>
-                        <Image src={IconIg.src} alt="icon_ig" />
-                    </Box>
-                </a>
-            </Link>
-            <Link href="https://www.facebook.com/polishdesigntw/">
-                <a target="_blank">
-                    <Box mx="26px">
-                        <Image src={IconFb.src} alt="icon_fb" />
-                    </Box>
-                </a>
-            </Link>
-            <Link href="https://medium.com/@polish-design">
-                <a target="_blank">
-                    <Box>
-                        <Image src={IconMedium.src} alt="icon_medium" />
-                    </Box>
-                </a>
-            </Link>
-        </Flex>
-    );
-};
+import Subscription from "./Nav/Subscription";
+import SocialLinks from "./Nav/SocialLinks";
 
 const NavFooter = () => {
     const router = useRouter();
@@ -240,49 +210,16 @@ const NavContent = () => {
                         flex={1}
                         borderLeft={{ base: "0", sm: "1px" }}
                         borderColor="rgba(255,255,255,0.15)"
+                        alignSelf={{ base: "start", sm: "end" }}
                     >
                         <Box
                             position="relative"
-                            bottom={{ base: "", sm: "-52%" }}
+
                             mt={{ base: "90px", sm: "" }}
                             pl={{ base: "9%", sm: "30%", lg: "7%" }}
                             pb={{ xs: "4%" }}
                         >
-                            <Flex mb="20px">
-                                <Box
-                                    w="7px"
-                                    h="7px"
-                                    m="auto"
-                                    ml="0"
-                                    mr="15px"
-                                    bg="#00D5BE"
-                                    borderRadius="50%"
-                                />
-                                <Text color="white">收到我們的動態</Text>
-                            </Flex>
-                            <InputGroup
-                                mb={{ base: "70px", sm: "62.5px" }}
-                                w={{ base: "90%", sm: "80%" }}
-                                borderRadius="14px"
-                                overflow="hidden"
-                                color="white"
-                            >
-                                <Input
-                                    _placeholder={{ color: "rgba(255,255,255,0.5)" }}
-                                    placeholder='你的 Email'
-                                    border="0"
-                                    outline="none"
-                                    bg="#2A313A"
-                                    pt="30px"
-                                    pb="30px"
-                                    pl="28px"
-                                    overflow="hidden"
-                                />
-                                <InputRightElement pt="30px" pb="30px" pr="30px">
-                                    <ArrowForwardIcon color='white' />
-                                </InputRightElement>
-                            </InputGroup>
-
+                            <Subscription />
                             <SocialLinks />
                             <NavFooter />
                         </Box>
@@ -302,12 +239,14 @@ const NavContent = () => {
                 />
 
                 <Image
-                    display={{ base: "none", lg: "block" }}
+                    // display={{ base: "none", lg: "block" }}
+                    opacity={{ base: "0", lg: "1" }}
                     src={PolishMans.src}
                     pos="absolute"
                     zIndex="3"
                     bottom="-15%"
-                    right="-15%"
+                    right="-12%"
+                    h="100vh"
                 />
 
                 <Box
