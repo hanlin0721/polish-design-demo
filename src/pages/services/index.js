@@ -63,6 +63,7 @@ const About = () => {
 
     const processes = [
         {
+            id: 1,
             title: "線上策展",
             steps: [
                 {
@@ -115,6 +116,7 @@ const About = () => {
             resourceLink: ""
         },
         {
+            id: 2,
             title: "產品開發",
             steps: [
                 {
@@ -180,6 +182,7 @@ const About = () => {
             resourceLink: ""
         },
         {
+            id: 3,
             title: "設計支援",
             steps: [
                 {
@@ -214,20 +217,22 @@ const About = () => {
             <Box>
                 <Box
                     pt={{ base: "28%", sm: "8%" }}
-                    pl={{ base: "15%", sm: "20%" }}
+                    pl={{ base: "5%", sm: "20%" }}
                     mb={{ base: "10%", sm: "5%" }}
                 >
                     <Text
-                        fontSize={{ base: "12vw", sm: "4.4vw" }}
+                        fontSize={{ base: "48px", sm: "4.6vw" }}
                         mb="5%"
                         fontWeight="bold"
+                        lineHeight="1.3"
                     >
                         We polish<br />all day!
                     </Text>
                     <Text
                         fontWeight="bold"
-                        maxW="575px"
-                        w={{ base: "80%", sm: "100%" }}
+                        maxW={{ base: "100%", sm: "575px" }}
+                        w={{ base: "87%", sm: "100%" }}
+                        fontSize={{ base: "14px", sm: "16px" }}
                     >
                         Polish Design. 是一家提供數位解決方案的軟體設計公司，致力於為企業開發創意、行得通的數位產品，以實現任何商業挑戰及有趣的點子。
                     </Text>
@@ -235,8 +240,8 @@ const About = () => {
 
                 <Flex
                     flexWrap="wrap"
-                    pl={{ base: "15%", sm: "20%" }}
-                    pr="10%"
+                    pl={{ base: "5%", sm: "20%" }}
+                    pr="5%"
                     justifyContent="space-between"
                 >
                     {sections.map((section, index) => (
@@ -249,9 +254,9 @@ const About = () => {
                                 h={{ base: "65%", sm: "75%" }}
                                 alignItems="center"
                             >
-                                <Image pointerEvents="none" src={section.image} />
+                                <Image pointerEvents="none" src={section.image} pos="relative" right={{ base: (index % 2 == 0) ? "-15%" : "15%", sm: "0" }} />
                             </Flex>
-                            <Text fontWeight="bold">{section.title}</Text>
+                            <Text fontWeight="bold" fontSize={{ base: "18px" }} mb={{ base: "8px", sm: "0px" }}>{section.title}</Text>
                             <Text>{section.desc}</Text>
                         </Box>
                     ))}
@@ -275,7 +280,7 @@ const About = () => {
                 >
                     <Box pos="relative">
                         <Text
-                            fontSize={{ base: "10vw", sm: "4.4vw" }}
+                            fontSize={{ base: "10vw", sm: "4.6vw" }}
                             mb="1%"
                             fontWeight="bold"
                         >
@@ -295,7 +300,7 @@ const About = () => {
 
                 <Flex
                     mt="40px"
-                    pl={{ base: "15%", sm: "10%" }}
+                    pl={{ base: "10%", sm: "10%" }}
                     pr="10%"
                     flexWrap="wrap"
                     justifyContent="space-between"
@@ -396,11 +401,11 @@ const About = () => {
             <Box>
                 <Box
                     pt={{ base: "14%", sm: "8%" }}
-                    pl={{ base: "15%", sm: "20%" }}
-                    mb={{ base: "10%", sm: "5%" }}
+                    pl={{ base: "5%", sm: "20%" }}
+                    mb={{ base: "15%", sm: "5%" }}
                 >
                     <Text
-                        fontSize={{ base: "12vw", sm: "4.4vw" }}
+                        fontSize={{ base: "12vw", sm: "4.6vw" }}
                         fontWeight="bold"
                         mb="1%"
                     >
@@ -414,15 +419,15 @@ const About = () => {
                     </Text>
                 </Box>
 
-                <Box pl={{ base: "15%", sm: "20%" }} >
+                <Box pl={{ base: "5%", sm: "20%" }} pr={{ base: "5%", sm: "10%" }}>
                     {
                         processes.map((process, processIndex) => {
                             return (
-                                <>
-                                    <Text mb="45px" fontSize="24px">{process.title}</Text>
+                                <Box key={process.id}>
+                                    <Text mb={{ base: "25px", sm: "45px" }} fontSize="24px">{process.title}</Text>
                                     <Flex
                                         mb="5%"
-                                        pr={{ base: "15%", sm: "10%" }}
+
                                         flexDir={{ base: "column", sm: "row" }}
                                     >
                                         {
@@ -432,6 +437,7 @@ const About = () => {
                                                         w={processIndex == 2 ? { base: "100%", sm: "15%" } : "100%"}
                                                         mr="4%"
                                                         mb={{ base: "20px", sm: "0px" }}
+                                                        key={step.id}
                                                     >
                                                         <Box
                                                             borderBottom="1px"
@@ -453,6 +459,7 @@ const About = () => {
                                                                         borderBottom="1px"
                                                                         borderColor="rgba(33,41,50,0.2)"
                                                                         py="10px"
+                                                                        key={index}
                                                                     >
                                                                         <Text>
                                                                             {processe}
@@ -466,13 +473,13 @@ const About = () => {
                                             })
                                         }
                                     </Flex>
-                                </>
+                                </Box>
                             )
                         })
                     }
                 </Box>
 
-                <Box mt="10%" pl={{ base: "15%", sm: "20%" }}>
+                <Box mt={{ base: "5%", sm: "10%" }} mb={{ base: "25%", sm: "0%" }} pl={{ base: "5%", sm: "20%" }}>
                     <Flex
                         bg="white"
                         w="308px"
@@ -500,7 +507,7 @@ const About = () => {
             </Box>
 
             {/* Zora Banner */}
-            <Image src={ZoraSmile.src} transform="scale(1)" w="100%" bg="#212932" />
+            <Image display={{ base: "none", sm: "block" }} src={ZoraSmile.src} transform="scale(1)" w="100%" bg="#212932" />
 
             <Box
                 bg="#212932"
@@ -508,54 +515,67 @@ const About = () => {
                 color="white"
             >
                 <Flex
-                    pl={{ base: "15%", sm: "20%" }}
-                    pt="5%"
+                    pl={{ base: "5%", sm: "20%" }}
+                    pt={{ base: "15%", sm: "5%" }}
                     flexDir="column"
-
                 >
-                    <Box pos="relative">
+                    <Box pos="relative" mb={{ base: "64px", sm: "50px" }}>
                         <Text
-                            fontSize={{ base: "10vw", sm: "4.4vw" }}
+                            fontSize={{ base: "10vw", sm: "4.6vw" }}
                             mb="1%"
                             color="white"
+                            fontWeight="bold"
                         >
                             Let's polish<br />today!
                         </Text>
                     </Box>
 
-                    <Box>
+                    <Box >
                         <Flex
-                            pt="2.8%"
-                            borderTop="1px"
-                            borderBottom="1px"
-                            borderColor="rgba(255,255,255,0.15)"
+                            pt={{ base: "0%", sm: "2.8%" }}
+                            pr={{ base: "5%", sm: "0%" }}
+                            borderY={{ base: "0px", sm: "1px solid rgba(255,255,255,0.15)" }}
+                            flexDir={{ base: "column", sm: "row" }}
                         >
-                            <Box w="100%">
+                            <Box w="100%" pt={{ base: "20px", sm: "0px" }}>
                                 <Text pt="28px">首頁</Text>
                                 <Text pt="28px">關於我們</Text>
                                 <Text pt="28px">專案</Text>
                                 <Text pt="28px">資源</Text>
                             </Box>
 
-                            <Box w="100%">
+                            <Box
+                                w="100%"
+                                pb={{ base: "40px", sm: "0px" }}
+                            >
                                 <Text pt="28px">與我們合作</Text>
                                 <Text pt="28px">The 2nd Ann. 禮品頁</Text>
                             </Box>
 
-                            <Box w="100%">
-                                <Text pt="28px" fontSize="18px">一起創造!</Text>
+                            <Box
+                                w="100%"
+                                pb={{ base: "20px", sm: "0px" }}
+                                borderY={{ base: "1px solid rgba(255,255,255,0.15)", sm: "0px" }}
+                            >
+                                <Text pt="28px" fontSize="18px" fontWeight="bold">一起創造!</Text>
                                 <Text color="#A9ACB0" fontSize="14px" mt="12px">hello@polish-design.com.tw</Text>
                             </Box>
 
-                            <Box w="100%" pt="28px">
+                            <Box
+                                w="100%"
+                                pt={{ base: "0px", sm: "28px" }}
+                                order={{ base: "-1", sm: "1" }}
+                                borderBottom={{ base: "1px", sm: "0px" }}
+                                borderColor="rgba(255,255,255,0.15)"
+                            >
                                 <Subscription />
                                 <SocialLinks />
                             </Box>
                         </Flex>
 
-                        <Flex justifyContent="space-between" pt="20px" pb="40px">
+                        <Flex justifyContent="space-between" pt={{ base: "40px", sm: "30px" }} pb="40px" flexDir={{ base: "column", sm: "row" }}>
                             <Text>相關條款 & Cookies 授權</Text>
-                            <Text pr="10%" color="rgba(255,255,255,0.5)">©Polish Design</Text>
+                            <Text pr="10%" pt={{ base: "18px", sm: "0px" }} color="rgba(255,255,255,0.5)">©Polish Design</Text>
                         </Flex>
                     </Box>
                 </Flex>

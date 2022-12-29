@@ -6,27 +6,21 @@ import IconMedium from "../../images/home/icons/Icon-medium.svg"
 const SocialLinks = () => {
     return (
         <Flex align="center" mb={{ base: "20%", sm: "11.9%" }}>
-            <Link href="https://www.instagram.com/polishdesigntw/">
-                <a target="_blank">
-                    <Box>
-                        <Image src={IconIg.src} alt="icon_ig" />
-                    </Box>
-                </a>
-            </Link>
-            <Link href="https://www.facebook.com/polishdesigntw/">
-                <a target="_blank">
-                    <Box mx="26px">
-                        <Image src={IconFb.src} alt="icon_fb" />
-                    </Box>
-                </a>
-            </Link>
-            <Link href="https://medium.com/@polish-design">
-                <a target="_blank">
-                    <Box>
-                        <Image src={IconMedium.src} alt="icon_medium" />
-                    </Box>
-                </a>
-            </Link>
+            <a href="https://www.instagram.com/polishdesigntw/" target="_blank">
+                <Box>
+                    <Image src={IconIg.src} alt="icon_ig" />
+                </Box>
+            </a>
+            <a href="https://www.facebook.com/polishdesigntw/" target="_blank">
+                <Box mx="26px">
+                    <Image src={IconFb.src} alt="icon_fb" />
+                </Box>
+            </a>
+            <a href="https://medium.com/@polish-design" target="_blank">
+                <Box>
+                    <Image src={IconMedium.src} alt="icon_medium" />
+                </Box>
+            </a>
         </Flex>
     )
 }

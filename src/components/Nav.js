@@ -239,7 +239,7 @@ const NavContent = () => {
                 />
 
                 <Image
-                    // display={{ base: "none", lg: "block" }}
+                    display={{ base: "none", lg: "block" }}
                     opacity={{ base: "0", lg: "1" }}
                     src={PolishMans.src}
                     pos="absolute"
