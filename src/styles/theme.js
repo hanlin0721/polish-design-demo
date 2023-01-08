@@ -1,4 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
+import { checkboxTheme } from "../theme/components/Checkbox.js"
+import { selectTheme } from "../theme/components/Select.js"
+
 const theme = extendTheme({
   colors: {
     brand: {
@@ -14,6 +17,10 @@ const theme = extendTheme({
     lg: "1200px",
     xl: "1300px",
     "2xl": "1536px",
+  },
+  components: {
+    Checkbox: checkboxTheme,
+    Select: selectTheme
   }
 });
 

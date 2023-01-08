@@ -1,5 +1,6 @@
-import { Box, Flex, Text, InputGroup, Input, InputRightElement } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons"
+import { Box, Flex, Text } from "@chakra-ui/react";
+import CustomInputField from "../Form/CustomInputField.js";
+
 const Subscription = () => {
     return (
         <>
@@ -15,28 +16,12 @@ const Subscription = () => {
                 />
                 <Text color="white">收到我們的動態</Text>
             </Flex>
-            <InputGroup
-                mb={{ base: "70px", sm: "62.5px" }}
-                w={{ base: "90%", sm: "80%" }}
-                borderRadius="14px"
-                overflow="hidden"
-                color="white"
-            >
-                <Input
-                    _placeholder={{ color: "rgba(255,255,255,0.5)" }}
-                    placeholder='你的 Email'
-                    border="0"
-                    outline="none"
-                    bg="#2A313A"
-                    pt="30px"
-                    pb="30px"
-                    pl="28px"
-                    overflow="hidden"
+            <Box h="69px" mb={{ base: "70px", sm: "62.5px" }}>
+                <CustomInputField
+                    placeholder="你的 Email"
+                    showActionIcon
                 />
-                <InputRightElement pt="30px" pb="30px" pr="30px">
-                    <ArrowForwardIcon color='white' />
-                </InputRightElement>
-            </InputGroup>
+            </Box>
         </>
     )
 }

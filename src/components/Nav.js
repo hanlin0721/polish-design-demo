@@ -208,15 +208,16 @@ const NavContent = () => {
                     {/* Right Nav */}
                     <Box
                         flex={1}
+                        w="100%"
                         borderLeft={{ base: "0", sm: "1px" }}
                         borderColor="rgba(255,255,255,0.15)"
                         alignSelf={{ base: "start", sm: "end" }}
                     >
                         <Box
                             position="relative"
-
                             mt={{ base: "90px", sm: "" }}
                             pl={{ base: "9%", sm: "30%", lg: "7%" }}
+                            pr="50px"
                             pb={{ xs: "4%" }}
                         >
                             <Subscription />

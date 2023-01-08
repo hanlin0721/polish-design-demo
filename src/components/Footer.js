@@ -59,6 +59,7 @@ const Footer = () => {
                         <Box
                             w="100%"
                             pt={{ base: "0px", sm: "28px" }}
+                            pr="50px"
                             order={{ base: "-1", sm: "1" }}
                             borderBottom={{ base: "1px", sm: "0px" }}
                             borderColor="rgba(255,255,255,0.15)"

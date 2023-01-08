@@ -19,6 +19,7 @@
     "@use-gesture/react": "^10.2.20",
     "axios": "^0.27.2",
     "date-fns": "^2.29.2",
+    "formik": "^2.2.9",
     "framer-motion": "^6.5.1",
     "gsap": "^3.11.3",
     "ios-inner-height": "^1.1.1",
@@ -37,6 +38,7 @@
     "spectorjs": "^0.9.27",
     "stats.js": "^0.17.0",
     "three": "^0.144.0",
+    "yup": "^0.32.11",
     "zustand": "^3.7.2"
   },
   "devDependencies": {

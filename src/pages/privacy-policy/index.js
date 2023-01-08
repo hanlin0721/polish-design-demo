@@ -2,7 +2,7 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Footer from "../../components/Footer";
 
-const Contact = () => {
+const PrivacyPolicy = () => {
 
     return (
         <Box
@@ -101,7 +101,7 @@ const Contact = () => {
     )
 }
 
-export default Contact;
+export default PrivacyPolicy;
 
 export async function getStaticProps({ locale }) {
     return {
