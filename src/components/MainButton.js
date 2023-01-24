@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 import { MdOutlineOpenInNew } from "react-icons/md";
 
 const MainButton = ({
+  w = "285px",
   text = "前往報名",
   href,
   target,
   hasIcon = true,
   disabled = false,
+  bg = "blue.300",
   ...props
 }) => {
   const router = useRouter();
@@ -19,9 +21,9 @@ const MainButton = ({
       justify="center"
       align="center"
       cursor="pointer"
-      bgColor="brand.main"
+      bgColor={bg}
       boxShadow="0px 3px 6px 0 rgba(0, 0, 0, .16)"
-      w="267px"
+      w={w}
       h="48px"
       lineHeight="1"
       color="#fff"
@@ -37,7 +39,7 @@ const MainButton = ({
       pos="relative"
       {...props}
     >
-      <Text fontSize="14px" fontWeight="600">
+      <Text fontSize="16px" fontWeight="600">
         {text}
       </Text>
       {hasIcon && (

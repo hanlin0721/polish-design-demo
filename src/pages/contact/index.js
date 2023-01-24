@@ -6,7 +6,7 @@ import CustomForm from "../../components/Form/CustomForm.js"
 const Contact = () => {
     return (
         <Box
-            bg="#212932"
+            bg="blue.900"
             h="100%"
         >
             <Box pb={{ base: "10%", sm: "10%" }} color="white">

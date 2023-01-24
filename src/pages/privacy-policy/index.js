@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
 
     return (
         <Box
-            bg="#EDF6FF"
+            bg="blue.50"
             h="100%"
 
         >

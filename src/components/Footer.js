@@ -5,7 +5,7 @@ import SocialLinks from "../components/Nav/SocialLinks.js"
 const Footer = () => {
     return (
         <Box
-            bg="#212932"
+            bg="blue.900"
             w="100%"
             color="white"
         >

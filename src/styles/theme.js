@@ -5,10 +5,17 @@ import { selectTheme } from "../theme/components/Select.js"
 const theme = extendTheme({
   colors: {
     brand: {
-      main: "#845B35",
-      sub: "",
-      bg: "#000000",
+      main: "#EDF6FF",
+      sub: "#212932",
     },
+    blue: {
+      50: "#EDF6FF",
+      300: "#7B7F85",
+      600: "#383F47",
+      700: "#303C4A",
+      800: "#2A313A",
+      900: "#212932"
+    }
   },
   breakpoints: {
     xs: "320px",

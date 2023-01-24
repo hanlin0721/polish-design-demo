@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 
-export function useTouch(callback) {
+export function useTouch({
+    pullUpFunc,
+    pullDownFunc
+}) {
     const pStart = useState({ x: 0, y: 0 })
     const pStop = useState({ x: 0, y: 0 })
 
     const isPullUp = (dY, dX) => {
-        console.log(`dY ${dY}`)
-        console.log(`dX ${dX}`)
         return (
             dY > 0 &&
+            (Math.abs(dX) <= 100 && Math.abs(dY) >= 40)
+        );
+    }
+
+    const isPullDown = (dY, dX) => {
+        return (
+            dY < 0 &&
             (Math.abs(dX) <= 100 && Math.abs(dY) >= 40)
         );
     }
@@ -17,13 +25,14 @@ export function useTouch(callback) {
         const changeY = pStart.y - pStop.y;
         const changeX = pStart.x - pStop.x;
         if (isPullUp(changeY, changeX)) {
-            callback()
-            console.log(`callback`)
+            pullUpFunc()
+        }
+        if (isPullDown(changeY, changeX)) {
+            pullDownFunc()
         }
     }
 
     const swipeStart = (e) => {
-        console.log('test')
         if (typeof e["targetTouches"] !== "undefined") {
             const touch = e.targetTouches[0];
             pStart.x = touch.screenX;

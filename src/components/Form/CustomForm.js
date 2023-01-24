@@ -63,8 +63,8 @@ const CustomForm = () => {
                                 onBlur={handleBlur}
                                 variant="filled"
                                 color="rgba(255,255,255,0.5)"
-                                borderColor="#7B7F85"
-                                bg="#2A313A"
+                                borderColor="blue.300"
+                                bg="blue.800"
                                 size='xl'
                                 borderRadius="16px"
                                 placeholder="你希望合作的內容 *"
@@ -91,9 +91,9 @@ const CustomForm = () => {
                                 onBlur={handleBlur}
                                 variant='filled'
                                 size='xl'
-                                bg="#2A313A"
+                                bg="blue.800"
                                 color="rgba(255,255,255,0.5)"
-                                borderColor="#7B7F85"
+                                borderColor="blue.300"
                                 borderRadius="16px"
                             >
                                 <option value="">你是怎麼知道我們的 *</option>
@@ -170,7 +170,7 @@ const CustomForm = () => {
                             onChange={handleChange}
                             defaultChecked
                             size="xl"
-                            colorScheme="#2A313A"
+                            colorScheme="blue.800"
                         >
                             <Text fontSize="14px">我同意偶爾接收 Polish Design 的通知 Email，其中包含有關軟體專案、技術和建議。</Text>
                         </Checkbox>

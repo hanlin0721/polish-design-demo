@@ -45,7 +45,7 @@ const CustomSelect = ({ items, value, placeholder, ...props }) => {
                 placeholder={placeholder}
                 border="0"
                 outline="none"
-                bg="#2A313A"
+                bg="blue.800"
                 pt="30px"
                 pb="30px"
                 pl="28px"
@@ -58,7 +58,7 @@ const CustomSelect = ({ items, value, placeholder, ...props }) => {
             />
             <VStack
                 borderRadius="16px"
-                bg="#2A313A"
+                bg="blue.800"
                 w="100%"
                 h="207px"
                 pos="absolute"
@@ -77,7 +77,7 @@ const CustomSelect = ({ items, value, placeholder, ...props }) => {
                             onMouseLeave={(e) => {
                                 mouseOut(e, index);
                             }}
-                            bg={hover[index] ? 'white' : '#2A313A'}
+                            bg={hover[index] ? 'white' : 'blue.800'}
                             color={hover[index] ? 'black' : 'white'}
                             key={index}
                             pt="16.5px"

@@ -9,7 +9,7 @@ const StartWithUs = () => {
             display={{ base: "none", sm: "block" }}
             right="42px"
             top="35px"
-            bg="#2A313A"
+            bg="blue.800"
             color="white"
             cursor="pointer"
             borderRadius="36px"

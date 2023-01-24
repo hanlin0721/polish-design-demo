@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber';
 
 const PolishMan = React.forwardRef(({ children, groupRotation, rotation, isSpinning, ...props }, ref) => {
 
-    const polishManModel = useGLTF("./new_blue.glb")
+    const polishManModel = useGLTF("https://polish-design-demo.zeabur.app/new_blue.glb")
     const mesh = useRef()
 
     useFrame((state, delta) => {

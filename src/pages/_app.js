@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router"
 import Head from "next/head";
 import '../styles/globals.css'
 
@@ -16,6 +17,19 @@ import { appWithTranslation } from "next-i18next";
 function MyApp({ Component, pageProps }) {
 
   const [isAppStoreInit, setAppStoreInit] = useState(false);
+  const router = useRouter()
+
+  const isContactPaeg = () => {
+    return router.asPath === "/contact"
+  }
+
+  const isWorkPage = () => {
+    return router.asPath === "/work"
+  }
+
+  const showWhiteLogo = () => {
+    return isWorkPage() || isContactPaeg()
+  }
 
   useEffect(() => {
     setAppStoreInit(true);
@@ -55,7 +69,7 @@ function MyApp({ Component, pageProps }) {
               <StartWithUs />
               <GiftBox />
             </div>
-            <HomeNav />
+            <HomeNav isWhite={showWhiteLogo()} />
             <Nav />
             <StatusLoading />
             <MapsLoading />

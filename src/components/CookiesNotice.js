@@ -10,7 +10,7 @@ const CookiesNotice = () => {
 
     return (
         <VStack
-            bg="brand.main"
+            bg="blue.50"
             w="100%"
             h="125px"
             transition={`${isAccepted ? "0.3s ease 0s" : "1s ease 1s"}`}

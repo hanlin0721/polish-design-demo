@@ -211,7 +211,7 @@ const About = () => {
 
     return (
         <Box
-            bg="#EDF6FF"
+            bg="blue.50"
         >
             {/* We polish all day! */}
             <Box>
@@ -331,7 +331,7 @@ const About = () => {
 
             {/* Kevin */}
             <Box
-                bg="#212932"
+                bg="blue.900"
                 borderRadius={{ base: "50px", sm: "100px" }}
                 mx={{ base: "1%", sm: "0.5%" }}
                 overflow="hidden"
@@ -507,7 +507,7 @@ const About = () => {
             </Box>
 
             {/* Zora Banner */}
-            <Image display={{ base: "none", sm: "block" }} src={ZoraSmile.src} transform="scale(1)" w="100%" bg="#212932" />
+            <Image display={{ base: "none", sm: "block" }} src={ZoraSmile.src} transform="scale(1)" w="100%" bg="blue.900" />
 
             <Footer />
         </Box>

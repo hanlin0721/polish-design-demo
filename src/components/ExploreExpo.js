@@ -6,7 +6,7 @@ const ExploreExpo = ({ setIsMap, ...props }) => {
             {...props}
             justifyContent="center"
             align="center"
-            bg="brand.main"
+            bg="blue.50"
             color="white"
             cursor="pointer"
             w="234px"

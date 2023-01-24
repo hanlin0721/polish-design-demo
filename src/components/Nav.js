@@ -89,7 +89,7 @@ const NavContent = () => {
                 pr={{ base: "0%", sm: "30%" }}
                 h="100%"
                 top="0"
-                bgColor="#212932"
+                bgColor="blue.900"
                 backdropFilter="blur(30px)"
                 transform={`translateX(${isMenu ? "0%" : "-100%"})`}
                 transition="0.3s ease"
@@ -121,7 +121,7 @@ const NavContent = () => {
                                     <a style={{ display: "block" }}>
                                         <Box onClick={() => {
                                             goScene(1)
-                                            appStore.scene = 1
+                                            // appStore.scene = 1
                                         }}>
                                             <Text
                                                 fontSize={{ base: "30px", sm: "64px" }}
@@ -256,11 +256,11 @@ const NavContent = () => {
                     zIndex="4"
                     w={{ base: "0%", sm: isMenu ? "0%" : "31%" }}
                     transitionDuration={"0.25s"}
-                    transitionDelay={"0.2s"}
+                    transitionDelay={"0.38s"}
                     transitionTimingFunction="ease-out"
                     transitionProperty={"opacity width"}
                     h="100vh"
-                    bgColor="#212932"
+                    bgColor="blue.900"
                     top="0"
                     right="0"
                     border="0px"
@@ -273,13 +273,21 @@ const NavContent = () => {
 const Nav = () => {
     const { isMenu, mapOpacity, mapStatus } = appStore;
     const isAnimReady = !mapStatus || mapStatus === "ready";
+    const router = useRouter();
+    const isWorkPage = () => {
+        return router.asPath === "/work"
+    }
+    const showWhiteLogo = () => {
+        return isWorkPage()
+    }
+
     return (
         <>
             <Flex
                 pos="fixed"
-                left={{ sm: "42px", md: "42px" }}
-                right={{ base: "2%", sm: "14px" }}
-                top={{ base: "1.1%", sm: "50%" }}
+                left={{ sm: "3.1875%" }}
+                right={{ base: "14px", sm: "14px" }}
+                top={{ base: "12px", sm: "50%" }}
                 transform={{ sm: `translateY(-50%)` }}
                 cursor="pointer"
                 zIndex="10002"
@@ -288,15 +296,15 @@ const Nav = () => {
                 w="50px"
                 h="50px"
                 borderRadius="50%"
-                bg={isMenu ? "#2A313A" : "white"}
+                bg={isMenu ? "blue.800" : showWhiteLogo() ? "blue.800" : "white"}
                 justifyContent="center"
                 alignItems="center"
             >
                 <Box className={`header__hamburger ${isMenu ? "show" : ""}`}>
                     <i className="header__hamburger__icon">
-                        <Box as="span" bg={isMenu ? "#fff" : "#000"} className="line top"></Box>
-                        <Box as="span" bg={isMenu ? "#fff" : "#000"} className="line center"></Box>
-                        <Box as="span" bg={isMenu ? "#fff" : "#000"} className="line bottom"></Box>
+                        <Box as="span" bg={isMenu ? "#fff" : showWhiteLogo() ? "#fff" : "#000"} className="line top"></Box>
+                        <Box as="span" bg={isMenu ? "#fff" : showWhiteLogo() ? "#fff" : "#000"} className="line center"></Box>
+                        <Box as="span" bg={isMenu ? "#fff" : showWhiteLogo() ? "#fff" : "#000"} className="line bottom"></Box>
                     </i>
                 </Box>
             </Flex>

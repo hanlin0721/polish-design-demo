@@ -1,8 +1,11 @@
 import { Flex, Box, Text } from "@chakra-ui/react";
 import appStore from "../../store/store";
+import useControl from "../../store/useControl";
 
 const WorkNav = () => {
-    const { scene } = appStore
+    // const { scene } = appStore
+
+    const { scene, scenes } = useControl((state) => state)
 
     const scrollhandler = (e) => {
         console.log(e)
@@ -17,7 +20,7 @@ const WorkNav = () => {
             onScroll={scrollhandler}
             h="100%"
             overflow="hidden"
-            transform={`translateX(${scene === 3 ? "0%" : "-100%"})`}
+            transform={`translateX(${scene === scenes.LOOKING_CSO ? "0%" : "-100%"})`}
         >
             <Box
                 bg="white"
@@ -35,7 +38,7 @@ const WorkNav = () => {
                 bg="white"
                 h="100vh"
                 w="300px"
-                transform={`translateX(${scene === 3 ? "0%" : "-150%"})`}
+                transform={`translateX(${scene === LOOKING_CSO ? "0%" : "-150%"})`}
                 transitionProperty="opacity transform"
                 transitionDuration={"1s"}
                 transitionTimingFunction="ease"

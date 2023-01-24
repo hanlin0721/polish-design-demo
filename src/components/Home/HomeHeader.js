@@ -2,15 +2,43 @@ import { useState } from "react";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward_black.svg";
 import appStore from "../../store/store";
-import WorkNav from "../Work/WorkNav.js";
-import Map from "../../pages/work/index.js";
+import useControl from "../../store/useControl";
+import Map from "../../components/Maps/Map.js";
 import PolishManWhite from "../../images/home/polish-man-white.png";
 import PolishManOrange from "../../images/home/polish-man-orange.png";
 import CircleActionIcon from "../../images/home/icons/action_circle_button.svg"
+import { useTouch } from "../../utils/useTouch";
 
 const HomeHeader = () => {
-    const { isAnimReady, scene } = appStore;
+    const { isAnimReady } = appStore;
     const [isMap, setIsMap] = useState(false);
+    const { scene, scenes, nextScene, prevScene } = useControl((state) => state)
+
+    const next = _.debounce(function () {
+        nextScene()
+    }, 1000, {
+        leading: true,
+        trailing: false
+    })
+
+    const prev = _.debounce(function () {
+        prevScene()
+    }, 1000, {
+        leading: true,
+        trailing: false
+    })
+
+    const { swipeStart, swipeEnd } = useTouch({
+        pullUpFunc: () => {
+            if (scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
+                return
+            }
+            next()
+        },
+        pullDownFunc: () => {
+            prev()
+        }
+    })
 
     return (
         <>
@@ -24,6 +52,8 @@ const HomeHeader = () => {
                 w="100%"
                 minH="100vh"
                 bgColor="#000"
+                onTouchStart={swipeStart}
+                onTouchEnd={swipeEnd}
             >
                 {/* three.js */}
                 <Box
@@ -51,9 +81,9 @@ const HomeHeader = () => {
                         textAlign="center"
                         mt={{ md: "12vw", base: "100px" }}
                         transform={`translateY(${isAnimReady ? "0px" : "10px"})`}
-                        opacity={isAnimReady && scene === 1 ? 1 : 0}
-                        transitionDuration={scene === 1 ? "1s" : "0s"}
-                        transitionDelay={scene !== 1 ? "0s" : "1s"}
+                        opacity={isAnimReady && scene === scenes.LOOKING_BLUE_POLISH_MAN ? 1 : 0}
+                        transitionDuration={scene === scenes.LOOKING_BLUE_POLISH_MAN ? "1s" : "0s"}
+                        transitionDelay={scene !== scenes.LOOKING_BLUE_POLISH_MAN ? "0s" : "1s"}
                         transitionTimingFunction="ease"
                     >
                         <Box position="relative">
@@ -113,9 +143,9 @@ const HomeHeader = () => {
                     pos="absolute"
                     top={{ base: "15%", sm: "11%" }}
                     left={{ base: "7%", sm: "18.1875%" }}
-                    opacity={scene === 2 ? 1 : 0}
-                    transitionDuration={scene === 2 ? "0.8s" : "0s"}
-                    transitionDelay={scene !== 2 ? "0s" : "1.6s"}
+                    opacity={scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? 1 : 0}
+                    transitionDuration={scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0.8s" : "0s"}
+                    transitionDelay={scene !== scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0s" : "1.6s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity"}
                 >
@@ -219,12 +249,12 @@ const HomeHeader = () => {
                 <Box
                     pos="absolute"
                     bottom={{ base: "-100px", sm: "-360px" }}
-                    opacity={scene == 2 ? 1 : 0}
-                    transitionDuration={scene === 2 ? "0.8s" : "0s"}
-                    transitionDelay={scene !== 2 ? "0s" : "1.5s"}
+                    opacity={scene == scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? 1 : 0}
+                    transitionDuration={scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0.8s" : "0s"}
+                    transitionDelay={scene !== scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0s" : "1.5s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity transform"}
-                    transform={`translateX(${scene === 2 ? "0%" : "150%"})`}
+                    transform={`translateX(${scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0%" : "150%"})`}
                     pointerEvents="none"
                 >
                     <Image pos="relative" right={{ base: "-45%", sm: "-80%" }} src={PolishManWhite.src} alt="white-polish-man" />
@@ -234,12 +264,12 @@ const HomeHeader = () => {
                 <Box
                     pos="absolute"
                     bottom={{ base: "24%", sm: "45%" }}
-                    opacity={scene == 2 ? 1 : 0}
-                    transitionDuration={scene === 2 ? "0.8s" : "0s"}
-                    transitionDelay={scene !== 2 ? "0s" : "1.5s"}
+                    opacity={scene == scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? 1 : 0}
+                    transitionDuration={scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0.8s" : "0s"}
+                    transitionDelay={scene !== scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0s" : "1.5s"}
                     transform={{
-                        base: `translateX(${scene === 2 ? "0%" : "150%"}) scale(0.3)`,
-                        sm: `translateX(${scene === 2 ? "0%" : "150%"}) scale(1)`
+                        base: `translateX(${scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0%" : "150%"}) scale(0.3)`,
+                        sm: `translateX(${scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0%" : "150%"}) scale(1)`
                     }}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity transform"}
@@ -260,6 +290,7 @@ const HomeHeader = () => {
                     textAlign="center"
                     pointerEvents="none"
                     animation="verticalFloat 1s ease-in-out infinite"
+                    display={scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "none" : "block"}
                 >
                     <Text
                         fontWeight="bold"
