@@ -1,5 +1,4 @@
 import { Flex, Box, Text } from "@chakra-ui/react";
-import appStore from "../../store/store";
 import useControl from "../../store/useControl";
 
 const WorkNav = () => {
