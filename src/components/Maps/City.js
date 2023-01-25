@@ -12,8 +12,8 @@ import gsap from "gsap";
 import Test from "./Test.js";
 import { useDeviceType } from "../../utils/window.js"
 
-// const baseUrl = "https://polish-design-demo.zeabur.app"
-const baseUrl = "http://localhost:3000"
+const baseUrl = "https://polish-design-demo.zeabur.app"
+// const baseUrl = "http://localhost:3000"
 
 export default function City(props) {
     const [device] = useDeviceType()

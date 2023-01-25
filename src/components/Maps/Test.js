@@ -3,8 +3,8 @@ import { useGLTF, Float } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
 
 const PolishMan = React.forwardRef(({ children, groupRotation, rotation, isSpinning, ...props }, ref) => {
-    // const baseUrl = "https://polish-design-demo.zeabur.app"
-    const baseUrl = "http://localhost:3000"
+    const baseUrl = "https://polish-design-demo.zeabur.app"
+    // const baseUrl = "http://localhost:3000"
     const polishManModel = useGLTF(`${baseUrl}/new_blue.glb`)
     const mesh = useRef()
 
