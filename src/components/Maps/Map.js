@@ -6,33 +6,12 @@ import _ from 'lodash';
 import * as THREE from 'three'
 import { useRouter } from 'next/router.js';
 const Map = memo(() => {
-    const { nextScene, prevScene } = useControl(state => state)
+    const nextScene = useControl((state) => state.nextScene)
+    const prevScene = useControl((state) => state.prevScene)
     const router = useRouter();
     const isWorkPage = () => {
         return router.asPath === "/work"
     }
-
-    // useEffect(() => {
-    //     const unsubscribeReset = useControl.subscribe(
-    //         (state) => state.scene,
-    //         (value) => {
-    //             console.log(value)
-    //             // if (value === 1) {
-    //             //     setScene(() => 1)
-    //             // }
-    //             if (value === 2) {
-    //                 setScene(() => 2)
-    //             }
-    //             // if (value === 3) {
-    //             //     setScene(() => 3)
-    //             // }
-    //         }
-    //     )
-
-    //     return () => {
-    //         unsubscribeReset()
-    //     }
-    // }, [])
 
     const next = _.debounce(function () {
         console.log('next')

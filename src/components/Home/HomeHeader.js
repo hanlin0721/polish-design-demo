@@ -13,7 +13,10 @@ import _ from 'lodash';
 const HomeHeader = () => {
     const { isAnimReady } = appStore;
     const [isMap, setIsMap] = useState(false);
-    const { scene, scenes, nextScene, prevScene } = useControl((state) => state)
+    const { scene, scenes } = useControl((state) => state)
+
+    const nextScene = useControl((state) => state.nextScene)
+    const prevScene = useControl((state) => state.prevScene)
 
     const next = _.debounce(function () {
         nextScene()

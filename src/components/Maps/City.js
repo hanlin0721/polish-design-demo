@@ -9,8 +9,6 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import useControl from "../../store/useControl.js";
 import gsap from "gsap";
-import appStore from "../../store/store.js";
-import PolishMan from "./PolishMan.js";
 import Test from "./Test.js";
 import { useDeviceType } from "../../utils/window.js"
 
@@ -19,19 +17,21 @@ const baseUrl = "http://localhost:3000"
 
 export default function City(props) {
     const [device] = useDeviceType()
-    // console.log('device', device)
     const group = useRef();
     const polishManHiddenRef = useRef()
     const polishManShowedRef = useRef()
     const polishManFloatingRef = useRef()
     const buildingRef = useRef()
-    // const buildingOneRef = useRef()
-    const projectCSOnlineRef = useRef()
-    const projectRawNFreshRef = useRef()
-    const house001Ref = useRef()
-    const projectFourDesireRef = useRef()
+
     const projectTestRef = useRef()
     const projectTestGroupRef = useRef()
+    const projectCSOnlineRef = useRef()
+
+    const rawNFreshMeshRef = useRef()
+    const projectRawNFreshRef = useRef()
+
+    const fourDesireMeshRef = useRef()
+    const projectFourDesireRef = useRef()
 
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
@@ -85,8 +85,6 @@ export default function City(props) {
     // const bakedPolishManYellowTexture = useTexture(`${baseUrl}/yellow.png`)
     // bakedPolishManYellowTexture.flipY = false
 
-    // const [scene, setScene] = useState(1)
-
     const { scene, scenes, scroll } = useControl(state => state)
 
     useEffect(() => {
@@ -98,7 +96,10 @@ export default function City(props) {
                     gsap.to(buildingRef.current.material, {
                         opacity: 1,
                     })
-                    gsap.to(house001Ref.current.material, {
+                    gsap.to(fourDesireMeshRef.current.material, {
+                        opacity: 1,
+                    })
+                    gsap.to(rawNFreshMeshRef.current.material, {
                         opacity: 1,
                     })
                     actions.Animation.reset()
@@ -108,7 +109,10 @@ export default function City(props) {
                     gsap.to(buildingRef.current.material, {
                         opacity: 0,
                     })
-                    gsap.to(house001Ref.current.material, {
+                    gsap.to(fourDesireMeshRef.current.material, {
+                        opacity: 0,
+                    })
+                    gsap.to(rawNFreshMeshRef.current.material, {
                         opacity: 0,
                     })
                 }
@@ -316,7 +320,7 @@ export default function City(props) {
                     <meshBasicMaterial color="red" />
                 </mesh>
                 <mesh
-                    ref={house001Ref}
+                    ref={fourDesireMeshRef}
                     name="house001"
                     castShadow
                     receiveShadow
@@ -334,6 +338,7 @@ export default function City(props) {
                     <meshBasicMaterial color="red" />
                 </mesh>
                 <mesh
+                    ref={rawNFreshMeshRef}
                     name="house002"
                     castShadow
                     receiveShadow
