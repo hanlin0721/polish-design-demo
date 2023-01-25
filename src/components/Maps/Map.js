@@ -6,6 +6,7 @@ import _ from 'lodash';
 import * as THREE from 'three'
 import { useRouter } from 'next/router.js';
 const Map = memo(() => {
+    const { scene, scenes } = useControl(state => state)
     const nextScene = useControl((state) => state.nextScene)
     const prevScene = useControl((state) => state.prevScene)
     const router = useRouter();
@@ -14,7 +15,6 @@ const Map = memo(() => {
     }
 
     const next = _.debounce(function () {
-        console.log('next')
         nextScene()
     }, 1000, {
         leading: true,
@@ -23,7 +23,6 @@ const Map = memo(() => {
 
     const prev = _.debounce(function () {
         prevScene()
-        console.log('prev')
     }, 1000, {
         leading: true,
         trailing: false
@@ -33,7 +32,7 @@ const Map = memo(() => {
         if (isWorkPage()) {
             return
         }
-        if (e.deltaY > 0) {
+        if (e.deltaY > 0 && !(scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN)) {
             next()
         }
         if (e.deltaY < 0) {

@@ -12,7 +12,7 @@ import gsap from "gsap";
 import Test from "./Test.js";
 import { useDeviceType } from "../../utils/window.js"
 
-const baseUrl = "https://polish-design-demo.zeabur.app"
+// const baseUrl = "https://polish-design-demo.zeabur.app"
 // const baseUrl = "http://localhost:3000"
 
 export default function City(props) {
@@ -36,53 +36,53 @@ export default function City(props) {
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
 
-    const { nodes, animations } = useGLTF(`${baseUrl}/230123_city.glb`)
+    const { nodes, animations } = useGLTF(`./230123_city.glb`)
 
     const { actions } = useAnimations(animations, group);
 
-    const bakedGroundTexture = useTexture(`${baseUrl}/20230120_ground.png`)
+    const bakedGroundTexture = useTexture(`./20230120_ground.png`)
     bakedGroundTexture.flipY = false
 
-    const bakedHousesTexture = useTexture(`${baseUrl}/20230120_houses.png`)
+    const bakedHousesTexture = useTexture(`./20230120_houses.png`)
     bakedHousesTexture.flipY = false
 
-    const bakedHouses0Texture = useTexture(`${baseUrl}/230120_houses_O.png`)
+    const bakedHouses0Texture = useTexture(`./230120_houses_O.png`)
     bakedHouses0Texture.flipY = false
 
-    const bakedHouse001Texture = useTexture(`${baseUrl}/20230120_house001.png`)
+    const bakedHouse001Texture = useTexture(`./20230120_house001.png`)
     bakedHouse001Texture.flipY = false
 
-    const bakedHouse002Texture = useTexture(`${baseUrl}/20230120_house002.png`)
+    const bakedHouse002Texture = useTexture(`./20230120_house002.png`)
     bakedHouse002Texture.flipY = false
 
-    const bakedHouse003Texture = useTexture(`${baseUrl}/20230120_house003.png`)
+    const bakedHouse003Texture = useTexture(`./20230120_house003.png`)
     bakedHouse003Texture.flipY = false
 
-    const bakedHouse004Texture = useTexture(`${baseUrl}/20230120_house004.png`)
+    const bakedHouse004Texture = useTexture(`./20230120_house004.png`)
     bakedHouse004Texture.flipY = false
 
-    const bakedHouse005Texture = useTexture(`${baseUrl}/20230120_house005.png`)
+    const bakedHouse005Texture = useTexture(`./20230120_house005.png`)
     bakedHouse005Texture.flipY = false
 
-    const bakedHouse006Texture = useTexture(`${baseUrl}/20230120_house006.png`)
+    const bakedHouse006Texture = useTexture(`./20230120_house006.png`)
     bakedHouse006Texture.flipY = false
 
-    const bakedHouse007Texture = useTexture(`${baseUrl}/20230120_house007.png`)
+    const bakedHouse007Texture = useTexture(`./20230120_house007.png`)
     bakedHouse007Texture.flipY = false
 
-    const bakedRoadTexture = useTexture(`${baseUrl}/20230120_road.png`)
+    const bakedRoadTexture = useTexture(`./20230120_road.png`)
     bakedRoadTexture.flipY = false
 
-    const bakedPolishManBlueTexture = useTexture(`${baseUrl}/blue.png`)
+    const bakedPolishManBlueTexture = useTexture(`./blue.png`)
     bakedPolishManBlueTexture.flipY = false
 
-    // const bakedPolishManOrangeTexture = useTexture(`${baseUrl}/orange.png`)
+    // const bakedPolishManOrangeTexture = useTexture(`./orange.png`)
     // bakedPolishManOrangeTexture.flipY = false
 
-    // const bakedPolishManWhiteTexture = useTexture(`${baseUrl}/white.png`)
+    // const bakedPolishManWhiteTexture = useTexture(`./white.png`)
     // bakedPolishManWhiteTexture.flipY = false
 
-    // const bakedPolishManYellowTexture = useTexture(`${baseUrl}/yellow.png`)
+    // const bakedPolishManYellowTexture = useTexture(`./yellow.png`)
     // bakedPolishManYellowTexture.flipY = false
 
     const { scene, scenes, scroll } = useControl(state => state)
@@ -492,4 +492,4 @@ export default function City(props) {
     );
 }
 
-useGLTF.preload(`${baseUrl}/230123_city.glb`);
+useGLTF.preload(`./230123_city.glb`);
