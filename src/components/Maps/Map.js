@@ -4,9 +4,13 @@ import { memo } from 'react'
 import useControl from "../../store/useControl.js";
 import _ from 'lodash';
 import * as THREE from 'three'
-
+import { useRouter } from 'next/router.js';
 const Map = memo(() => {
     const { nextScene, prevScene } = useControl(state => state)
+    const router = useRouter();
+    const isWorkPage = () => {
+        return router.asPath === "/work"
+    }
 
     // useEffect(() => {
     //     const unsubscribeReset = useControl.subscribe(
@@ -31,6 +35,7 @@ const Map = memo(() => {
     // }, [])
 
     const next = _.debounce(function () {
+        console.log('next')
         nextScene()
     }, 1000, {
         leading: true,
@@ -39,12 +44,16 @@ const Map = memo(() => {
 
     const prev = _.debounce(function () {
         prevScene()
+        console.log('prev')
     }, 1000, {
         leading: true,
         trailing: false
     })
 
     const scrollHandler = (e) => {
+        if (isWorkPage()) {
+            return
+        }
         if (e.deltaY > 0) {
             next()
         }

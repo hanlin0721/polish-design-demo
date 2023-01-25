@@ -8,6 +8,7 @@ import PolishManWhite from "../../images/home/polish-man-white.png";
 import PolishManOrange from "../../images/home/polish-man-orange.png";
 import CircleActionIcon from "../../images/home/icons/action_circle_button.svg"
 import { useTouch } from "../../utils/useTouch";
+import _ from 'lodash';
 
 const HomeHeader = () => {
     const { isAnimReady } = appStore;

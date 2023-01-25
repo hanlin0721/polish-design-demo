@@ -14,10 +14,12 @@ import PolishMan from "./PolishMan.js";
 import Test from "./Test.js";
 import { useDeviceType } from "../../utils/window.js"
 
+// const baseUrl = "https://polish-design-demo.zeabur.app"
+const baseUrl = "http://localhost:3000"
 
 export default function City(props) {
     const [device] = useDeviceType()
-    console.log('device', device)
+    // console.log('device', device)
     const group = useRef();
     const polishManHiddenRef = useRef()
     const polishManShowedRef = useRef()
@@ -34,53 +36,53 @@ export default function City(props) {
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
 
-    const { nodes, animations } = useGLTF("https://polish-design-demo.zeabur.app/230123_city.glb")
+    const { nodes, animations } = useGLTF(`${baseUrl}/230123_city.glb`)
 
     const { actions } = useAnimations(animations, group);
 
-    const bakedGroundTexture = useTexture('https://polish-design-demo.zeabur.app/20230120_ground.png')
+    const bakedGroundTexture = useTexture(`${baseUrl}/20230120_ground.png`)
     bakedGroundTexture.flipY = false
 
-    const bakedHousesTexture = useTexture('https://polish-design-demo.zeabur.app/20230120_houses.png')
+    const bakedHousesTexture = useTexture(`${baseUrl}/20230120_houses.png`)
     bakedHousesTexture.flipY = false
 
-    const bakedHouses0Texture = useTexture('https://polish-design-demo.zeabur.app/230120_houses_O.png')
+    const bakedHouses0Texture = useTexture(`${baseUrl}/230120_houses_O.png`)
     bakedHouses0Texture.flipY = false
 
-    const bakedHouse001Texture = useTexture('https://polish-design-demo.zeabur.app/20230120_house001.png')
+    const bakedHouse001Texture = useTexture(`${baseUrl}/20230120_house001.png`)
     bakedHouse001Texture.flipY = false
 
-    const bakedHouse002Texture = useTexture('https://polish-design-demo.zeabur.app/20230120_house002.png')
+    const bakedHouse002Texture = useTexture(`${baseUrl}/20230120_house002.png`)
     bakedHouse002Texture.flipY = false
 
-    const bakedHouse003Texture = useTexture('https://polish-design-demo.zeabur.app/20230120_house003.png')
+    const bakedHouse003Texture = useTexture(`${baseUrl}/20230120_house003.png`)
     bakedHouse003Texture.flipY = false
 
-    const bakedHouse004Texture = useTexture('https://polish-design-demo.zeabur.app/20230120_house004.png')
+    const bakedHouse004Texture = useTexture(`${baseUrl}/20230120_house004.png`)
     bakedHouse004Texture.flipY = false
 
-    const bakedHouse005Texture = useTexture('https://polish-design-demo.zeabur.app/20230120_house005.png')
+    const bakedHouse005Texture = useTexture(`${baseUrl}/20230120_house005.png`)
     bakedHouse005Texture.flipY = false
 
-    const bakedHouse006Texture = useTexture('https://polish-design-demo.zeabur.app/20230120_house006.png')
+    const bakedHouse006Texture = useTexture(`${baseUrl}/20230120_house006.png`)
     bakedHouse006Texture.flipY = false
 
-    const bakedHouse007Texture = useTexture('https://polish-design-demo.zeabur.app/20230120_house007.png')
+    const bakedHouse007Texture = useTexture(`${baseUrl}/20230120_house007.png`)
     bakedHouse007Texture.flipY = false
 
-    const bakedRoadTexture = useTexture('https://polish-design-demo.zeabur.app/20230120_road.png')
+    const bakedRoadTexture = useTexture(`${baseUrl}/20230120_road.png`)
     bakedRoadTexture.flipY = false
 
-    const bakedPolishManBlueTexture = useTexture('https://polish-design-demo.zeabur.app/blue.png')
+    const bakedPolishManBlueTexture = useTexture(`${baseUrl}/blue.png`)
     bakedPolishManBlueTexture.flipY = false
 
-    // const bakedPolishManOrangeTexture = useTexture('https://polish-design-demo.zeabur.app/orange.png')
+    // const bakedPolishManOrangeTexture = useTexture(`${baseUrl}/orange.png`)
     // bakedPolishManOrangeTexture.flipY = false
 
-    // const bakedPolishManWhiteTexture = useTexture('https://polish-design-demo.zeabur.app/white.png')
+    // const bakedPolishManWhiteTexture = useTexture(`${baseUrl}/white.png`)
     // bakedPolishManWhiteTexture.flipY = false
 
-    // const bakedPolishManYellowTexture = useTexture('https://polish-design-demo.zeabur.app/yellow.png')
+    // const bakedPolishManYellowTexture = useTexture(`${baseUrl}/yellow.png`)
     // bakedPolishManYellowTexture.flipY = false
 
     // const [scene, setScene] = useState(1)
@@ -91,6 +93,7 @@ export default function City(props) {
         const unsubscribeReset = useControl.subscribe(
             (state) => state.scene,
             (value) => {
+                console.log(value)
                 if (value === 1) {
                     gsap.to(buildingRef.current.material, {
                         opacity: 1,
@@ -163,7 +166,6 @@ export default function City(props) {
 
 
     useFrame((state, delta) => {
-        // console.log(scroll)
         polishManShowedFollowingHiddenOne()
 
         if (scene === scenes.LOOKING_BLUE_POLISH_MAN) {
@@ -485,4 +487,4 @@ export default function City(props) {
     );
 }
 
-useGLTF.preload("https://polish-design-demo.zeabur.app/230123_city.glb");
+useGLTF.preload(`${baseUrl}/230123_city.glb`);
