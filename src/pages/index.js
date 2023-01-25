@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text, HStack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import HomeHeader from "../components/Home/HomeHeader.js";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
