@@ -256,6 +256,8 @@ const Work = () => {
     const [filteredResult, setResult] = useState(result)
     const [selectedFilter, selectFilter] = useState("all")
     const [selectedWork, selectWork] = useState(null)
+    const [nextWork, setNextWork] = useState(null)
+    const [othersWork, setOthersWork] = useState(null)
     const [showWorkContent, setShowWorkContent] = useState(false)
     const goScene = useControl((state) => state.goScene);
 
@@ -275,6 +277,8 @@ const Work = () => {
     const toggle = (workId) => {
         if (workId) {
             selectWork(filteredResult.find(element => element.id === workId))
+            setNextWork(filteredResult[(filteredResult.findIndex(element => element.id === workId) + 1) % filteredResult.length])
+            setOthersWork(filteredResult.filter(element => element.id !== workId))
             setShowWorkContent(true)
         }
         switch (workId) {
@@ -396,7 +400,12 @@ const Work = () => {
                                 <WorkResult result={filteredResult} onClick={toggle} />
                             </Flex>
 
-                            <WorkDesktopContent work={selectedWork} show={showWorkContent} />
+                            <WorkDesktopContent
+                                work={selectedWork}
+                                show={showWorkContent}
+                                nextWork={nextWork}
+                                othersWork={othersWork}
+                            />
                         </Box>
                     </Flex>
                 </Box>
@@ -443,13 +452,16 @@ const Work = () => {
                 </Flex>
             </Hide>
 
-            {/* <Hide above="md">
+            <Hide above="md">
                 <WorkMobileContent
                     work={selectedWork}
                     selectWork={selectWork}
                     show={showWorkContent}
+                    nextWork={nextWork}
+                    othersWork={othersWork}
+                    onClick={toggle}
                 />
-            </Hide> */}
+            </Hide>
         </Flex >
     </>
 }

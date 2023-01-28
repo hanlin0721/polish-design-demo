@@ -146,9 +146,11 @@ export const WorkDesktopContent = ({
     work,
     selectWork,
     show,
+    nextWork,
+    othersWork,
+    onClick,
     ...props
 }) => {
-    console.log('work', work)
     // const [data, setData] = useState(work);
     // const router = useRouter();
     // const { locale } = router;
@@ -205,14 +207,30 @@ export const WorkDesktopContent = ({
         >
 
             {/* 專案類型 */}
-            <Box pl={isMobile ? "20px" : "46px"} overflow="hidden">
+            <Box
+                pl={isMobile ? "20px" : "46px"}
+                pr={isMobile ? "20px" : "0px"}
+                overflow="hidden"
+            >
                 <Flex py="17px" overflowX="scroll">
                     {
                         work?.type.map((type, index) => {
+                            const convert = (type) => {
+                                if (type === "developing") {
+                                    return "產品開發"
+                                }
+                                if (type === "online-expo") {
+                                    return "線上策展"
+                                }
+                                if (type === "design-support") {
+                                    return "設計協助"
+                                }
+                                return ""
+                            }
                             return (
                                 <Box key={index} flexShrink="0" py="6px" px="12px" mr="10px" bg="#303C4A" borderRadius="15px">
                                     <Text fontSize="12px">
-                                        {type}
+                                        {convert(type)}
                                     </Text>
                                 </Box>
                             )
@@ -222,14 +240,21 @@ export const WorkDesktopContent = ({
             </Box>
 
             {/* 專案標題 */}
-            <Box pl={isMobile ? "20px" : "46px"} mb="20px">
+            <Box
+                pl={isMobile ? "20px" : "46px"}
+                pr={isMobile ? "20px" : "0px"}
+                mb="20px"
+            >
                 <Text fontSize="24px" as="b">
                     {work?.title}
                 </Text>
             </Box>
 
             {/* 專案日期 */}
-            <Flex pl={isMobile ? "20px" : "46px"} color="blue.300">
+            <Flex
+                pl={isMobile ? "20px" : "46px"}
+                color="blue.300"
+            >
                 <Text fontSize="16px" as="b" pr="42px">
                     {work?.date}
                 </Text>
@@ -240,14 +265,17 @@ export const WorkDesktopContent = ({
 
             {/* 使用的專業 */}
             <Flex mt="40px">
-                <Box flex="1" borderRight="1px" >
-
-                </Box>
+                {
+                    isMobile ?
+                        null : <Box flex="1" borderRight="1px" />
+                }
                 <VStack
                     spacing={1}
                     align="start"
                     w="100px"
                     ml="20px"
+                    borderLeft={isMobile ? "1px" : "0px"}
+                    pl={isMobile ? "20px" : "0px"}
                 >
                     {
                         work?.usedTechniques.map((obj, index) => {
@@ -270,14 +298,18 @@ export const WorkDesktopContent = ({
                     return (
                         <Flex
                             key={content.id}
-                            pl={isMobile ? "20px" : "46px"}
                             flexDir="column"
                             alignItems="end"
                         >
                             <Box w="518px" h="271px" bg="grey">
                                 <Image src={content.image} />
                             </Box>
-                            <Text my="30px" maxW="476px" alignSelf="start">
+                            <Text
+                                my="30px"
+                                maxW="476px"
+                                px={isMobile ? "20px" : "0px"}
+                                alignSelf="start"
+                            >
                                 {content.text}
                             </Text>
                         </Flex>
@@ -323,98 +355,61 @@ export const WorkDesktopContent = ({
             <Box
                 pt="48px"
                 pl={isMobile ? "20px" : "46px"}
-                mb="20px"
                 bg={{ base: "blue.50", sm: "transparent" }}
                 color={{ base: "blue.900", sm: "white" }}
                 overflow="hidden"
             >
                 <Text fontWeight="bold" fontSize="20px" mb="24px">下個專案</Text>
-                <Text fontSize="16px" maxW="243px">Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘</Text>
-                <Box mt="28px" w="504px" h="295px" bg="grey" borderRadius="10px">
-
+                <Text fontSize="16px" maxW="243px">{nextWork?.title}</Text>
+                <Box
+                    mt="28px"
+                    mb="28px"
+                    w="504px"
+                    h="295px"
+                    bg="grey"
+                    borderRadius="10px"
+                    onClick={() => onClick(nextWork?.id)}
+                >
+                    <Image src={nextWork?.thumbnail} />
                 </Box>
             </Box>
 
             {/* 其他專案 */}
             <Box
-                pt="48px"
                 pl={isMobile ? "20px" : "46px"}
-                mb="20px"
+                pt="23px"
                 bg="blue.900"
                 color="white"
                 display={isMobile ? "block" : "none"}
             >
                 <Text fontWeight="bold" fontSize="20px" mb="24px">其他專案</Text>
 
-                <Flex w="100%" overflowX="scroll">
-                    <Box>
-                        <Box mt="28px" w="152px" h="84px" bg="grey" borderRadius="10px">
+                <Flex w="100%" overflowX="scroll" overflowY="hidden">
+                    {
+                        othersWork?.map((work) => {
+                            return (
+                                <Box
+                                    key={work?.id}
+                                    onClick={() => onClick(work?.id)}
+                                >
+                                    <Box mt="28px" mr="14px" w="152px" h="84px" bg="grey" borderRadius="10px">
+                                        <Image src={work?.thumbnail} />
+                                    </Box>
 
-                        </Box>
+                                    <Text
+                                        mt="14px"
+                                        h="50px"
+                                        fontSize="16px"
+                                        w="152px"
+                                        display="-webkit-box"
+                                    >
+                                        {work?.title}
+                                    </Text>
 
-                        <Text
-                            h="50px"
-                            fontSize="16px"
-                            w="152px"
-                            display="-webkit-box"
-                        >
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-
-                    </Box>
-
-                    <Box>
-                        <Box mt="28px" w="152px" h="84px" bg="grey" borderRadius="10px">
-
-                        </Box>
-
-                        <Text
-                            h="50px"
-                            fontSize="16px"
-                            w="152px"
-                            display="-webkit-box"
-                        >
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-
-                    </Box>
-
-                    <Box>
-                        <Box mt="28px" w="152px" h="84px" bg="grey" borderRadius="10px">
-
-                        </Box>
-
-                        <Text
-                            h="50px"
-                            fontSize="16px"
-                            w="152px"
-                            display="-webkit-box"
-                        >
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-
-                    </Box>
-
-                    <Box>
-                        <Box mt="28px" w="152px" h="84px" bg="grey" borderRadius="10px">
-
-                        </Box>
-
-                        <Text
-                            h="50px"
-                            fontSize="16px"
-                            w="152px"
-                            display="-webkit-box"
-                        // style={{
-                        //     "-webkit-box-orient": "vertical",
-                        //     "-webkit-line-clamp": "2",
-                        //     "overflow": "hidden",
-                        // }}
-                        >
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-
-                    </Box>
+                                </Box>
+                            )
+                        })
+                    }
                 </Flex>
             </Box>
         </Box >
@@ -423,7 +418,7 @@ export const WorkDesktopContent = ({
 WorkDesktopContent.displayName = "WorkDesktopContent";
 
 export const WorkMobileContent = memo(
-    ({ work, selectWork, show, ...props }) => {
+    ({ work, selectWork, show, nextWork, othersWork, onClick, ...props }) => {
 
         const [isFull, setFull] = useState(false);
         const [isOpen, setOpen] = useState(!!work);
@@ -438,8 +433,9 @@ export const WorkMobileContent = memo(
                 setOpen(false);
                 setFull(false);
             }
-            return () => selectWork(null);
+            // return () => selectWork(null);
         }, [work?.id]);
+
         return (
             <Box
                 pos="fixed"
@@ -471,16 +467,12 @@ export const WorkMobileContent = memo(
                         cursor="pointer"
                     >
                         {/* <Image w="15px" opacity="0.7" src={IconClose.src} alt="close" /> */}
-                        <Box
-                            w="15px"
-                            h="15px"
-                            bg="white"
-                        ></Box>
+                        <Text cursor="pointer">Close</Text>
                     </Flex>
                 }
                 <Box
                     h="100%"
-                    pb="40%"
+                    pb={isFull ? "20%" : "100%"}
                     onTouchStart={() => {
                         if (isOpen && !isFull) {
                             setFull(true);
@@ -492,6 +484,9 @@ export const WorkMobileContent = memo(
                         work={work}
                         show={show}
                         selectWork={selectWork}
+                        nextWork={nextWork}
+                        othersWork={othersWork}
+                        onClick={onClick}
                     />
                 </Box>
             </Box>
