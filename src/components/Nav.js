@@ -117,12 +117,11 @@ const NavContent = () => {
                                 flexDir={{ base: "row", sm: "column" }}
                                 alignItems={{ base: "center", sm: "flex-start" }}
                             >
-                                <Link href="#">
+                                <Link href="/work">
                                     <a style={{ display: "block" }}>
-                                        <Box onClick={() => {
-                                            goScene(1)
-                                            // appStore.scene = 1
-                                        }}>
+                                        <Box
+                                            onClick={() => (appStore.isMenu = false)}
+                                        >
                                             <Text
                                                 fontSize={{ base: "30px", sm: "64px" }}
                                                 fontWeight="bold"

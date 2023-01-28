@@ -4,9 +4,10 @@ const WorkResult = ({ result, onClick }) => {
     return (
         <Box
             flex="1"
-            overflow="hidden"
+            // overflow="hidden"
             pos="relative"
             h="100%"
+            pb="190px"
         >
             <Flex pl="19.5px" pt="15px" pb="14px">
                 <Text mr="5px">
@@ -24,7 +25,12 @@ const WorkResult = ({ result, onClick }) => {
                 {
                     result.map(project => {
                         return (
-                            <Box mb="30px" onClick={() => onClick(project.id)} key={project.id}>
+                            <Box
+                                key={project.id}
+                                mb="30px"
+                                cursor="pointer"
+                                onClick={() => onClick(project.id)}
+                            >
                                 <Box w="100%" h="150px" bg="grey" >
                                     <Image src={project.thumbnail} objectFit="cover" w="100%" h="100%" />
                                 </Box>

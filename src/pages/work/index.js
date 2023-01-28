@@ -1,5 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Flex, Text, Hide } from "@chakra-ui/react";
 import Map from "../../components/Maps/Map.js";
 import WorkFilter from "../../components/Work/WorkFilter.js";
@@ -7,15 +7,36 @@ import WorkResult from "../../components/Work/WorkResult.js";
 import WorkList from "../../components/Work/WorkList.js";
 import WorkDesc from "../../components/Work/WorkDesc.js";
 import useControl from "../../store/useControl.js";
+import { WorkDesktopContent, WorkMobileContent } from "../../components/Work/WorkContent.js";
 
 const Work = () => {
     const [isMap, setIsMap] = useState(false);
     const [result, _] = useState([
         {
             id: 1,
+            type: ["online-expo", "developing"],
             title: "Counter-Strike Online (CSO)",
-            thumbnail: "http://fakeimg.pl/300x200/",
-            thumbnailAlt: "test",
+            date: "2021-12-12",
+            usedTechniques: [
+                "產品策略",
+                "使用者研究",
+                "UX 設計",
+                "UI 設計",
+                "後端開發",
+                "前端開發"
+            ],
+            content: [
+                {
+                    id: 1,
+                    image: "http://fakeimg.pl/518x271/",
+                    text: "Nice Pass Express 是一個面向創作者的內容平台，為創作者提供了創作，發表，分享，展示和賺取收入的一站式解決方案。它提供了創作者們一個對話和互動的空間，能夠更好地發揮他們的創造力，並與全球的讀者和觀眾建立起互動關係。"
+                },
+                {
+                    id: 2,
+                    image: "http://fakeimg.pl/518x271/",
+                    text: "Nice Pass Express 是一個面向創作者的內容平台，為創作者提供了創作，發表，分享，展示和賺取收入的一站式解決方案。它提供了創作者們一個對話和互動的空間，能夠更好地發揮他們的創造力，並與全球的讀者和觀眾建立起互動關係。"
+                }
+            ],
             techniques: [
                 {
                     id: 1,
@@ -67,13 +88,35 @@ const Work = () => {
                         "Functionality Testing"
                     ]
                 }
-            ]
+            ],
+            thumbnail: "http://fakeimg.pl/300x200/",
+            thumbnailAlt: "test",
         },
         {
             id: 2,
             title: "沙西米",
-            thumbnail: "http://fakeimg.pl/300x200/",
-            thumbnailAlt: "test",
+            type: ["developing"],
+            date: "2021-12-12",
+            usedTechniques: [
+                "產品策略",
+                "使用者研究",
+                "UX 設計",
+                "UI 設計",
+                "後端開發",
+                "前端開發"
+            ],
+            content: [
+                {
+                    id: 1,
+                    image: "http://fakeimg.pl/300x200/",
+                    text: "Nice Pass Express 是一個面向創作者的內容平台，為創作者提供了創作，發表，分享，展示和賺取收入的一站式解決方案。它提供了創作者們一個對話和互動的空間，能夠更好地發揮他們的創造力，並與全球的讀者和觀眾建立起互動關係。"
+                },
+                {
+                    id: 2,
+                    image: "http://fakeimg.pl/300x200/",
+                    text: "Nice Pass Express 是一個面向創作者的內容平台，為創作者提供了創作，發表，分享，展示和賺取收入的一站式解決方案。它提供了創作者們一個對話和互動的空間，能夠更好地發揮他們的創造力，並與全球的讀者和觀眾建立起互動關係。"
+                }
+            ],
             techniques: [
                 {
                     id: 1,
@@ -125,13 +168,35 @@ const Work = () => {
                         "Functionality Testing"
                     ]
                 }
-            ]
+            ],
+            thumbnail: "http://fakeimg.pl/300x200/",
+            thumbnailAlt: "test",
         },
         {
             id: 3,
             title: "fourDesire",
-            thumbnail: "http://fakeimg.pl/300x200/",
-            thumbnailAlt: "test",
+            type: ["design-support"],
+            date: "2021-12-12",
+            usedTechniques: [
+                "產品策略",
+                "使用者研究",
+                "UX 設計",
+                "UI 設計",
+                "後端開發",
+                "前端開發"
+            ],
+            content: [
+                {
+                    id: 1,
+                    image: "http://fakeimg.pl/300x200/",
+                    text: "Nice Pass Express 是一個面向創作者的內容平台，為創作者提供了創作，發表，分享，展示和賺取收入的一站式解決方案。它提供了創作者們一個對話和互動的空間，能夠更好地發揮他們的創造力，並與全球的讀者和觀眾建立起互動關係。"
+                },
+                {
+                    id: 2,
+                    image: "http://fakeimg.pl/300x200/",
+                    text: "Nice Pass Express 是一個面向創作者的內容平台，為創作者提供了創作，發表，分享，展示和賺取收入的一站式解決方案。它提供了創作者們一個對話和互動的空間，能夠更好地發揮他們的創造力，並與全球的讀者和觀眾建立起互動關係。"
+                }
+            ],
             techniques: [
                 {
                     id: 1,
@@ -183,68 +248,35 @@ const Work = () => {
                         "Functionality Testing"
                     ]
                 }
-            ]
-        }
+            ],
+            thumbnail: "http://fakeimg.pl/300x200/",
+            thumbnailAlt: "test",
+        },
     ])
-    // const [techniques, setTechniques] = useState([
-    //     {
-    //         id: 1,
-    //         title: "Discovery",
-    //         details: [
-    //             "Workshop",
-    //             "User Research",
-    //             "Project Planning",
-    //             "Consulting",
-    //             "Strategy"
-    //         ]
-    //     },
-    //     {
-    //         id: 2,
-    //         title: "Strategy",
-    //         details: [
-    //             "Information Architecture",
-    //             "Stakeholder Alignment",
-    //             "Prototyping",
-    //             "Persona Development",
-    //             "Design"
-    //         ]
-    //     },
-    //     {
-    //         id: 3,
-    //         title: "Art Direction",
-    //         details: [
-    //             "Visual Moodboards",
-    //             "UI Design",
-    //             "UX Design",
-    //             "Development"
-    //         ]
-    //     },
-    //     {
-    //         id: 4,
-    //         title: "Development",
-    //         details: [
-    //             "Front-end Development",
-    //             "Back-end Development",
-    //             "Quality Assurance"
-    //         ]
-    //     },
-    //     {
-    //         id: 5,
-    //         title: "Quality Assurance",
-    //         details: [
-    //             "Usability Testing",
-    //             "Performance Testing",
-    //             "Functionality Testing"
-    //         ]
-    //     }
-    // ])
-
-    const [seletedWork, setSeletedWork] = useState(result[0])
-    const [showWorkDetail, setShowWorkDetail] = useState(false)
+    const [filteredResult, setResult] = useState(result)
+    const [selectedFilter, selectFilter] = useState("all")
+    const [selectedWork, selectWork] = useState(null)
+    const [showWorkContent, setShowWorkContent] = useState(false)
     const goScene = useControl((state) => state.goScene);
 
+    useEffect(() => {
+        if (selectedFilter === null || selectedFilter === "all") {
+            setResult(result)
+            return
+        }
+
+        const filteredResult = result.filter((obj) => {
+            return obj.type.find(element => element === selectedFilter)
+        })
+
+        setResult(filteredResult)
+    }, [selectedFilter])
+
     const toggle = (workId) => {
-        console.log('workId', workId)
+        if (workId) {
+            selectWork(filteredResult.find(element => element.id === workId))
+            setShowWorkContent(true)
+        }
         switch (workId) {
             case 1:
                 goScene(3)
@@ -256,6 +288,7 @@ const Work = () => {
                 goScene(5)
                 break;
             default:
+                setShowWorkContent(false)
                 goScene(1)
                 break;
         }
@@ -265,7 +298,6 @@ const Work = () => {
         //         workId
         //     }
         // }, undefined, { shallow: true })
-        setShowWorkDetail(!showWorkDetail)
     }
     return <>
         <style
@@ -307,43 +339,70 @@ const Work = () => {
                         <Box minW="171px" w="10vw" borderRight="1px" borderColor="blue.600">
                         </Box>
 
+                        {/* 專案縮圖 */}
                         <WorkList
-                            works={result}
-                            showWorkDetail={showWorkDetail}
+                            works={filteredResult}
+                            show={showWorkContent}
                             onClick={toggle}
                             flexDir="column"
                         />
 
                         <Box
-                            minW={showWorkDetail ? "560px" : "271px"}
+                            minW={showWorkContent ? "560px" : "271px"}
                             w="15vw"
                             h="100%"
                             pos="relative"
                             transition="0.3s ease"
                         >
-                            {/* 專案列表 */}
                             <Flex
                                 display="block"
                                 flexDir="column"
                                 h="100%"
-                                opacity={showWorkDetail ? "0" : "1"}
+                                opacity={showWorkContent ? "0" : "1"}
                             >
 
                                 <Box borderBottom="1px" borderColor="blue.600">
                                     <Text pl="19.5px" pt="25px" pb="19px" fontSize="20px" fontWeight="bold">Portfolio</Text>
                                 </Box>
 
-                                <WorkFilter showWorkDetail={showWorkDetail} />
+                                <WorkFilter
+                                    filter={selectedFilter}
+                                    selectFilter={selectFilter}
+                                    options={
+                                        [
+                                            {
+                                                id: 1,
+                                                title: "全部",
+                                                type: "all"
+                                            },
+                                            {
+                                                id: 2,
+                                                title: "線上策展",
+                                                type: "online-expo"
+                                            },
+                                            {
+                                                id: 3,
+                                                title: "產品開發",
+                                                type: "developing"
+                                            },
+                                            {
+                                                id: 4,
+                                                title: "設計協助",
+                                                type: "design-support"
+                                            },
+                                        ]
+                                    } />
 
-                                <WorkResult result={result} onClick={toggle} />
+                                <WorkResult result={filteredResult} onClick={toggle} />
                             </Flex>
 
-                            <WorkDesc work={seletedWork} show={showWorkDetail} />
+                            <WorkDesktopContent work={selectedWork} show={showWorkContent} />
                         </Box>
                     </Flex>
                 </Box>
             </Hide>
 
+            {/* 手機版專案縮圖 */}
             <Hide above="md">
                 <Flex
                     w="100%"
@@ -372,9 +431,10 @@ const Work = () => {
                         <Box
                             w="100%"
                         >
+                            {/* 專案縮圖 */}
                             <WorkList
-                                works={result}
-                                showWorkDetail={true}
+                                works={filteredResult}
+                                show={true}
                                 flexDir="row"
                                 onClick={toggle}
                             />
@@ -382,6 +442,14 @@ const Work = () => {
                     </Flex>
                 </Flex>
             </Hide>
+
+            {/* <Hide above="md">
+                <WorkMobileContent
+                    work={selectedWork}
+                    selectWork={selectWork}
+                    show={showWorkContent}
+                />
+            </Hide> */}
         </Flex >
     </>
 }

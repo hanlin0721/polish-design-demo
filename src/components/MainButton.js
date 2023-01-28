@@ -11,6 +11,7 @@ const MainButton = ({
   hasIcon = true,
   disabled = false,
   bg = "blue.300",
+  center = false,
   ...props
 }) => {
   const router = useRouter();
@@ -29,6 +30,7 @@ const MainButton = ({
       color="#fff"
       rounded="24px"
       p="15px"
+      mx={center ? "auto" : ""}
       onClick={() => {
         if (target === "_blank") {
           window.open(href);

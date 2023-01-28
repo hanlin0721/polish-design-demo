@@ -3,7 +3,7 @@ import BackButton from "./BackButton";
 
 const WorkList = ({
     works,
-    showWorkDetail,
+    show,
     onClick,
     flexDir,
     ...props
@@ -17,7 +17,7 @@ const WorkList = ({
                 borderRight="1px"
                 flexDir={flexDir}
                 borderColor="blue.600"
-                display={showWorkDetail ? "block" : "none"}
+                display={show ? "block" : "none"}
                 {...props}
             >
                 {flexDir === "row" ? null : <BackButton onClick={onClick} />}

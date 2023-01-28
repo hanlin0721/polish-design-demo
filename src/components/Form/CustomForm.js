@@ -68,6 +68,7 @@ const CustomForm = () => {
                                 size='xl'
                                 borderRadius="16px"
                                 placeholder="你希望合作的內容 *"
+                                _hover={{ bg: "blue.600" }}
                             >
                                 {/* <option value="">你希望合作的內容 *</option> */}
                                 <option value="development">我需要產品開發的相關服務</option>
@@ -95,6 +96,7 @@ const CustomForm = () => {
                                 color="rgba(255,255,255,0.5)"
                                 borderColor="blue.300"
                                 borderRadius="16px"
+                                _hover={{ bg: "blue.600" }}
                             >
                                 <option value="">你是怎麼知道我們的 *</option>
                                 <option value="introduced">我是透過介紹知道的</option>

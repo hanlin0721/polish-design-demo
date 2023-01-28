@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, Link } from "@chakra-ui/react";
 import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward_black.svg";
 import appStore from "../../store/store";
 import useControl from "../../store/useControl";
@@ -218,20 +218,23 @@ const HomeHeader = () => {
                         transform={{ base: "0", sm: `translateX(-12%)` }}
                         w={{ base: "45%", sm: "100%" }}
                     >
-                        <Flex
-                            pt={{ base: "14px", sm: "23px" }}
-                            pb={{ base: "11px", sm: "21px" }}
-                            pl={{ base: "0px", sm: "12px" }}
-                            pr={{ base: "0px", sm: "12px" }}
-                            borderTop="1px"
-                            borderBottom="1px"
-                            borderColor="rgba(33,41,50,0.3)"
-                            justifyContent="space-between"
-                            cursor="pointer"
-                        >
-                            <Text fontWeight="bold" fontSize={{ base: "14px", sm: "0.83vw" }}>Portfolio</Text>
-                            <Image src={CircleActionIcon.src} />
-                        </Flex>
+                        <Link href="/work">
+                            <Flex
+                                pt={{ base: "14px", sm: "23px" }}
+                                pb={{ base: "11px", sm: "21px" }}
+                                pl={{ base: "0px", sm: "12px" }}
+                                pr={{ base: "0px", sm: "12px" }}
+                                borderTop="1px"
+                                borderBottom="1px"
+                                borderColor="rgba(33,41,50,0.3)"
+                                justifyContent="space-between"
+                                cursor="pointer"
+                            >
+                                <Text fontWeight="bold" fontSize={{ base: "14px", sm: "0.83vw" }}>Portfolio</Text>
+                                <Image src={CircleActionIcon.src} />
+                            </Flex>
+                        </Link>
+
                         <Flex
                             pt={{ base: "14px", sm: "23px" }}
                             pb={{ base: "11px", sm: "21px" }}
