@@ -6,6 +6,7 @@ const WorkList = ({
     show,
     onClick,
     flexDir,
+    isMobile,
     ...props
 }) => {
 
@@ -14,7 +15,7 @@ const WorkList = ({
             <Flex
                 w="100%"
                 h="100%"
-                borderRight="1px"
+                borderRight={isMobile ? "0px" : "1px"}
                 flexDir={flexDir}
                 borderColor="blue.600"
                 display={show ? "block" : "none"}

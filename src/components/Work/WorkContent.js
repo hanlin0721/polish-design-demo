@@ -6,7 +6,7 @@ import {
     HStack,
     VStack,
 } from "@chakra-ui/react";
-import { useEffect, useState, useRef, memo } from "react";
+import React, { useEffect, useState, useRef, memo } from "react";
 import { useTranslation } from "next-i18next";
 import MainButton from "../MainButton";
 import useControl from "../../store/useControl";
@@ -141,7 +141,7 @@ export const WorkTitle = memo(({ work, area }) => {
 });
 WorkTitle.displayName = "WorkTitle";
 
-export const WorkDesktopContent = ({
+export const WorkDesktopContent = React.forwardRef(({
     isMobile,
     work,
     selectWork,
@@ -150,7 +150,7 @@ export const WorkDesktopContent = ({
     othersWork,
     onClick,
     ...props
-}) => {
+}, ref) => {
     // const [data, setData] = useState(work);
     // const router = useRouter();
     // const { locale } = router;
@@ -197,9 +197,11 @@ export const WorkDesktopContent = ({
 
     return (
         <Box
+            ref={ref}
             display={show ? "block" : "none"}
             pos="relative"
             top={isMobile ? "0" : "-100%"}
+            pb={isMobile ? "15%" : "0%"}
             h="100%"
             overflowY="scroll"
             onScroll={test}
@@ -301,8 +303,8 @@ export const WorkDesktopContent = ({
                             flexDir="column"
                             alignItems="end"
                         >
-                            <Box w="518px" h="271px" bg="grey">
-                                <Image src={content.image} />
+                            <Box w="518px" h="271px" bg="grey" overflow="hidden">
+                                <Image src={content.image} objectFit="cover" w="100%" h="100%" />
                             </Box>
                             <Text
                                 my="30px"
@@ -369,8 +371,9 @@ export const WorkDesktopContent = ({
                     bg="grey"
                     borderRadius="10px"
                     onClick={() => onClick(nextWork?.id)}
+                    overflow="hidden"
                 >
-                    <Image src={nextWork?.thumbnail} />
+                    <Image src={nextWork?.thumbnail} objectFit="cover" w="100%" h="100%" />
                 </Box>
             </Box>
 
@@ -392,8 +395,16 @@ export const WorkDesktopContent = ({
                                     key={work?.id}
                                     onClick={() => onClick(work?.id)}
                                 >
-                                    <Box mt="28px" mr="14px" w="152px" h="84px" bg="grey" borderRadius="10px">
-                                        <Image src={work?.thumbnail} />
+                                    <Box
+                                        mt="28px"
+                                        mr="14px"
+                                        w="152px"
+                                        h="84px"
+                                        bg="grey"
+                                        borderRadius="10px"
+                                        overflow="hidden"
+                                    >
+                                        <Image src={work?.thumbnail} objectFit="cover" w="100%" h="100%" />
                                     </Box>
 
                                     <Text
@@ -414,11 +425,11 @@ export const WorkDesktopContent = ({
             </Box>
         </Box >
     );
-};
+});
 WorkDesktopContent.displayName = "WorkDesktopContent";
 
-export const WorkMobileContent = memo(
-    ({ work, selectWork, show, nextWork, othersWork, onClick, ...props }) => {
+export const WorkMobileContent =
+    React.forwardRef(({ work, selectWork, show, nextWork, othersWork, onClick, ...props }, ref) => {
 
         const [isFull, setFull] = useState(false);
         const [isOpen, setOpen] = useState(!!work);
@@ -480,6 +491,7 @@ export const WorkMobileContent = memo(
                     }}
                 >
                     <WorkDesktopContent
+                        ref={ref}
                         isMobile={true}
                         work={work}
                         show={show}
@@ -491,6 +503,6 @@ export const WorkMobileContent = memo(
                 </Box>
             </Box>
         );
-    }
-);
+    })
+    ;
 WorkMobileContent.displayName = "WorkMobileContent";

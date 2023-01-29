@@ -1,5 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Box, Flex, Text, Hide } from "@chakra-ui/react";
 import Map from "../../components/Maps/Map.js";
 import WorkFilter from "../../components/Work/WorkFilter.js";
@@ -260,6 +260,7 @@ const Work = () => {
     const [othersWork, setOthersWork] = useState(null)
     const [showWorkContent, setShowWorkContent] = useState(false)
     const goScene = useControl((state) => state.goScene);
+    const contentRef = useRef()
 
     useEffect(() => {
         if (selectedFilter === null || selectedFilter === "all") {
@@ -275,6 +276,11 @@ const Work = () => {
     }, [selectedFilter])
 
     const toggle = (workId) => {
+
+        if (contentRef.current) {
+            contentRef.current.scrollTo(0, 0)
+        }
+
         if (workId) {
             selectWork(filteredResult.find(element => element.id === workId))
             setNextWork(filteredResult[(filteredResult.findIndex(element => element.id === workId) + 1) % filteredResult.length])
@@ -303,6 +309,7 @@ const Work = () => {
         //     }
         // }, undefined, { shallow: true })
     }
+
     return <>
         <style
             dangerouslySetInnerHTML={{ __html: "body { overflow: hidden }" }}
@@ -401,6 +408,7 @@ const Work = () => {
                             </Flex>
 
                             <WorkDesktopContent
+                                ref={contentRef}
                                 work={selectedWork}
                                 show={showWorkContent}
                                 nextWork={nextWork}
@@ -418,7 +426,7 @@ const Work = () => {
                     h="20%"
                     bg="transparent"
                     pos="absolute"
-                    top="0"
+                    top="0.5%"
                     left="0"
                     borderRadius="30px"
                 >
@@ -445,6 +453,7 @@ const Work = () => {
                                 works={filteredResult}
                                 show={true}
                                 flexDir="row"
+                                isMobile={true}
                                 onClick={toggle}
                             />
                         </Box>
@@ -454,6 +463,7 @@ const Work = () => {
 
             <Hide above="md">
                 <WorkMobileContent
+                    ref={contentRef}
                     work={selectedWork}
                     selectWork={selectWork}
                     show={showWorkContent}
