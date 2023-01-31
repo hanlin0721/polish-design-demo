@@ -11,7 +11,7 @@ const Experience = () => {
 
     return (
         <>
-            <color ref={backgroundRef} args={['#fff']} attach="background" />
+            <color ref={backgroundRef} args={["#CAD1D7"]} attach="background" />
 
             <OrbitControls />
 

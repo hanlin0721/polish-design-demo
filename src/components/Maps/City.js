@@ -170,16 +170,22 @@ export default function City(props) {
 
 
     useFrame((state, delta) => {
-        polishManShowedFollowingHiddenOne()
+        // polishManShowedFollowingHiddenOne()
 
         if (scene === scenes.LOOKING_BLUE_POLISH_MAN) {
             const { cameraPosition, cameraTarget } = cameraFollow({
                 objRef: polishManHiddenRef,
-                initialPosition: new THREE.Vector3(-1, 1.2, -1.2),
+                // initialPosition: new THREE.Vector3(-1, 1.2, -1.2),
+                initialPosition: new THREE.Vector3(-4, 9, -10),
+                // initialTarget: new THREE.Vector3(
+                //     device !== "desktop" ? -0 : -0.7,
+                //     device !== "desktop" ? 0.3 : 0,
+                //     device !== "desktop" ? -0.2 : 0.8
+                // )
                 initialTarget: new THREE.Vector3(
-                    device !== "desktop" ? -0 : -0.7,
+                    device !== "desktop" ? -0 : -0,
                     device !== "desktop" ? 0.3 : 0,
-                    device !== "desktop" ? -0.2 : 0.8
+                    device !== "desktop" ? -0.2 : 0
                 )
             })
 
@@ -372,7 +378,7 @@ export default function City(props) {
 
 
                 {/* WASSUP */}
-                <mesh position={[-3.3, 0.49, 4.6]} rotation-y={Math.PI * 0.25}>
+                <mesh visible={false} position={[-3.3, 0.49, 4.6]} rotation-y={Math.PI * 0.25}>
                     <boxGeometry args={[0.25, 0.25, 0.25]} />
                     <meshBasicMaterial color="red" />
                 </mesh>
@@ -437,7 +443,7 @@ export default function City(props) {
                     position={[-6.52, -0.47, 4.86]}
                     scale={[81.54, 36.47, 66.14]}
                 >
-                    {/* <meshBasicMaterial map={bakedRoadTexture} /> */}
+                    <meshBasicMaterial map={bakedRoadTexture} />
                 </mesh>
 
                 {/* 磨人雕像 */}
@@ -468,7 +474,8 @@ export default function City(props) {
 
                 {/* 實際要顯示的磨人 */}
                 <Test
-                    visible={scene == 1}
+                    // visible={scene == 1}
+                    visible={false}
                     ref={polishManShowedRef}
                     groupRotation={[0, -Math.PI / 6, 0]}
                     rotation={[2.2 * Math.PI, 0, 0]}
