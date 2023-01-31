@@ -22,6 +22,7 @@ export default function City(props) {
     const polishManShowedRef = useRef()
     const polishManFloatingRef = useRef()
     const buildingRef = useRef()
+    const othersBuildingRef = useRef()
 
     const projectTestRef = useRef()
     const projectTestGroupRef = useRef()
@@ -96,6 +97,9 @@ export default function City(props) {
                     gsap.to(buildingRef.current.material, {
                         opacity: 1,
                     })
+                    gsap.to(othersBuildingRef.current.material, {
+                        opacity: 1,
+                    })
                     gsap.to(fourDesireMeshRef.current.material, {
                         opacity: 1,
                     })
@@ -107,6 +111,9 @@ export default function City(props) {
                 }
                 if (value === 2) {
                     gsap.to(buildingRef.current.material, {
+                        opacity: 0,
+                    })
+                    gsap.to(othersBuildingRef.current.material, {
                         opacity: 0,
                     })
                     gsap.to(fourDesireMeshRef.current.material, {
@@ -170,18 +177,12 @@ export default function City(props) {
 
 
     useFrame((state, delta) => {
-        // polishManShowedFollowingHiddenOne()
 
         if (scene === scenes.LOOKING_BLUE_POLISH_MAN) {
             const { cameraPosition, cameraTarget } = cameraFollow({
                 objRef: polishManHiddenRef,
-                // initialPosition: new THREE.Vector3(-1, 1.2, -1.2),
                 initialPosition: new THREE.Vector3(-4, 9, -10),
-                // initialTarget: new THREE.Vector3(
-                //     device !== "desktop" ? -0 : -0.7,
-                //     device !== "desktop" ? 0.3 : 0,
-                //     device !== "desktop" ? -0.2 : 0.8
-                // )
+
                 initialTarget: new THREE.Vector3(
                     device !== "desktop" ? -0 : -0,
                     device !== "desktop" ? 0.3 : 0,
@@ -310,6 +311,7 @@ export default function City(props) {
                     <meshBasicMaterial map={bakedHousesTexture} transparent={true} />
                 </mesh>
                 <mesh
+                    ref={othersBuildingRef}
                     name="houses_others"
                     castShadow
                     receiveShadow

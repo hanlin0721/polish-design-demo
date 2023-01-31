@@ -29,15 +29,15 @@ const Map = memo(() => {
     })
 
     const scrollHandler = (e) => {
-        // if (isWorkPage()) {
-        //     return
-        // }
-        // if (e.deltaY > 0 && !(scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN)) {
-        //     next()
-        // }
-        // if (e.deltaY < 0) {
-        //     prev()
-        // }
+        if (isWorkPage()) {
+            return
+        }
+        if (e.deltaY > 0 && !(scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN)) {
+            next()
+        }
+        if (e.deltaY < 0) {
+            prev()
+        }
     }
 
     return (
