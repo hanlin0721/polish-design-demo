@@ -43,7 +43,6 @@ const PolishMan = React.forwardRef(({ children, groupRotation, rotation, isSpinn
 
 export default PolishMan
 // export default function PolishMan({ children, ...props }) {
-//     console.log(props)
 //     // const group = useRef()
 //     const mesh = useRef()
 

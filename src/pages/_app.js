@@ -43,22 +43,22 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <title key="title">
-          National Taiwan University Open House
+          磨人設計 Polish Design - We keep polish all day !
         </title>
         <meta
           key="description"
           name="description"
-          content="Founded in 1928, NTU is the most prestigious university in Taiwan, and is among the top 100 universities in the world. Guided by independent thought and a pioneering spirit of enterprise, students at NTU become a part of the nation’s richest center of learning and receive a diverse and superlative education."
+          content="Polish Design. 是一家提供數位解決方案的軟體設計公司，致力於為企業開發創意、行得通的數位產品，以實現任何商業挑戰及有趣的點子。"
         />
         <meta
           key="og_title"
           property="og:title"
-          content="National Taiwan University Open House"
+          content="磨人設計 Polish Design - We keep polish all day !"
         />
         <meta
           key="og_description"
           property="og:description"
-          content="Founded in 1928, NTU is the most prestigious university in Taiwan, and is among the top 100 universities in the world. Guided by independent thought and a pioneering spirit of enterprise, students at NTU become a part of the nation’s richest center of learning and receive a diverse and superlative education."
+          content="Polish Design. 是一家提供數位解決方案的軟體設計公司，致力於為企業開發創意、行得通的數位產品，以實現任何商業挑戰及有趣的點子。"
         />
       </Head>
       <ChakraProvider theme={theme}>

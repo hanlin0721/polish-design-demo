@@ -1,4 +1,4 @@
-import { Box, VStack, Text, Link } from "@chakra-ui/react"
+import { Box, Flex, Text } from "@chakra-ui/react"
 import appStore from "../store/store";
 import { useLocalStorage } from "../utils/window";
 import { useTranslation } from "next-i18next";
@@ -9,40 +9,62 @@ const CookiesNotice = () => {
     const { t } = useTranslation("common");
 
     return (
-        <VStack
-            bg="blue.50"
-            w="100%"
-            h="125px"
+        <Flex
+            bg="rgba(42,49,58,0.78)"
+            w="776px"
+            minH="82px"
             transition={`${isAccepted ? "0.3s ease 0s" : "1s ease 1s"}`}
-            transform={`translateY(${!isAnimReady ? "100%" : isAccepted ? "100%" : "0%"})`}
+            transform={{
+                base: `translate(-50% ,${!isAnimReady ? "100%" : isAccepted ? "100%" : "-10%"})`,
+                sm: `translate(-50% ,${!isAnimReady ? "100%" : isAccepted ? "100%" : "-30%"})`
+            }}
             pos="fixed"
-            left="0"
+            left="50%"
             bottom="0"
-            p="15px"
+            p="14px"
             color="#fff"
             spacing="18px"
+            zIndex="15"
+            justifyContent="center"
+            borderRadius={{ base: "30px", sm: "41px" }}
+            pl={{ base: "20px", sm: "33px" }}
+            pr={{ base: "20px", sm: "28px" }}
+            pt={{ base: "20px", sm: "21px" }}
+            maxW={{ base: "305px", sm: "776px" }}
+            flexDir={{ base: "column", sm: "row" }}
+            alignItems="center"
         >
-            <Text fontSize="12px" fontWeight="600" maxW="710px" textAlign="center">
+            <Text
+                fontSize={{ base: "12px", sm: "14px" }}
+                fontWeight="600"
+                maxW={{ base: "265px", sm: "583px" }}
+                mr={{ base: "0", sm: "18px" }}
+                mb={{ base: "18px", sm: "0px" }}
+            >
                 {t("cookies-desc1")}
-                <a target="_blank" rel="noreferrer" style={{ color: "#8D98C0" }} href="https://www.ntu.edu.tw/english/copyright.html">
+                <a target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }} href="/privacy-policy">
                     {t("privacy-link")}
                 </a>
                 {t("cookies-desc2")}
             </Text>
+
             <Box
+                maxW="133px"
                 bg="#fff"
                 color="#000"
                 cursor="pointer"
                 textAlign="center"
-                w="248px"
                 fontSize="14px"
-                lineHeight="40px"
+                lineHeight="41px"
+                h="41px"
                 fontWeight="bold"
+                w="248px"
+                borderRadius="21px"
                 onClick={() => accept(true)}
             >
-                Accept Cookies
+                接受
             </Box>
-        </VStack>
+        </Flex>
     )
 }
 

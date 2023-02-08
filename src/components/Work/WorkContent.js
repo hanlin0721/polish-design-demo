@@ -10,7 +10,8 @@ import React, { useEffect, useState, useRef, memo } from "react";
 import { useTranslation } from "next-i18next";
 import MainButton from "../MainButton";
 import useControl from "../../store/useControl";
-
+import api from "../../store/api";
+import Editor from "../Editor";
 const WorkContentFooter = ({ data }) => {
     const { t } = useTranslation("common");
     return (
@@ -145,53 +146,69 @@ export const WorkDesktopContent = React.forwardRef(({
     isMobile,
     work,
     selectWork,
+    types,
     show,
     nextWork,
     othersWork,
     onClick,
     ...props
 }, ref) => {
-    // const [data, setData] = useState(work);
+    console.log(types)
+    const [data, setData] = useState(work);
+    const [type, setType] = useState(null)
     // const router = useRouter();
     // const { locale } = router;
     // const { token } = appStore;
     const { t } = useTranslation("common");
     // const contentRef = useRef();
-
-    // useEffect(() => {
-    //     contentRef?.current?.scrollTo(0, 0);
-    //     if (type === "org") {
-    //         if (work?.id) {
-    //             api.getOrgDetail(work?.id, token).then((resp) => {
-    //                 if (resp?.data?.success) {
-    //                     const data = {
-    //                         ...work,
-    //                         ...resp?.data?.data[locale === "en" ? "en" : "tw"],
-    //                     };
-    //                     setData(data);
-    //                 }
-    //             });
-    //         }
-    //     } else {
-    //         if (work?.id) {
-    //             api.getWorkDetail(work?.id, token).then((resp) => {
-    //                 if (resp?.data?.success) {
-    //                     const data = {
-    //                         ...work,
-    //                         ...resp?.data?.data[locale === "en" ? "en" : "tw"],
-    //                         is_answered: resp?.data?.data.is_answered,
-    //                         is_favorite: resp?.data?.data.is_favorite,
-    //                         is_passed: resp?.data?.data.is_passed,
-    //                     };
-    //                     setData(data);
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }, [work?.id, type]);
+    useEffect(() => {
+        console.log('=', work?.article_code)
+        if (work?.article_code) {
+            api.getArticle({ article_code: work?.article_code }).then(({
+                success,
+                article
+            }) => {
+                console.log('success', success)
+                if (success) {
+                    console.log('===article', article)
+                    const type = types.find((type) => type.type === article?.type).name
+                    setData(article);
+                    setType(type)
+                }
+            });
+        }
+        // contentRef?.current?.scrollTo(0, 0);
+        // if (type === "org") {
+        //     if (work?.id) {
+        //         api.getOrgDetail(work?.id, token).then((resp) => {
+        //             if (resp?.data?.success) {
+        //                 const data = {
+        //                     ...work,
+        //                     ...resp?.data?.data[locale === "en" ? "en" : "tw"],
+        //                 };
+        //                 setData(data);
+        //             }
+        //         });
+        //     }
+        // } else {
+        //     if (work?.id) {
+        //         api.getWorkDetail(work?.id, token).then((resp) => {
+        //             if (resp?.data?.success) {
+        //                 const data = {
+        //                     ...work,
+        //                     ...resp?.data?.data[locale === "en" ? "en" : "tw"],
+        //                     is_answered: resp?.data?.data.is_answered,
+        //                     is_favorite: resp?.data?.data.is_favorite,
+        //                     is_passed: resp?.data?.data.is_passed,
+        //                 };
+        //                 setData(data);
+        //             }
+        //         });
+        //     }
+        // }
+    }, [work?.article_code]);
     const updateScroll = useControl((state) => state.updateScroll)
     const test = (e) => {
-        console.log(e.target.scrollTop)
         updateScroll(e.target.scrollTop)
     }
 
@@ -216,27 +233,11 @@ export const WorkDesktopContent = React.forwardRef(({
             >
                 <Flex py="17px" overflowX="scroll">
                     {
-                        work?.type.map((type, index) => {
-                            const convert = (type) => {
-                                if (type === "developing") {
-                                    return "產品開發"
-                                }
-                                if (type === "online-expo") {
-                                    return "線上策展"
-                                }
-                                if (type === "design-support") {
-                                    return "設計協助"
-                                }
-                                return ""
-                            }
-                            return (
-                                <Box key={index} flexShrink="0" py="6px" px="12px" mr="10px" bg="#303C4A" borderRadius="15px">
-                                    <Text fontSize="12px">
-                                        {convert(type)}
-                                    </Text>
-                                </Box>
-                            )
-                        })
+                        <Box flexShrink="0" py="6px" px="12px" mr="10px" bg="#303C4A" borderRadius="15px">
+                            <Text fontSize="12px">
+                                {type}
+                            </Text>
+                        </Box>
                     }
                 </Flex>
             </Box>
@@ -248,7 +249,7 @@ export const WorkDesktopContent = React.forwardRef(({
                 mb="20px"
             >
                 <Text fontSize="24px" as="b">
-                    {work?.title}
+                    {data?.title}
                 </Text>
             </Box>
 
@@ -258,11 +259,11 @@ export const WorkDesktopContent = React.forwardRef(({
                 color="blue.300"
             >
                 <Text fontSize="16px" as="b" pr="42px">
-                    {work?.date}
+                    {data?.created_at.split(' ')[0]}
                 </Text>
-                {/* <Text fontSize="16px" >
-                    Fourdesire
-                </Text> */}
+                <Text fontSize="16px" >
+                    {data?.partner}
+                </Text>
             </Flex>
 
             {/* 使用的專業 */}
@@ -280,13 +281,13 @@ export const WorkDesktopContent = React.forwardRef(({
                     pl={isMobile ? "20px" : "0px"}
                 >
                     {
-                        work?.usedTechniques.map((obj, index) => {
+                        data?.jobs.map((obj, index) => {
                             return (
                                 <Box
                                     key={index}
-                                    pb={(work?.usedTechniques.length - 1) === index ? "24px" : "0px"}
+                                    pb={(work?.jobs.length - 1) === index ? "24px" : "0px"}
                                 >
-                                    <Text>{obj}</Text>
+                                    <Text>{obj.value}</Text>
                                 </Box>
                             )
                         })
@@ -294,45 +295,28 @@ export const WorkDesktopContent = React.forwardRef(({
                 </VStack>
             </Flex>
 
-            {/* 內容 */}
-            {
-                work?.content.map((content) => {
-                    return (
-                        <Flex
-                            key={content.id}
-                            flexDir="column"
-                            alignItems="end"
-                        >
-                            <Box w="518px" h="271px" bg="grey" overflow="hidden">
-                                <Image src={content.image} objectFit="cover" w="100%" h="100%" />
-                            </Box>
-                            <Text
-                                my="30px"
-                                maxW="476px"
-                                px={isMobile ? "20px" : "0px"}
-                                alignSelf="start"
-                            >
-                                {content.text}
-                            </Text>
-                        </Flex>
-                    )
-                })
-            }
+            {/* 編輯器內容 */}
+            <Box pl={isMobile ? "20px" : "46px"} >
+                <Box w="514px" h="271px" bg="grey" overflow="hidden">
+                    <Image src={work?.image} objectFit="cover" w="100%" h="100%" />
+                </Box>
+                <Editor content={data?.content} />
+            </Box>
 
             {/* 技術範圍 */}
             <Box pl={isMobile ? "20px" : "46px"}>
                 <Text as="b">技術範圍</Text>
                 <Flex flexWrap="wrap" flexDir={isMobile ? "column" : "row"}>
                     {
-                        work?.techniques.map((technique) => {
+                        data?.scopes?.map((scope, index) => {
                             return (
-                                <Box w="50%" mt="35px" key={technique.id}>
-                                    <Text mb="13px" fontWeight="bold">{technique.title}</Text>
+                                <Box w="50%" mt="35px" key={index}>
+                                    <Text mb="13px" fontWeight="bold">{scope.title}</Text>
                                     {
-                                        technique.details.map((detail, index) => {
+                                        scope.items.map((obj, objIndex) => {
                                             return (
-                                                <Box key={`${technique.id}${index}`}>
-                                                    <Text>{detail}</Text>
+                                                <Box key={`${objIndex}`}>
+                                                    <Text>{obj.value}</Text>
                                                 </Box>
                                             )
                                         })
@@ -343,14 +327,14 @@ export const WorkDesktopContent = React.forwardRef(({
                     }
                 </Flex>
 
-                <Box mt="60px" mb="74px">
+                <Flex mt="60px" mb="74px">
                     <MainButton
                         text="與我們合作"
                         hasIcon={false}
                         href="contact"
-                        center={true}
+                        center={isMobile ? true : false}
                     />
-                </Box>
+                </Flex>
             </Box>
 
             {/* 下個專案 */}
@@ -370,10 +354,10 @@ export const WorkDesktopContent = React.forwardRef(({
                     h="295px"
                     bg="grey"
                     borderRadius="10px"
-                    onClick={() => onClick(nextWork?.id)}
+                    onClick={() => onClick(nextWork?.article_code)}
                     overflow="hidden"
                 >
-                    <Image src={nextWork?.thumbnail} objectFit="cover" w="100%" h="100%" />
+                    <Image src={nextWork?.image} objectFit="cover" w="100%" h="100%" />
                 </Box>
             </Box>
 
@@ -392,8 +376,8 @@ export const WorkDesktopContent = React.forwardRef(({
                         othersWork?.map((work) => {
                             return (
                                 <Box
-                                    key={work?.id}
-                                    onClick={() => onClick(work?.id)}
+                                    key={work?.article_code}
+                                    onClick={() => onClick(work?.article_code)}
                                 >
                                     <Box
                                         mt="28px"
@@ -404,7 +388,7 @@ export const WorkDesktopContent = React.forwardRef(({
                                         borderRadius="10px"
                                         overflow="hidden"
                                     >
-                                        <Image src={work?.thumbnail} objectFit="cover" w="100%" h="100%" />
+                                        <Image src={work?.image} objectFit="cover" w="100%" h="100%" />
                                     </Box>
 
                                     <Text
@@ -435,7 +419,7 @@ export const WorkMobileContent =
         const [isOpen, setOpen] = useState(!!work);
 
         useEffect(() => {
-            if (work?.id) {
+            if (work?.article_code) {
                 setOpen(false);
                 setTimeout(() => {
                     setOpen(true);
@@ -445,7 +429,7 @@ export const WorkMobileContent =
                 setFull(false);
             }
             // return () => selectWork(null);
-        }, [work?.id]);
+        }, [work?.article_code]);
 
         return (
             <Box

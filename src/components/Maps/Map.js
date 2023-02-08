@@ -1,44 +1,24 @@
 import { Canvas } from '@react-three/fiber'
 import Experience from '../../components/Maps/Experience.js'
-import { memo } from 'react'
+import { memo, useEffect, useState, useCallback, useRef, useMemo } from 'react'
 import useControl from "../../store/useControl.js";
 import _ from 'lodash';
 import * as THREE from 'three'
-import { useRouter } from 'next/router.js';
+
 const Map = memo(() => {
-    const { scene, scenes } = useControl(state => state)
     const nextScene = useControl((state) => state.nextScene)
     const prevScene = useControl((state) => state.prevScene)
-    const router = useRouter();
-    const isWorkPage = () => {
-        return router.asPath === "/work"
-    }
-
-    const next = _.debounce(function () {
-        nextScene()
-    }, 1000, {
-        leading: true,
-        trailing: false
-    })
-
-    const prev = _.debounce(function () {
-        prevScene()
-    }, 1000, {
-        leading: true,
-        trailing: false
-    })
 
     const scrollHandler = (e) => {
-        if (isWorkPage()) {
-            return
-        }
-        if (e.deltaY > 0 && !(scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN)) {
-            next()
+        if (e.deltaY > 0) {
+            nextScene()
         }
         if (e.deltaY < 0) {
-            prev()
+            prevScene()
         }
     }
+
+    const onWheelDebounce = useMemo(() => _.debounce(scrollHandler, 500, { leading: true, trailing: false }), [])
 
     return (
         <>
@@ -53,7 +33,7 @@ const Map = memo(() => {
                     fov: 45,
                     near: 0.01,
                 }}
-                onWheel={scrollHandler}
+                onWheel={onWheelDebounce}
             >
                 <Experience />
             </Canvas>

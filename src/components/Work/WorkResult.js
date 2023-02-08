@@ -1,6 +1,6 @@
 import { Flex, Box, Text, Image } from "@chakra-ui/react";
 
-const WorkResult = ({ result, onClick }) => {
+const WorkResult = ({ articles, onClick }) => {
     return (
         <Box
             flex="1"
@@ -14,7 +14,7 @@ const WorkResult = ({ result, onClick }) => {
                     Found
                 </Text>
                 <Text as="b" mr="5px">
-                    {result.length}
+                    {articles?.length}
                 </Text>
                 <Text>
                     projects
@@ -23,16 +23,16 @@ const WorkResult = ({ result, onClick }) => {
 
             <Flex flex="1" h="100%" flexDir="column" overflowY="scroll">
                 {
-                    result.map(project => {
+                    articles?.map(article => {
                         return (
                             <Box
-                                key={project.id}
+                                key={article.article_code}
                                 mb="30px"
                                 cursor="pointer"
-                                onClick={() => onClick(project.id)}
+                                onClick={() => onClick(article.article_code)}
                             >
                                 <Box w="100%" h="150px" bg="grey" >
-                                    <Image src={project.thumbnail} objectFit="cover" w="100%" h="100%" />
+                                    <Image src={article.image} objectFit="cover" w="100%" h="100%" />
                                 </Box>
                                 <Text
                                     pt="12px"
@@ -40,7 +40,7 @@ const WorkResult = ({ result, onClick }) => {
                                     pr="45px"
                                     fontSize="14px"
                                 >
-                                    {project.title}
+                                    {article.title}
                                 </Text>
                             </Box>
                         )

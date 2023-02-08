@@ -10,7 +10,6 @@ const CustomForm = () => {
         <Formik
             initialValues={{ projectType: "", howYouKnowUsType: "", name: "", email: "", yourIdea: "", reference: "", subscribed: true }}
             onSubmit={async (values, actions) => {
-                console.log(actions)
                 await new Promise(resolve => setTimeout(resolve, 500));
                 alert(JSON.stringify(values, null, 2));
             }}

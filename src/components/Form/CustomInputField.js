@@ -3,13 +3,6 @@ import { ArrowForwardIcon } from "@chakra-ui/icons"
 import React, { useState } from "react";
 
 const CustomInputField = React.forwardRef(({ placeholder, value, onChange, onBlur, showActionIcon, ...props }, ref) => {
-
-    // const [value, setValue] = useState('')
-    // const handleChange = (e) => {
-    //     console.log(e.target.value)
-    //     setValue(e.target.value)
-    // }
-
     return (
         <InputGroup
             w="100%"

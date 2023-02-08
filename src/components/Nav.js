@@ -141,7 +141,7 @@ const NavContent = () => {
                                 </Text>
                             </Flex>
 
-                            <Flex
+                            {/* <Flex
                                 color="#FFF"
                                 mt="8.4%"
                                 flexDir={{ base: "row", sm: "column" }}
@@ -161,7 +161,7 @@ const NavContent = () => {
                                 >
                                     部落格
                                 </Text>
-                            </Flex>
+                            </Flex> */}
 
                             <VStack
                                 w="100%"
@@ -284,7 +284,7 @@ const Nav = () => {
         <>
             <Flex
                 pos="fixed"
-                left={{ sm: "3.1875%" }}
+                left={{ sm: "42px" }}
                 right={{ base: "14px", sm: "14px" }}
                 top={{ base: "12px", sm: "50%" }}
                 transform={{ sm: `translateY(-50%)` }}

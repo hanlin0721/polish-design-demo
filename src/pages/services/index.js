@@ -442,7 +442,7 @@ const About = () => {
                                                         <Box
                                                             borderBottom="1px"
                                                             borderColor="rgba(33,41,50,0.2)"
-                                                            onClick={() => console.log(step.id)}
+                                                            onClick={() => console.log('step.id', step.id)}
                                                         >
                                                             <Text fontSize="16px" fontWeight="bold" pb="20px">{step.stepTitle}</Text>
                                                         </Box>
@@ -495,12 +495,12 @@ const About = () => {
                             </Text>
                             <Image w="12px" src={ArrowDownwardIcon.src} transform="rotate(-90deg)" />
                         </Flex>
-                        <Flex cursor="pointer">
+                        {/* <Flex cursor="pointer">
                             <Text fontWeight="bold" mr="8px">
                                 相關資源
                             </Text>
                             <Image w="12px" src={ArrowDownwardIcon.src} transform="rotate(-90deg)" />
-                        </Flex>
+                        </Flex> */}
                     </Flex>
                 </Box>
 

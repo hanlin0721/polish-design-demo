@@ -9,8 +9,6 @@ const CustomSelect = ({ items, value, placeholder, ...props }) => {
     const [hover, setHover] = useState({})
 
     const handleChange = (e) => {
-        console.log(e)
-        console.log(e.target.innerText)
         setValue(e.target.innerText)
         setOpen(false)
     }

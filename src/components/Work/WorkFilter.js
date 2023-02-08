@@ -3,18 +3,15 @@ import { useEffect } from "react";
 
 const WorkFilter = ({ options, filter, selectFilter }) => {
 
-    useEffect(() => {
-    }, [filter])
-
     return (
         <>
             <Box overflow="hidden" borderBottom="1px" borderColor="blue.600">
                 <Flex py="17px" pl="19.5px" overflowX="scroll">
                     {
-                        options.map((option) => {
+                        options?.map((option, index) => {
                             return (
                                 <Box
-                                    key={option.id}
+                                    key={index}
                                     flexShrink="0"
                                     py="6px"
                                     px="12px"
@@ -25,7 +22,7 @@ const WorkFilter = ({ options, filter, selectFilter }) => {
                                     onClick={() => selectFilter(option.type)}
                                     cursor="pointer"
                                 >
-                                    <Text fontSize="12px">{option.title}</Text>
+                                    <Text fontSize="12px">{option.name}</Text>
                                 </Box>
                             )
                         })

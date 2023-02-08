@@ -7,7 +7,6 @@ const WorkNav = () => {
     const { scene, scenes } = useControl((state) => state)
 
     const scrollhandler = (e) => {
-        console.log(e)
         e.preventDefault()
     }
 

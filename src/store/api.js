@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "https://api.openhouse.ntu.edu.tw/api";
+axios.defaults.baseURL = "https://api.polish-design.com.tw/api";
 
 const Api = axios.create({
   headers: {
@@ -8,106 +8,47 @@ const Api = axios.create({
 });
 
 // Common
-const getAnncs = async () => {
+const getArticles = async () => {
   try {
-    const res = await Api.get("/home/announcement");
-    return res;
+    const { data } = await Api.get("/article/list");
+    return data
   } catch (error) {
     console.log(error);
   }
 };
-const getLives = async () => {
+
+const getArticle = async ({ article_code }) => {
   try {
-    const res = await Api.get("/live/list");
-    return res;
+    const { data } = await Api.get(`/article/${article_code}`);
+    return data
   } catch (error) {
     console.log(error);
   }
 };
-const getLiveDetail = async (live_code, token = null) => {
+
+const postSubscribe = async (data) => {
   try {
-    const res = await Api.get(`/live/${live_code}`, {
-      headers: {
-        "Content-Type": "application/json",
-        authorization: token,
-      },
-    });
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
-};
-const getNewsList = async () => {
-  try {
-    const res = await Api.get("/news/list");
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
-};
-const getNewsDetail = async (news_code) => {
-  try {
-    const res = await Api.get(`/news/${news_code}`);
+    const res = await Api.post(`/subscribe`, data);
     return res;
   } catch (error) {
     console.log(error);
   }
 };
 
-const getSchools = async (token = null) => {
+const postContactUs = async (data) => {
   try {
-    if (token) {
-      const res = await Api.get("/school/list", {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: token,
-        },
-      });
-      return res;
-    } else {
-      const res = await Api.get("/school/list");
-      return res;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-const getSchoolDetail = async (school_code, token = null) => {
-  try {
-    if (token) {
-      const res = await Api.get(`/school/${school_code}`, {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: token,
-        },
-      });
-      return res;
-    } else {
-      const res = await Api.get(`/school/${school_code}`);
-      return res;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-const postContactInfo = async (data) => {
-  try {
-    const res = await Api.post(`/contact`, data);
-      return res;
+    const res = await Api.post(`/contact/us`, data);
+    return res;
   } catch (error) {
     console.log(error);
   }
 };
 
 const api = {
-  getAnncs,
-  getLives,
-  getLiveDetail,
-  getNewsList,
-  getNewsDetail,
-  getSchools,
-  getSchoolDetail,
-  postContactInfo
+  getArticles,
+  getArticle,
+  postSubscribe,
+  postContactUs
 };
 
 export default api;

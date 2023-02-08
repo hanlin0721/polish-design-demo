@@ -16,7 +16,6 @@ const ExploreExpo = ({ setIsMap, ...props }) => {
             pl="13px"
             pr="17px"
             onClick={() => {
-                console.log('click')
                 setIsMap(true)
             }}
         >

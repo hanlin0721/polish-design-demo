@@ -3,36 +3,43 @@ import { subscribeWithSelector } from 'zustand/middleware'
 
 export default create(subscribeWithSelector((set) => {
     return {
-        scene: 1,
+        scene: '1',
         scenes: {
-            'LOOKING_BLUE_POLISH_MAN': 1,
-            'LOOKING_FLOATING_BLUE_POLISH_MAN': 2,
-            'LOOKING_CSO': 3,
-            'LOOKING_RAW_N_FRESH': 4,
-            'LOOKING_FOUR_DESIRE': 5,
+            'LOOKING_BLUE_POLISH_MAN': '1',
+            'LOOKING_FLOATING_BLUE_POLISH_MAN': '2',
+            'LOOKING_PORTFOLIO': '3',
         },
         scroll: 0,
         nextScene: () => {
             set((state) => {
-                // if (state.scene === 3) {
-                //     return {
-                //         scene: 3
-                //     }
-                // }
+                let scene = state.scenes.LOOKING_BLUE_POLISH_MAN
+                if (state.scene === state.scenes.LOOKING_BLUE_POLISH_MAN) {
+                    scene = state.scenes.LOOKING_FLOATING_BLUE_POLISH_MAN
+                }
+
+                if (state.scene === state.scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
+                    scene = state.scenes.LOOKING_PORTFOLIO
+                }
+
                 return {
-                    scene: state.scene + 1
+                    scene: scene
                 }
             })
         },
         prevScene: () => {
             set((state) => {
-                if (state.scene === 1) {
-                    return {
-                        scene: 1
-                    }
+                let scene = state.scenes.LOOKING_BLUE_POLISH_MAN
+
+                if (state.scene === state.scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
+                    scene = state.scenes.LOOKING_BLUE_POLISH_MAN
                 }
+
+                if (state.scene === state.scenes.LOOKING_PORTFOLIO) {
+                    scene = state.scenes.LOOKING_FLOATING_BLUE_POLISH_MAN
+                }
+
                 return {
-                    scene: state.scene - 1
+                    scene: scene
                 }
             })
         },

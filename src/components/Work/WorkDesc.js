@@ -5,7 +5,6 @@ const WorkDesc = ({ work, show, ...props }) => {
 
     const updateScroll = useControl((state) => state.updateScroll)
     const test = (e) => {
-        console.log(e.target.scrollTop)
         updateScroll(e.target.scrollTop)
     }
     return (

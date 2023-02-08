@@ -21,8 +21,10 @@ export default function City(props) {
     const polishManHiddenRef = useRef()
     const polishManShowedRef = useRef()
     const polishManFloatingRef = useRef()
+    const groundRef = useRef()
     const buildingRef = useRef()
     const othersBuildingRef = useRef()
+    const whloeMap = useRef()
 
     const projectTestRef = useRef()
     const projectTestGroupRef = useRef()
@@ -37,7 +39,7 @@ export default function City(props) {
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
 
-    const { nodes, animations } = useGLTF(`./230123_city.glb`)
+    const { nodes, animations } = useGLTF(`./230206_city.glb`)
 
     const { actions } = useAnimations(animations, group);
 
@@ -47,29 +49,47 @@ export default function City(props) {
     const bakedHousesTexture = useTexture(`./20230120_houses.png`)
     bakedHousesTexture.flipY = false
 
-    const bakedHouses0Texture = useTexture(`./230120_houses_O.png`)
-    bakedHouses0Texture.flipY = false
+    const bakedHouseOTexture = useTexture(`./230120_houses_O.png`)
+    bakedHouseOTexture.flipY = false
 
-    const bakedHouse001Texture = useTexture(`./20230120_house001.png`)
-    bakedHouse001Texture.flipY = false
+    const bakedA01Texture = useTexture(`./A01.png`)
+    bakedA01Texture.flipY = false
 
-    const bakedHouse002Texture = useTexture(`./20230120_house002.png`)
-    bakedHouse002Texture.flipY = false
+    const bakedA02Texture = useTexture(`./A02.png`)
+    bakedA02Texture.flipY = false
 
-    const bakedHouse003Texture = useTexture(`./20230120_house003.png`)
-    bakedHouse003Texture.flipY = false
+    const bakedA03Texture = useTexture(`./A03.png`)
+    bakedA03Texture.flipY = false
 
-    const bakedHouse004Texture = useTexture(`./20230120_house004.png`)
-    bakedHouse004Texture.flipY = false
+    const bakedA04Texture = useTexture(`./A04.png`)
+    bakedA04Texture.flipY = false
 
-    const bakedHouse005Texture = useTexture(`./20230120_house005.png`)
-    bakedHouse005Texture.flipY = false
+    const bakedA05Texture = useTexture(`./A05.png`)
+    bakedA05Texture.flipY = false
 
-    const bakedHouse006Texture = useTexture(`./20230120_house006.png`)
-    bakedHouse006Texture.flipY = false
+    const bakedA06Texture = useTexture(`./A06.png`)
+    bakedA06Texture.flipY = false
 
-    const bakedHouse007Texture = useTexture(`./20230120_house007.png`)
-    bakedHouse007Texture.flipY = false
+    const bakedA07Texture = useTexture(`./A07.png`)
+    bakedA07Texture.flipY = false
+
+    const bakedA08Texture = useTexture(`./A08.png`)
+    bakedA08Texture.flipY = false
+
+    const bakedA09Texture = useTexture(`./A09.png`)
+    bakedA09Texture.flipY = false
+
+    const bakedA10Texture = useTexture(`./A10.png`)
+    bakedA10Texture.flipY = false
+
+    const bakedA15Texture = useTexture(`./A15.png`)
+    bakedA15Texture.flipY = false
+
+    const bakedA19Texture = useTexture(`./A19.png`)
+    bakedA19Texture.flipY = false
+
+    const bakedA20Texture = useTexture(`./A20.png`)
+    bakedA20Texture.flipY = false
 
     const bakedRoadTexture = useTexture(`./20230120_road.png`)
     bakedRoadTexture.flipY = false
@@ -77,14 +97,8 @@ export default function City(props) {
     const bakedPolishManBlueTexture = useTexture(`./blue.png`)
     bakedPolishManBlueTexture.flipY = false
 
-    // const bakedPolishManOrangeTexture = useTexture(`./orange.png`)
-    // bakedPolishManOrangeTexture.flipY = false
-
-    // const bakedPolishManWhiteTexture = useTexture(`./white.png`)
-    // bakedPolishManWhiteTexture.flipY = false
-
-    // const bakedPolishManYellowTexture = useTexture(`./yellow.png`)
-    // bakedPolishManYellowTexture.flipY = false
+    const bakedPolishManGreenTexture = useTexture(`./polish-man002.png`)
+    bakedPolishManGreenTexture.flipY = false
 
     const { scene, scenes, scroll } = useControl(state => state)
 
@@ -92,38 +106,38 @@ export default function City(props) {
         const unsubscribeReset = useControl.subscribe(
             (state) => state.scene,
             (value) => {
-                console.log(value)
-                if (value === 1) {
-                    gsap.to(buildingRef.current.material, {
-                        opacity: 1,
-                    })
-                    gsap.to(othersBuildingRef.current.material, {
-                        opacity: 1,
-                    })
-                    gsap.to(fourDesireMeshRef.current.material, {
-                        opacity: 1,
-                    })
-                    gsap.to(rawNFreshMeshRef.current.material, {
-                        opacity: 1,
-                    })
-                    actions.Animation.reset()
-                    actions.Animation.play()
-                }
-                if (value === 2) {
-                    gsap.to(buildingRef.current.material, {
-                        opacity: 0,
-                    })
-                    gsap.to(othersBuildingRef.current.material, {
-                        opacity: 0,
-                    })
-                    gsap.to(fourDesireMeshRef.current.material, {
-                        opacity: 0,
-                    })
-                    gsap.to(rawNFreshMeshRef.current.material, {
-                        opacity: 0,
-                    })
-                }
-                if (value === 3) {
+                console.log('value', value)
+                // if (value === scenes.LOOKING_BLUE_POLISH_MAN) {
+                //     gsap.to(buildingRef.current.material, {
+                //         opacity: 1,
+                //     })
+                //     gsap.to(othersBuildingRef.current.material, {
+                //         opacity: 1,
+                //     })
+                //     gsap.to(fourDesireMeshRef.current.material, {
+                //         opacity: 1,
+                //     })
+                //     gsap.to(rawNFreshMeshRef.current.material, {
+                //         opacity: 1,
+                //     })
+                //     actions.Animation.reset()
+                //     actions.Animation.play()
+                // }
+                // if (value === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
+                // gsap.to(buildingRef.current.material, {
+                //     opacity: 0,
+                // })
+                // gsap.to(othersBuildingRef.current.material, {
+                //     opacity: 0,
+                // })
+                // gsap.to(fourDesireMeshRef.current.material, {
+                //     opacity: 0,
+                // })
+                // gsap.to(rawNFreshMeshRef.current.material, {
+                //     opacity: 0,
+                // })
+                // }
+                if (value === scenes.LOOKING_PORTFOLIO) {
                     gsap.to(buildingRef.current.material, {
                         opacity: 1,
                     })
@@ -139,14 +153,14 @@ export default function City(props) {
     }, [])
 
 
-    const polishManShowedFollowingHiddenOne = () => {
-        const position = new THREE.Vector3(-0.025, 0.08, 0)
-        position.applyQuaternion(polishManHiddenRef.current.quaternion)
-        position.add(new THREE.Vector3(polishManHiddenRef.current.position.x, polishManHiddenRef.current.position.y, polishManHiddenRef.current.position.z))
+    // const polishManShowedFollowingHiddenOne = () => {
+    //     const position = new THREE.Vector3(-0.025, 0.08, 0)
+    //     position.applyQuaternion(polishManHiddenRef.current.quaternion)
+    //     position.add(new THREE.Vector3(polishManHiddenRef.current.position.x, polishManHiddenRef.current.position.y, polishManHiddenRef.current.position.z))
 
-        polishManShowedRef.current.position.copy(position)
-        polishManShowedRef.current.rotation.copy(polishManHiddenRef.current.rotation)
-    }
+    //     polishManShowedRef.current.position.copy(position)
+    //     polishManShowedRef.current.rotation.copy(polishManHiddenRef.current.rotation)
+    // }
 
     const cameraFollow = ({
         objRef,
@@ -179,9 +193,57 @@ export default function City(props) {
     useFrame((state, delta) => {
 
         if (scene === scenes.LOOKING_BLUE_POLISH_MAN) {
+
+            const cameraPosition = new THREE.Vector3(
+                device !== "desktop" ? -28 : -6.5,
+                device !== "desktop" ? 30 : 20,
+                device !== "desktop" ? -30 : -20
+            )
+            const cameraTarget = new THREE.Vector3(
+                device !== "desktop" ? -8 : -3,
+                device !== "desktop" ? -2 : -0,
+                device !== "desktop" ? 0 : 0
+            )
+
+            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+            state.camera.position.copy(smoothCameraPosition)
+            state.camera.lookAt(smoothCameraTarget)
+        }
+
+        if (scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
+
+            const cameraPosition = new THREE.Vector3(-21.6, 8.5, -19.44)
+            const cameraTarget = new THREE.Vector3(-5, 6, 2)
+
+            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+            state.camera.position.copy(smoothCameraPosition)
+            state.camera.lookAt(smoothCameraTarget)
+            // const cameraPosition = new THREE.Vector3(
+            //     polishManFloatingRef.current.position.x + (device !== "desktop" ? 0.3 : 0.18) + state.pointer.x * 0.01,
+            //     polishManFloatingRef.current.position.y + state.pointer.y * 0.01,
+            //     polishManFloatingRef.current.position.z + (device !== "desktop" ? 0.9 : 0.38)
+            // )
+            // const cameraTarget = new THREE.Vector3(
+            //     polishManFloatingRef.current.position.x - (device !== "desktop" ? 0.08 : 0.09),
+            //     polishManFloatingRef.current.position.y - (device !== "desktop" ? -0.05 : 0.01),
+            //     polishManFloatingRef.current.position.z + (device !== "desktop" ? 0 : 0)
+            // )
+
+            // smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+            // smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+            // state.camera.position.copy(smoothCameraPosition)
+            // state.camera.lookAt(smoothCameraTarget)
+        }
+
+        if (scene === scenes.LOOKING_PORTFOLIO) {
             const { cameraPosition, cameraTarget } = cameraFollow({
                 objRef: polishManHiddenRef,
-                initialPosition: new THREE.Vector3(-4, 9, -10),
+                initialPosition: new THREE.Vector3(-3, 6.5, -5),
 
                 initialTarget: new THREE.Vector3(
                     device !== "desktop" ? -0 : -0,
@@ -197,17 +259,17 @@ export default function City(props) {
             state.camera.lookAt(smoothCameraTarget)
         }
 
-
-        if (scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
+        if (scene === "412c67d3913547108916a69423a1958e") {
             const cameraPosition = new THREE.Vector3(
-                polishManFloatingRef.current.position.x + (device !== "desktop" ? 0.3 : 0.18) + state.pointer.x * 0.01,
-                polishManFloatingRef.current.position.y + state.pointer.y * 0.01,
-                polishManFloatingRef.current.position.z + (device !== "desktop" ? 0.9 : 0.38)
+                projectFourDesireRef.current.position.x - (device !== "desktop" ? 1.7 : 1.5),
+                projectFourDesireRef.current.position.y,
+                projectFourDesireRef.current.position.z - (device !== "desktop" ? 0.1 : 1)
             )
+
             const cameraTarget = new THREE.Vector3(
-                polishManFloatingRef.current.position.x - (device !== "desktop" ? 0.08 : 0.09),
-                polishManFloatingRef.current.position.y - (device !== "desktop" ? -0.05 : 0.01),
-                polishManFloatingRef.current.position.z + (device !== "desktop" ? 0 : 0)
+                projectFourDesireRef.current.position.x + 2,
+                projectFourDesireRef.current.position.y,
+                projectFourDesireRef.current.position.z
             )
 
             smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
@@ -217,7 +279,7 @@ export default function City(props) {
             state.camera.lookAt(smoothCameraTarget)
         }
 
-        if (scene == scenes.LOOKING_CSO) {
+        if (scene === "cc") {
             projectTestRef.current.geometry.center()
             projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
             projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
@@ -241,7 +303,7 @@ export default function City(props) {
             state.camera.lookAt(smoothCameraTarget)
         }
 
-        if (scene == scenes.LOOKING_RAW_N_FRESH) {
+        if (scene === "c785970d9f0949df9e6fcd77a33ff7e4") {
             const cameraPosition = new THREE.Vector3(
                 projectRawNFreshRef.current.position.x + 1.2,
                 projectRawNFreshRef.current.position.y,
@@ -261,33 +323,15 @@ export default function City(props) {
             state.camera.lookAt(smoothCameraTarget)
         }
 
-        if (scene == scenes.LOOKING_FOUR_DESIRE) {
-            const cameraPosition = new THREE.Vector3(
-                projectFourDesireRef.current.position.x - (device !== "desktop" ? 1.7 : 1.5),
-                projectFourDesireRef.current.position.y,
-                projectFourDesireRef.current.position.z - (device !== "desktop" ? 0.1 : 1)
-            )
 
-            const cameraTarget = new THREE.Vector3(
-                projectFourDesireRef.current.position.x + 2,
-                projectFourDesireRef.current.position.y,
-                projectFourDesireRef.current.position.z
-            )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
-        }
 
     })
 
     return (
         <group ref={group} {...props} dispose={null}>
-            <group name="Scene">
+            <group ref={whloeMap} name="Scene">
                 <mesh
-                    visible={scene == 1}
+                    ref={groundRef}
                     name="ground"
                     castShadow
                     receiveShadow
@@ -299,6 +343,178 @@ export default function City(props) {
                         map={bakedGroundTexture}
                     />
                 </mesh>
+
+                {/* 4 Desire */}
+                <mesh visible={false} ref={projectFourDesireRef} position={[-0, 0.3, 1.45]} rotation-y={1}>
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
+                <mesh
+                    ref={fourDesireMeshRef}
+                    name="A01"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["A01"].geometry}
+                    material={nodes["A01"].material}
+                    position={[0, 0.03, 0]}
+                    rotation={[Math.PI / 2, 0, 0]}
+                >
+                    <meshBasicMaterial map={bakedA01Texture} transparent={true} />
+                </mesh>
+
+                {/* 沙西米 */}
+                <mesh visible={false} ref={projectRawNFreshRef} position={[-1.45, 0.19, 1.17]} rotation-y={Math.PI * 0.25}>
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
+                <mesh
+                    ref={rawNFreshMeshRef}
+                    name="A02"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A02.geometry}
+                    material={nodes.A02.material}
+                    position={[0, -0.09, 0]}
+                    rotation={[Math.PI / 2, 0, 0]}
+                >
+                    <meshBasicMaterial map={bakedA02Texture} transparent={true} />
+                </mesh>
+
+                {/* CSO */}
+                <mesh visible={false} ref={projectCSOnlineRef} position={[-1.5, 0.12, 4.1]} rotation-y={Math.PI * 1.3}>
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
+                <group ref={projectTestGroupRef}>
+                    <mesh
+                        ref={projectTestRef}
+                        name="A03"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes.A03.geometry}
+                        material={nodes.A03.material}
+                        position={[0, 0.03, 0]}
+                        rotation={[Math.PI / 2, 0, 0]}
+                    >
+                        <meshBasicMaterial map={bakedA03Texture} transparent={true} />
+                    </mesh>
+                </group>
+
+                {/* WASSUP */}
+                <mesh visible={false} position={[-3.3, 0.49, 4.6]} rotation-y={Math.PI * 0.25}>
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
+                <mesh
+                    name="A04"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A04.geometry}
+                    material={nodes.A04.material}
+                    position={[-3.27, 0.17, 4.61]}
+                >
+                    <meshBasicMaterial map={bakedA04Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A05"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A05.geometry}
+                    material={nodes.A05.material}
+                    position={[-2.49, 0.44, 6.34]}
+                >
+                    <meshBasicMaterial map={bakedA05Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A06"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A06.geometry}
+                    material={nodes.A06.material}
+                    position={[-3.56, 0.26, 7.56]}
+                >
+                    <meshBasicMaterial map={bakedA06Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A07"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A07.geometry}
+                    material={nodes.A07.material}
+                    position={[-4.65, 0.19, 6.62]}
+                >
+                    <meshBasicMaterial map={bakedA07Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A08"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A08.geometry}
+                    material={nodes.A08.material}
+                    position={[-6.75, 0.34, 8.65]}
+                >
+                    <meshBasicMaterial map={bakedA08Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A09"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A09.geometry}
+                    material={nodes.A09.material}
+                    position={[-7.93, 0.31, 9.84]}
+                >
+                    <meshBasicMaterial map={bakedA09Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A10"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A10.geometry}
+                    material={nodes.A10.material}
+                    position={[-10.18, 0.57, 9.75]}
+                >
+                    <meshBasicMaterial map={bakedA10Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A15"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A15.geometry}
+                    material={nodes.A15.material}
+                    position={[-8.6, 0.32, -0.14]}
+                >
+                    <meshBasicMaterial map={bakedA15Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A19"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A19.geometry}
+                    material={nodes.A19.material}
+                    position={[-4.11, 0.34, -0.23]}
+                >
+                    <meshBasicMaterial map={bakedA19Texture} transparent={true} />
+                </mesh>
+
+                <mesh
+                    name="A20"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A20.geometry}
+                    material={nodes.A20.material}
+                    position={[-2.6, 0.34, -0.3]}
+                >
+                    <meshBasicMaterial map={bakedA20Texture} transparent={true} />
+                </mesh>
+
                 <mesh
                     ref={buildingRef}
                     name="houses"
@@ -312,129 +528,15 @@ export default function City(props) {
                 </mesh>
                 <mesh
                     ref={othersBuildingRef}
-                    name="houses_others"
+                    name="houses_O"
                     castShadow
                     receiveShadow
-                    geometry={nodes.houses_others.geometry}
-                    material={nodes.houses_others.material}
+                    geometry={nodes.houses_O.geometry}
+                    material={nodes.houses_O.material}
                     position={[-3.27, 0.13, 4.61]}
                 >
-                    <meshBasicMaterial map={bakedHouses0Texture} transparent={true} />
-                </mesh>
 
-                {/* 4 Desire */}
-                <mesh visible={false} ref={projectFourDesireRef} position={[-0, 0.3, 1.45]} rotation-y={1}>
-                    <boxGeometry args={[0.25, 0.25, 0.25]} />
-                    <meshBasicMaterial color="red" />
-                </mesh>
-                <mesh
-                    ref={fourDesireMeshRef}
-                    name="house001"
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.house001.geometry}
-                    material={nodes.house001.material}
-                    position={[0, 0.03, 0]}
-                    rotation={[Math.PI / 2, 0, 0]}
-                >
-                    <meshBasicMaterial map={bakedHouse001Texture} transparent={true} />
-                </mesh>
-
-                {/* 沙西米 */}
-                <mesh visible={false} ref={projectRawNFreshRef} position={[-1.45, 0.19, 1.17]} rotation-y={Math.PI * 0.25}>
-                    <boxGeometry args={[0.25, 0.25, 0.25]} />
-                    <meshBasicMaterial color="red" />
-                </mesh>
-                <mesh
-                    ref={rawNFreshMeshRef}
-                    name="house002"
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.house002.geometry}
-                    material={nodes.house002.material}
-                    position={[0, -0.09, 0]}
-                    rotation={[Math.PI / 2, 0, 0]}
-                >
-                    <meshBasicMaterial map={bakedHouse002Texture} transparent={true} />
-                </mesh>
-
-                {/* CSO */}
-                <mesh visible={false} ref={projectCSOnlineRef} position={[-1.5, 0.12, 4.1]} rotation-y={Math.PI * 1.3}>
-                    <boxGeometry args={[0.25, 0.25, 0.25]} />
-                    <meshBasicMaterial color="red" />
-                </mesh>
-                <group ref={projectTestGroupRef}>
-                    <mesh
-                        ref={projectTestRef}
-                        name="house003"
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.house003.geometry}
-                        material={nodes.house003.material}
-                        position={[0, 0.03, 0]}
-                        rotation={[Math.PI / 2, 0, 0]}
-                    >
-                        <meshBasicMaterial map={bakedHouse003Texture} transparent={true} />
-                    </mesh>
-                </group>
-
-
-                {/* WASSUP */}
-                <mesh visible={false} position={[-3.3, 0.49, 4.6]} rotation-y={Math.PI * 0.25}>
-                    <boxGeometry args={[0.25, 0.25, 0.25]} />
-                    <meshBasicMaterial color="red" />
-                </mesh>
-                <mesh
-                    name="house004"
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.house004.geometry}
-                    material={nodes.house004.material}
-                    position={[-3.27, 0.17, 4.61]}
-                >
-                    <meshBasicMaterial map={bakedHouse004Texture} transparent={true} />
-                </mesh>
-                <mesh
-                    name="house005"
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.house005.geometry}
-                    material={nodes.house005.material}
-                    position={[-2.49, 0.44, 6.34]}
-                >
-                    <meshBasicMaterial map={bakedHouse005Texture} transparent={true} />
-                </mesh>
-                <mesh
-                    name="house006"
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.house006.geometry}
-                    material={nodes.house006.material}
-                    position={[-3.56, 0.26, 7.56]}
-                >
-                    <meshBasicMaterial map={bakedHouse006Texture} transparent={true} />
-                </mesh>
-                <mesh
-                    name="house007"
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.house007.geometry}
-                    material={nodes.house007.material}
-                    position={[-4.65, 0.19, 6.62]}
-                >
-                    <meshBasicMaterial map={bakedHouse007Texture} transparent={true} />
-                </mesh>
-                <mesh
-                    visible={scene == 2}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.ground.geometry}
-                    material={nodes.ground.material}
-                    position={[-6.22, 0.28, 1.13]}
-                >
-                    <meshBasicMaterial
-                        color="#e7f9fd"
-                    />
+                    <meshBasicMaterial map={bakedHouseOTexture} transparent={true} />
                 </mesh>
                 <mesh
                     name="road"
@@ -455,11 +557,11 @@ export default function City(props) {
                     receiveShadow
                     geometry={nodes["polish-man002"].geometry}
                     material={nodes["polish-man002"].material}
-                    position={[-8.58, 0.16, 6.71]}
-                    rotation={[-2.62, -0.86, -Math.PI]}
-                    scale={0.84}
+                    position={[-8.63, 0.33, 6.71]}
+                    rotation={[-2.23, -1.15, -2.69]}
+                    scale={1.79}
                 >
-                    {/* <meshBasicMaterial map={bakedPolishManYellowTexture} /> */}
+                    {/* <meshBasicMaterial map={bakedPolishManGreenTexture} /> */}
                 </mesh>
 
                 <mesh
@@ -476,7 +578,6 @@ export default function City(props) {
 
                 {/* 實際要顯示的磨人 */}
                 <Test
-                    // visible={scene == 1}
                     visible={false}
                     ref={polishManShowedRef}
                     groupRotation={[0, -Math.PI / 6, 0]}
@@ -488,17 +589,16 @@ export default function City(props) {
                 </Test>
 
                 {/* 實際要顯示的磨人 原地漂浮-藍色 */}
-                <Test
+                {/* <Test
                     visible={scene == 2}
                     ref={polishManFloatingRef}
                     position={[-0.55, 0.13, 1.3]}
                     rotation={[2.15 * Math.PI, 2.12 * Math.PI, 2.21 * Math.PI]}
                 >
-                    {/* <meshBasicMaterial map={bakedPolishManBlueTexture} /> */}
-                </Test>
+                </Test> */}
             </group>
         </group>
     );
 }
 
-useGLTF.preload(`./230123_city.glb`);
+useGLTF.preload(`./230206_city.glb`);
