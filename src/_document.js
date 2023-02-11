@@ -12,7 +12,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="og:image" content="/og.png" />
+          <meta name="og:image" content="/og.jpg" />
           <meta name="twitter:card" content="summary_large_image" />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

@@ -35,6 +35,7 @@ export default function City(props) {
 
     const fourDesireMeshRef = useRef()
     const projectFourDesireRef = useRef()
+    const wassupRef = useRef()
 
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
@@ -195,8 +196,8 @@ export default function City(props) {
         if (scene === scenes.LOOKING_BLUE_POLISH_MAN) {
 
             const cameraPosition = new THREE.Vector3(
-                device !== "desktop" ? -28 : -6.5,
-                device !== "desktop" ? 30 : 20,
+                device !== "desktop" ? -28 : -6.5 + state.pointer.x * 0.6,
+                device !== "desktop" ? 30 : 20 + state.pointer.y * 0.9,
                 device !== "desktop" ? -30 : -20
             )
             const cameraTarget = new THREE.Vector3(
@@ -214,7 +215,11 @@ export default function City(props) {
 
         if (scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
 
-            const cameraPosition = new THREE.Vector3(-21.6, 8.5, -19.44)
+            const cameraPosition = new THREE.Vector3(
+                -21.6 + state.pointer.x * 0.7,
+                8.5 + state.pointer.y * 1,
+                -19.44
+            )
             const cameraTarget = new THREE.Vector3(-5, 6, 2)
 
             smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
@@ -222,22 +227,6 @@ export default function City(props) {
 
             state.camera.position.copy(smoothCameraPosition)
             state.camera.lookAt(smoothCameraTarget)
-            // const cameraPosition = new THREE.Vector3(
-            //     polishManFloatingRef.current.position.x + (device !== "desktop" ? 0.3 : 0.18) + state.pointer.x * 0.01,
-            //     polishManFloatingRef.current.position.y + state.pointer.y * 0.01,
-            //     polishManFloatingRef.current.position.z + (device !== "desktop" ? 0.9 : 0.38)
-            // )
-            // const cameraTarget = new THREE.Vector3(
-            //     polishManFloatingRef.current.position.x - (device !== "desktop" ? 0.08 : 0.09),
-            //     polishManFloatingRef.current.position.y - (device !== "desktop" ? -0.05 : 0.01),
-            //     polishManFloatingRef.current.position.z + (device !== "desktop" ? 0 : 0)
-            // )
-
-            // smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            // smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            // state.camera.position.copy(smoothCameraPosition)
-            // state.camera.lookAt(smoothCameraTarget)
         }
 
         if (scene === scenes.LOOKING_PORTFOLIO) {
@@ -259,7 +248,7 @@ export default function City(props) {
             state.camera.lookAt(smoothCameraTarget)
         }
 
-        if (scene === "412c67d3913547108916a69423a1958e") {
+        if (scene === "A01") {
             const cameraPosition = new THREE.Vector3(
                 projectFourDesireRef.current.position.x - (device !== "desktop" ? 1.7 : 1.5),
                 projectFourDesireRef.current.position.y,
@@ -279,7 +268,27 @@ export default function City(props) {
             state.camera.lookAt(smoothCameraTarget)
         }
 
-        if (scene === "cc") {
+        if (scene === "A02") {
+            const cameraPosition = new THREE.Vector3(
+                projectRawNFreshRef.current.position.x + 1.2,
+                projectRawNFreshRef.current.position.y,
+                projectRawNFreshRef.current.position.z + 1
+            )
+
+            const cameraTarget = new THREE.Vector3(
+                projectRawNFreshRef.current.position.x + (device !== "desktop" ? 0 : -2),
+                projectRawNFreshRef.current.position.y,
+                projectRawNFreshRef.current.position.z
+            )
+
+            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+            state.camera.position.copy(smoothCameraPosition)
+            state.camera.lookAt(smoothCameraTarget)
+        }
+
+        if (scene === "A03") {
             projectTestRef.current.geometry.center()
             projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
             projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
@@ -294,26 +303,6 @@ export default function City(props) {
                 projectCSOnlineRef.current.position.x,
                 projectCSOnlineRef.current.position.y,
                 projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-            )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
-        }
-
-        if (scene === "c785970d9f0949df9e6fcd77a33ff7e4") {
-            const cameraPosition = new THREE.Vector3(
-                projectRawNFreshRef.current.position.x + 1.2,
-                projectRawNFreshRef.current.position.y,
-                projectRawNFreshRef.current.position.z + 1
-            )
-
-            const cameraTarget = new THREE.Vector3(
-                projectRawNFreshRef.current.position.x + (device !== "desktop" ? 0 : -2),
-                projectRawNFreshRef.current.position.y,
-                projectRawNFreshRef.current.position.z
             )
 
             smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
@@ -406,6 +395,7 @@ export default function City(props) {
                     <meshBasicMaterial color="red" />
                 </mesh>
                 <mesh
+                    ref={wassupRef}
                     name="A04"
                     castShadow
                     receiveShadow
