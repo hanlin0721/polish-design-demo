@@ -4,6 +4,7 @@ import { useWindowLoad } from "../utils/window";
 import Lottie from "lottie-react";
 import LogoAnim from "../lottie/221002_Loading_Lottie.json";
 import appStore from "../store/store";
+import MapLoading from "../images/common/map-loading.png"
 
 // const InOutSounds = ({ isPlay }) => {
 //   const playerRef = useRef();
@@ -61,7 +62,7 @@ function MapsLoading() {
       top="0"
       w="100vw"
       h="100vh"
-      bgColor="#000"
+      bgColor="blue.50"
       opacity={loading ? 1 : 0}
       transition={!loading ? "0.5s ease" : ""}
     >
@@ -79,7 +80,8 @@ function MapsLoading() {
         {/* <Box mb="20px">
           <Anim />
         </Box> */}
-        <Spinner w="15px" h="15px" speed="0.3s" color="#fff" />
+        {/* <Spinner w="15px" h="15px" speed="0.3s" color="#fff" /> */}
+        <Image src={MapLoading.src} animation="fade 1.8s ease-in-out infinite" />
       </Stack>
     </Flex>
   );

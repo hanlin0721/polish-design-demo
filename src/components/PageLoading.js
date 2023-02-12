@@ -33,7 +33,7 @@ function PageLoading() {
       top="0"
       w="100vw"
       h="100vh"
-      bgColor="#FFF"
+      bgColor="blue.50"
       opacity={loading ? 1 : 0}
       transition={"0.5s ease"}
     >

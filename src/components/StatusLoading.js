@@ -12,7 +12,7 @@ function StatusLoading() {
       pos="fixed"
       w="100%"
       h="100%"
-      bgColor="#000"
+      bgColor="blue.50"
       opacity={isLoading ? 1 : 0}
       transition="0.5s ease 0.5s"
     />

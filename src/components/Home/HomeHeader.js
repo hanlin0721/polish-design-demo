@@ -401,7 +401,7 @@ const HomeHeader = () => {
                     bottom="0"
                     textAlign="center"
                     pointerEvents="none"
-                    animation="verticalFloat 1s ease-in-out infinite"
+                    animation="verticalFloat 1.6s ease-in-out infinite"
                     display={scene === scenes.LOOKING_PORTFOLIO ? "none" : "block"}
                     zIndex="11"
                 >
