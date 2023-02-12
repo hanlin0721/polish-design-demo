@@ -7,11 +7,11 @@ import Map from "../../components/Maps/Map.js";
 import PolishManWhite from "../../images/home/polish-man-white.png";
 import PolishManBlue from "../../images/home/polish-man-blue.png";
 import PolishManOrange from "../../images/home/polish-man-orange.png";
-import CircleActionIcon from "../../images/home/icons/action_circle_button.svg"
 import { useTouch } from "../../utils/useTouch";
 import api from "../../store/api";
 import { useRouter } from "next/router";
 import CookiesNotice from "../CookiesNotice";
+import WorkNav from "../../components/Work/WorkNav.js"
 
 const HomeHeader = () => {
     const router = useRouter()
@@ -47,8 +47,13 @@ const HomeHeader = () => {
         }
     }, [router.isReady]);
 
-    const goWorkPage = useCallback(() => {
-        router.push('/work')
+    const goWorkPage = useCallback((code) => {
+        router.push({
+            pathname: "/work",
+            query: {
+                workId: code
+            }
+        })
     })
 
     return (
@@ -166,6 +171,7 @@ const HomeHeader = () => {
                     // transitionDelay={scene !== scenes.LOOKING_FLOATING_BLUE_POLISH_MAN ? "0s" : "1.6s"}
                     transitionTimingFunction="ease"
                     transitionProperty={"opacity"}
+                    pointerEvents="none"
                 >
                     {/* Desktop - We Focus More On Results*/}
                     <Box>
@@ -210,9 +216,14 @@ const HomeHeader = () => {
                 </Box>
 
                 {/* Portfolio */}
-                {/* <Flex pos="absolute" w="100%" h="100%" opacity={1} bg="#97A2AD" mixBlendMode="color">
-
-                </Flex> */}
+                <Flex
+                    pos="absolute"
+                    w="100%" h="100%"
+                    opacity={scene === scenes.LOOKING_PORTFOLIO ? 1 : 0}
+                    bg="#97A2AD"
+                    mixBlendMode="color"
+                    pointerEvents="none"
+                />
                 <Flex
                     pos="absolute"
                     pointerEvents={scene === scenes.LOOKING_PORTFOLIO ? "auto" : "none"}
@@ -299,6 +310,7 @@ const HomeHeader = () => {
                                         overflow="hidden"
                                         cursor="pointer"
                                         mx="12.5px"
+                                        onClick={() => goWorkPage(article.article_code)}
                                     >
                                         <Image w="100%" h="100%" objectFit="cover" src={article.image} />
                                     </Box>
@@ -414,9 +426,6 @@ const HomeHeader = () => {
                 <CookiesNotice />
 
             </Flex>
-
-            {/* <WorkNav /> */}
-
         </>
     );
 }

@@ -1,7 +1,7 @@
 import { Box, Flex, Text, VStack } from "@chakra-ui/react";
 import MainButton from "../MainButton";
 import useControl from "../../store/useControl";
-const WorkDesc = ({ work, show, ...props }) => {
+const WorkDesc = ({ work, show }) => {
 
     const updateScroll = useControl((state) => state.updateScroll)
     const test = (e) => {
@@ -22,7 +22,7 @@ const WorkDesc = ({ work, show, ...props }) => {
                 {/* 專案類型 */}
                 <Box pl="46px" overflow="hidden">
                     <Flex py="17px" overflowX="scroll">
-                        <Box flexShrink="0" py="6px" px="12px" mr="10px" bg="#303C4A" borderRadius="15px">
+                        <Box flexShrink="0" py="6px" px="12px" mr="10px" bg="blue.700" borderRadius="15px">
                             <Text fontSize="12px">線上策展</Text>
                         </Box>
                     </Flex>

@@ -1,5 +1,5 @@
 import appStore from "../store/store";
-import { Spinner, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 function StatusLoading() {
   const { isLoading } = appStore;

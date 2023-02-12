@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import Experience from '../../components/Maps/Experience.js'
-import { memo, useEffect, useState, useCallback, useRef, useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import useControl from "../../store/useControl.js";
 import _ from 'lodash';
 import * as THREE from 'three'

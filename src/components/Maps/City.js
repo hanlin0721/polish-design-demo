@@ -107,7 +107,6 @@ export default function City(props) {
         const unsubscribeReset = useControl.subscribe(
             (state) => state.scene,
             (value) => {
-                console.log('value', value)
                 // if (value === scenes.LOOKING_BLUE_POLISH_MAN) {
                 //     gsap.to(buildingRef.current.material, {
                 //         opacity: 1,
@@ -192,103 +191,196 @@ export default function City(props) {
 
 
     useFrame((state, delta) => {
+        let cameraPosition = new THREE.Vector3(
+            device !== "desktop" ? -28 : -6.5 + state.pointer.x * 0.6,
+            device !== "desktop" ? 30 : 20 + state.pointer.y * 0.9,
+            device !== "desktop" ? -30 : -20
+        )
+        let cameraTarget = new THREE.Vector3(
+            device !== "desktop" ? -8 : -3,
+            device !== "desktop" ? -2 : -0,
+            device !== "desktop" ? 0 : 0
+        )
 
         if (scene === scenes.LOOKING_BLUE_POLISH_MAN) {
-
-            const cameraPosition = new THREE.Vector3(
+            cameraPosition = new THREE.Vector3(
                 device !== "desktop" ? -28 : -6.5 + state.pointer.x * 0.6,
                 device !== "desktop" ? 30 : 20 + state.pointer.y * 0.9,
                 device !== "desktop" ? -30 : -20
             )
-            const cameraTarget = new THREE.Vector3(
+
+            cameraTarget = new THREE.Vector3(
                 device !== "desktop" ? -8 : -3,
                 device !== "desktop" ? -2 : -0,
                 device !== "desktop" ? 0 : 0
             )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
         }
 
         if (scene === scenes.LOOKING_FLOATING_BLUE_POLISH_MAN) {
-
-            const cameraPosition = new THREE.Vector3(
+            cameraPosition = new THREE.Vector3(
                 -21.6 + state.pointer.x * 0.7,
                 8.5 + state.pointer.y * 1,
                 -19.44
             )
-            const cameraTarget = new THREE.Vector3(-5, 6, 2)
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
+            cameraTarget = new THREE.Vector3(-5, 6, 2)
         }
 
         if (scene === scenes.LOOKING_PORTFOLIO) {
-            const { cameraPosition, cameraTarget } = cameraFollow({
+            const { cameraPosition: cp, cameraTarget: ct } = cameraFollow({
                 objRef: polishManHiddenRef,
                 initialPosition: new THREE.Vector3(-3, 6.5, -5),
-
                 initialTarget: new THREE.Vector3(
                     device !== "desktop" ? -0 : -0,
                     device !== "desktop" ? 0.3 : 0,
                     device !== "desktop" ? -0.2 : 0
                 )
             })
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
+            cameraPosition = cp
+            cameraTarget = ct
         }
 
         if (scene === "A01") {
-            const cameraPosition = new THREE.Vector3(
+            cameraPosition = new THREE.Vector3(
                 projectFourDesireRef.current.position.x - (device !== "desktop" ? 1.7 : 1.5),
                 projectFourDesireRef.current.position.y,
                 projectFourDesireRef.current.position.z - (device !== "desktop" ? 0.1 : 1)
             )
 
-            const cameraTarget = new THREE.Vector3(
+            cameraTarget = new THREE.Vector3(
                 projectFourDesireRef.current.position.x + 2,
                 projectFourDesireRef.current.position.y,
                 projectFourDesireRef.current.position.z
             )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
         }
 
         if (scene === "A02") {
-            const cameraPosition = new THREE.Vector3(
+            cameraPosition = new THREE.Vector3(
                 projectRawNFreshRef.current.position.x + 1.2,
                 projectRawNFreshRef.current.position.y,
                 projectRawNFreshRef.current.position.z + 1
             )
 
-            const cameraTarget = new THREE.Vector3(
+            cameraTarget = new THREE.Vector3(
                 projectRawNFreshRef.current.position.x + (device !== "desktop" ? 0 : -2),
                 projectRawNFreshRef.current.position.y,
                 projectRawNFreshRef.current.position.z
             )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
         }
 
         if (scene === "A03") {
+            // projectTestRef.current.geometry.center()
+            // projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+            // projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+            cameraPosition = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+            )
+
+            cameraTarget = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x,
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+            )
+        }
+
+        // if (scene === "A04") {
+        //     projectTestRef.current.geometry.center()
+        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+
+        //     const cameraPosition = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+        //     )
+
+        //     const cameraTarget = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x,
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+        //     )
+
+        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+        //     state.camera.position.copy(smoothCameraPosition)
+        //     state.camera.lookAt(smoothCameraTarget)
+        // }
+
+        // if (scene === "A08") {
+        //     projectTestRef.current.geometry.center()
+        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+
+        //     const cameraPosition = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+        //     )
+
+        //     const cameraTarget = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x,
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+        //     )
+
+        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+        //     state.camera.position.copy(smoothCameraPosition)
+        //     state.camera.lookAt(smoothCameraTarget)
+        // }
+
+        // if (scene === "A09") {
+        //     projectTestRef.current.geometry.center()
+        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+
+        //     const cameraPosition = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+        //     )
+
+        //     const cameraTarget = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x,
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+        //     )
+
+        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+        //     state.camera.position.copy(smoothCameraPosition)
+        //     state.camera.lookAt(smoothCameraTarget)
+        // }
+
+        // if (scene === "A10") {
+        //     projectTestRef.current.geometry.center()
+        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+
+        //     const cameraPosition = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+        //     )
+
+        //     const cameraTarget = new THREE.Vector3(
+        //         projectCSOnlineRef.current.position.x,
+        //         projectCSOnlineRef.current.position.y,
+        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+        //     )
+
+        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+        //     state.camera.position.copy(smoothCameraPosition)
+        //     state.camera.lookAt(smoothCameraTarget)
+        // }
+
+        if (scene === "A11") {
             projectTestRef.current.geometry.center()
             projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
             projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
@@ -312,7 +404,83 @@ export default function City(props) {
             state.camera.lookAt(smoothCameraTarget)
         }
 
+        if (scene === "A15") {
+            projectTestRef.current.geometry.center()
+            projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+            projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
 
+            const cameraPosition = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+            )
+
+            const cameraTarget = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x,
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+            )
+
+            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+            state.camera.position.copy(smoothCameraPosition)
+            state.camera.lookAt(smoothCameraTarget)
+        }
+
+        if (scene === "A19") {
+            projectTestRef.current.geometry.center()
+            projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+            projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+
+            const cameraPosition = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+            )
+
+            const cameraTarget = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x,
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+            )
+
+            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+            state.camera.position.copy(smoothCameraPosition)
+            state.camera.lookAt(smoothCameraTarget)
+        }
+
+        if (scene === "A20") {
+            projectTestRef.current.geometry.center()
+            projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
+            projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+
+            const cameraPosition = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
+            )
+
+            const cameraTarget = new THREE.Vector3(
+                projectCSOnlineRef.current.position.x,
+                projectCSOnlineRef.current.position.y,
+                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
+            )
+
+            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+            state.camera.position.copy(smoothCameraPosition)
+            state.camera.lookAt(smoothCameraTarget)
+        }
+
+        smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
+        smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
+
+        state.camera.position.copy(smoothCameraPosition)
+        state.camera.lookAt(smoothCameraTarget)
 
     })
 

@@ -1,5 +1,4 @@
 import { Flex, Image, Text, Box, Icon } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import { MdOutlineOpenInNew } from "react-icons/md";
 

@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Spinner, Flex, Box, Stack, Image } from "@chakra-ui/react";
-import cloud from "../images/home/cloud.png";
 import { useWindowLoad } from "../utils/window";
 import Lottie from "lottie-react";
 import LogoAnim from "../lottie/221002_Loading_Lottie.json";
 import appStore from "../store/store";
-import { useLocalStorage } from "../utils/window";
 
 // const InOutSounds = ({ isPlay }) => {
 //   const playerRef = useRef();

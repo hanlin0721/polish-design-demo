@@ -20,11 +20,11 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
   const isContactPaeg = () => {
-    return router.asPath === "/contact"
+    return router.pathname === "/contact"
   }
 
   const isWorkPage = () => {
-    return router.asPath === "/work"
+    return router.pathname === "/work"
   }
 
   const showWhiteLogo = () => {

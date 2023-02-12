@@ -3,96 +3,13 @@ import {
     Flex,
     Image,
     Text,
-    HStack,
     VStack,
 } from "@chakra-ui/react";
-import React, { useEffect, useState, useRef, memo } from "react";
-import { useTranslation } from "next-i18next";
+import React, { useEffect, useState, memo } from "react";
 import MainButton from "../MainButton";
 import useControl from "../../store/useControl";
 import api from "../../store/api";
 import Editor from "../Editor";
-const WorkContentFooter = ({ data }) => {
-    const { t } = useTranslation("common");
-    return (
-        <Box
-            mt="70px"
-            pb="70px"
-            pos="relative"
-            bgColor="#EEF2F5"
-            px={{ base: "20px", sm: "70px" }}
-            w={{ base: "calc(100% + 40px)", sm: "calc(100% + 140px)" }}
-            left={{ base: "-20px", sm: "-70px" }}
-            overflow="hidden"
-        >
-            <HStack color="#959595" pt="30px" mb="28px">
-                <Text
-                    fontSize="16px"
-                    textAlign="center"
-                    fontWeight="bold"
-                    mr="10px"
-                    pr="10px"
-                    borderRight="1px solid #D6D6D6"
-                    lineHeight="1"
-                >
-                    {data?.code.split("-")[0]}
-                    <br />
-                    {data?.code.split("-")[1]}
-                </Text>
-                <Text flex="1 1 auto" fontSize="12px" pb="4px">
-                    National Taiwan University
-                    <br />
-                    Study Abroad Expo
-                </Text>
-            </HStack>
-            <Text fontWeight="600" fontSize="24px" mb="30px">
-                {data?.title}
-            </Text>
-            <VStack mt="30x" justify="flex-start" align="flex-start">
-                {data?.apply_url && (
-                    <MainButton
-                        display="inline-flex"
-                        pr="50px"
-                        pl="20px"
-                        w="auto"
-                        text={t("maps.apply-btn")}
-                        href={data?.apply_url}
-                        target="_blank"
-                        boxShadow="none"
-                    />
-                )}
-                {data?.experiences?.map(({ url }) => (
-                    <MainButton
-                        key={url}
-                        display="inline-flex"
-                        pr="50px"
-                        pl="20px"
-                        w="auto"
-                        text={t("maps.note-btn")}
-                        href={url}
-                        target="_blank"
-                        boxShadow="none"
-                    />
-                ))}
-            </VStack>
-            <Box
-                cursor="pointer"
-                mt="30px"
-                w="90px"
-                p="7px"
-                border="1px solid rgba(0, 0, 0, .1)"
-                rounded="100%"
-                onClick={() => window.open(data?.university_url || data?.official)}
-                bgColor="#fff"
-            >
-                <Image src={data?.logo} alt={data?.title} />
-            </Box>
-            <Box pos="absolute" right="-30px" bottom="-37px" w="180px">
-                <Image src={data?.image} alt={data?.title} />
-            </Box>
-        </Box>
-    );
-};
 
 export const WorkTitle = memo(({ work, area }) => {
     const { title, logo } = work;
@@ -145,67 +62,28 @@ WorkTitle.displayName = "WorkTitle";
 export const WorkDesktopContent = React.forwardRef(({
     isMobile,
     work,
-    selectWork,
     types,
     show,
     nextWork,
     othersWork,
     onClick,
-    ...props
 }, ref) => {
-    console.log(types)
     const [data, setData] = useState(work);
     const [type, setType] = useState(null)
-    // const router = useRouter();
-    // const { locale } = router;
-    // const { token } = appStore;
-    const { t } = useTranslation("common");
-    // const contentRef = useRef();
+
     useEffect(() => {
-        console.log('=', work?.article_code)
         if (work?.article_code) {
             api.getArticle({ article_code: work?.article_code }).then(({
                 success,
                 article
             }) => {
-                console.log('success', success)
                 if (success) {
-                    console.log('===article', article)
-                    const type = types.find((type) => type.type === article?.type).name
+                    const type = types?.find((type) => type.type === article?.type).name
                     setData(article);
                     setType(type)
                 }
             });
         }
-        // contentRef?.current?.scrollTo(0, 0);
-        // if (type === "org") {
-        //     if (work?.id) {
-        //         api.getOrgDetail(work?.id, token).then((resp) => {
-        //             if (resp?.data?.success) {
-        //                 const data = {
-        //                     ...work,
-        //                     ...resp?.data?.data[locale === "en" ? "en" : "tw"],
-        //                 };
-        //                 setData(data);
-        //             }
-        //         });
-        //     }
-        // } else {
-        //     if (work?.id) {
-        //         api.getWorkDetail(work?.id, token).then((resp) => {
-        //             if (resp?.data?.success) {
-        //                 const data = {
-        //                     ...work,
-        //                     ...resp?.data?.data[locale === "en" ? "en" : "tw"],
-        //                     is_answered: resp?.data?.data.is_answered,
-        //                     is_favorite: resp?.data?.data.is_favorite,
-        //                     is_passed: resp?.data?.data.is_passed,
-        //                 };
-        //                 setData(data);
-        //             }
-        //         });
-        //     }
-        // }
     }, [work?.article_code]);
     const updateScroll = useControl((state) => state.updateScroll)
     const test = (e) => {
@@ -233,7 +111,7 @@ export const WorkDesktopContent = React.forwardRef(({
             >
                 <Flex py="17px" overflowX="scroll">
                     {
-                        <Box flexShrink="0" py="6px" px="12px" mr="10px" bg="#303C4A" borderRadius="15px">
+                        <Box flexShrink="0" py="6px" px="12px" mr="10px" bg="blue.700" borderRadius="15px">
                             <Text fontSize="12px">
                                 {type}
                             </Text>
@@ -247,6 +125,7 @@ export const WorkDesktopContent = React.forwardRef(({
                 pl={isMobile ? "20px" : "46px"}
                 pr={isMobile ? "20px" : "0px"}
                 mb="20px"
+                maxW="459px"
             >
                 <Text fontSize="24px" as="b">
                     {data?.title}
@@ -281,11 +160,11 @@ export const WorkDesktopContent = React.forwardRef(({
                     pl={isMobile ? "20px" : "0px"}
                 >
                     {
-                        data?.jobs.map((obj, index) => {
+                        data?.jobs?.map((obj, index) => {
                             return (
                                 <Box
                                     key={index}
-                                    pb={(work?.jobs.length - 1) === index ? "24px" : "0px"}
+                                    pb={(work?.jobs?.length - 1) === index ? "24px" : "0px"}
                                 >
                                     <Text>{obj.value}</Text>
                                 </Box>
@@ -297,7 +176,7 @@ export const WorkDesktopContent = React.forwardRef(({
 
             {/* 編輯器內容 */}
             <Box pl={isMobile ? "20px" : "46px"} >
-                <Box w="514px" h="271px" bg="grey" overflow="hidden">
+                <Box maxW="514px" bg="grey" overflow="hidden">
                     <Image src={work?.image} objectFit="cover" w="100%" h="100%" />
                 </Box>
                 <Editor content={data?.content} />
@@ -365,6 +244,7 @@ export const WorkDesktopContent = React.forwardRef(({
             <Box
                 pl={isMobile ? "20px" : "46px"}
                 pt="23px"
+                pb="92px"
                 bg="blue.900"
                 color="white"
                 display={isMobile ? "block" : "none"}
@@ -413,7 +293,7 @@ export const WorkDesktopContent = React.forwardRef(({
 WorkDesktopContent.displayName = "WorkDesktopContent";
 
 export const WorkMobileContent =
-    React.forwardRef(({ work, selectWork, show, nextWork, othersWork, onClick, ...props }, ref) => {
+    React.forwardRef(({ work, selectWork, show, types, nextWork, othersWork, onClick, ...props }, ref) => {
 
         const [isFull, setFull] = useState(false);
         const [isOpen, setOpen] = useState(!!work);
@@ -479,6 +359,7 @@ export const WorkMobileContent =
                         isMobile={true}
                         work={work}
                         show={show}
+                        types={types}
                         selectWork={selectWork}
                         nextWork={nextWork}
                         othersWork={othersWork}
@@ -487,6 +368,5 @@ export const WorkMobileContent =
                 </Box>
             </Box>
         );
-    })
-    ;
+    });
 WorkMobileContent.displayName = "WorkMobileContent";

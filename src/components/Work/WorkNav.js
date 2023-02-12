@@ -1,169 +1,151 @@
-import { Flex, Box, Text } from "@chakra-ui/react";
-import useControl from "../../store/useControl";
+import { Flex, Box, Image, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import WorkList from "./WorkList";
+import WorkFilter from "./WorkFilter";
+import WorkResult from "./WorkResult";
+import { WorkDesktopContent } from "./WorkContent";
 
-const WorkNav = () => {
-    // const { scene } = appStore
-
-    const { scene, scenes } = useControl((state) => state)
-
-    const scrollhandler = (e) => {
-        e.preventDefault()
-    }
-
+export const WorkDesktopNav = React.forwardRef(({
+    show,
+    works,
+    selectedWork,
+    selectedFilter,
+    selectFilter,
+    nextWork,
+    othersWork,
+    onClick,
+    types,
+}, ref) => {
     return (
-        <Flex
-            position="fixed"
-            top="0"
+        <Box
+            h="100vh"
+            bg="blue.900"
+            pos="absolute"
             left="0"
-            onScroll={scrollhandler}
-            h="100%"
-            overflow="hidden"
-            transform={`translateX(${scene === scenes.LOOKING_CSO ? "0%" : "-100%"})`}
+            transition="0.3s ease"
         >
-            <Box
-                bg="white"
-                h="100vh"
-                w="150px"
-                transitionProperty="opacity transform"
-                transitionDuration={"0.5s"}
-                transitionTimingFunction="ease"
-                borderRight="1px"
-                borderColor="rgba(0,0,0,0.07)"
+            <Flex h="100%" color="white">
+                <Box minW="171px" w="10vw" borderRight="1px" borderColor="blue.600">
+                </Box>
+
+                {/* 專案縮圖 */}
+                <WorkList
+                    works={works}
+                    selectedWork={selectedWork}
+                    show={show}
+                    onClick={onClick}
+                    flexDir="column"
+                />
+
+                <Box
+                    minW={show ? "560px" : "271px"}
+                    w="15vw"
+                    h="100%"
+                    pos="relative"
+                    transition="0.3s ease"
+                >
+                    <Flex
+                        display="block"
+                        flexDir="column"
+                        h="100%"
+                        opacity={show ? "0" : "1"}
+                    >
+
+                        <Box borderBottom="1px" borderColor="blue.600">
+                            <Text pl="19.5px" pt="25px" pb="19px" fontSize="20px" fontWeight="bold">Portfolio</Text>
+                        </Box>
+
+                        <WorkFilter
+                            filter={selectedFilter}
+                            selectFilter={selectFilter}
+                            options={types} />
+
+                        <WorkResult articles={works} onClick={onClick} />
+                    </Flex>
+
+                    <WorkDesktopContent
+                        ref={ref}
+                        work={selectedWork}
+                        types={types}
+                        show={show}
+                        nextWork={nextWork}
+                        othersWork={othersWork}
+                        onClick={onClick}
+                    />
+                </Box>
+            </Flex>
+        </Box>
+    )
+})
+WorkDesktopNav.displayName = "WorkDesktopNav"
+
+export const WorkMobileNav = ({
+    works,
+    selectedWorkCode,
+    onClick,
+}) => {
+    return (
+        <Box
+            w="100%"
+            h="22%"
+            bg="transparent"
+            pos="absolute"
+            top="0.5%"
+            left="0"
+            borderRadius="30px"
+        >
+            <Flex
+                w="98%"
+                h="100%"
+                bg="blue.900"
+                borderRadius="30px"
+                m="auto"
+                pos="relative"
+                zIndex={1}
+                flexDir="column"
+                overflow="hidden"
+                justifyContent="end"
+                px="14px"
             >
-            </Box>
-
-            <Box
-                bg="white"
-                h="100vh"
-                w="300px"
-                transform={`translateX(${scene === LOOKING_CSO ? "0%" : "-150%"})`}
-                transitionProperty="opacity transform"
-                transitionDuration={"1s"}
-                transitionTimingFunction="ease"
-                pt="30%"
-                overflow="scroll"
-            >
-                <Box
-                    mb="45px"
+                <Flex
+                    mb="20px"
+                    flexBasis="50px"
+                    overflow="scroll"
+                    w="100%"
                 >
-                    <Box
-                        bg="grey"
-                        w="100%"
-                        h="15vh"
-                        mb="4%"
-                    >
-
-                    </Box>
-
-                    <Box
-                        w="100%"
-                        pl="4%"
-                        maxW="230px"
-                    >
-                        <Text>
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-                    </Box>
-
-                </Box>
-
-                <Box
-                    mb="45px"
-                >
-                    <Box
-                        bg="grey"
-                        w="100%"
-                        h="15vh"
-                        mb="4%"
-                    >
-
-                    </Box>
-
-                    <Box
-                        w="100%"
-                        pl="4%"
-                        maxW="230px"
-                    >
-                        <Text>
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-                    </Box>
-
-                </Box>
-
-                <Box
-                    mb="45px"
-                >
-                    <Box
-                        bg="grey"
-                        w="100%"
-                        h="15vh"
-                        mb="4%"
-                    >
-
-                    </Box>
-
-                    <Box
-                        w="100%"
-                        pl="4%"
-                        maxW="230px"
-                    >
-                        <Text>
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-                    </Box>
-
-                </Box>
-
-                <Box
-                    mb="45px"
-                >
-                    <Box
-                        bg="grey"
-                        w="100%"
-                        h="15vh"
-                        mb="4%"
-                    >
-
-                    </Box>
-
-                    <Box
-                        w="100%"
-                        pl="4%"
-                        maxW="230px"
-                    >
-                        <Text>
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-                    </Box>
-
-                </Box>
-
-                <Box
-                    mb="45px"
-                >
-                    <Box
-                        bg="grey"
-                        w="100%"
-                        h="15vh"
-                        mb="4%"
-                    >
-
-                    </Box>
-
-                    <Box
-                        w="100%"
-                        pl="4%"
-                        maxW="230px"
-                    >
-                        <Text>
-                            Fourdesire 2021 年度使用者回顧活動 - High Five 玩心數據大揭秘
-                        </Text>
-                    </Box>
-
-                </Box>
-            </Box>
-        </Flex>
+                    {
+                        works?.map(article => {
+                            return (
+                                <Box
+                                    borderRadius="50%"
+                                    minW="50px"
+                                    w="50px"
+                                    h="50px"
+                                    mx="6px"
+                                    key={article.article_code}
+                                    onClick={() => onClick(article.article_code)}
+                                    pos="relative"
+                                    opacity={
+                                        article.article_code === selectedWorkCode ?
+                                            "100%" : "38%"
+                                    }
+                                >
+                                    <Image
+                                        w="50px"
+                                        h="50px"
+                                        objectFit="cover"
+                                        src={article.image}
+                                        borderRadius="full"
+                                        alt={article.og_title}
+                                    />
+                                </Box>
+                            )
+                        })
+                    }
+                </Flex>
+            </Flex>
+        </Box>
     )
 }
-export default WorkNav;
+
+WorkMobileNav.displayName = "WorkMobileNav"

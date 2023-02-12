@@ -8,11 +8,11 @@ const GiftBox = () => {
     const { isAnimReady } = appStore;
     const router = useRouter()
 
-    const isContactPage = router.asPath === "/contact"
+    const isContactPage = router.pathname === "/contact"
 
-    const isServicesPage = router.asPath === "/services"
+    const isServicesPage = router.pathname === "/services"
 
-    const isPolicyPage = router.asPath === "/privacy-policy"
+    const isPolicyPage = router.pathname === "/privacy-policy"
 
     return (
         <>

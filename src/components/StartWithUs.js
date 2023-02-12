@@ -1,4 +1,4 @@
-import { Flex, Text, Link } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import appStore from "../store/store";
 import { useRouter } from "next/router";
 

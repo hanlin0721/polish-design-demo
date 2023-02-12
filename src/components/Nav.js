@@ -274,7 +274,7 @@ const Nav = () => {
     const isAnimReady = !mapStatus || mapStatus === "ready";
     const router = useRouter();
     const isWorkPage = () => {
-        return router.asPath === "/work"
+        return router.pathname === "/work"
     }
     const showWhiteLogo = () => {
         return isWorkPage()

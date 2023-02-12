@@ -1,9 +1,10 @@
-import { Flex, Box, Image, Center } from "@chakra-ui/react";
+import { Flex, Box, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import BackButton from "./BackButton";
 
 const WorkList = ({
     works,
+    selectedWork,
     show,
     onClick,
     flexDir,
@@ -55,6 +56,10 @@ const WorkList = ({
                                     mb={flexDir === "row" ? 0 : "15px"}
                                     key={article.article_code}
                                     onClick={() => onClick(article.article_code)}
+                                    opacity={
+                                        article.article_code === selectedWork?.article_code ?
+                                            "100%" : "38%"
+                                    }
                                 >
                                     <Image w="50px" h="50px" objectFit="cover" src={article.og_image} borderRadius="full" alt={article.og_title} />
                                 </Box>

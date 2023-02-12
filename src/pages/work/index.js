@@ -1,18 +1,16 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect, useRef } from "react";
-import { Box, Flex, Text, Hide } from "@chakra-ui/react";
+import { Box, Flex, Hide } from "@chakra-ui/react";
 import Map from "../../components/Maps/Map.js";
-import WorkFilter from "../../components/Work/WorkFilter.js";
-import WorkResult from "../../components/Work/WorkResult.js";
-import WorkList from "../../components/Work/WorkList.js";
-import WorkDesc from "../../components/Work/WorkDesc.js";
 import useControl from "../../store/useControl.js";
-import { WorkDesktopContent, WorkMobileContent } from "../../components/Work/WorkContent.js";
+import { WorkMobileContent } from "../../components/Work/WorkContent.js";
 import { useRouter } from "next/router";
 import api from "../../store/api.js";
+import { WorkDesktopNav, WorkMobileNav } from "../../components/Work/WorkNav.js"
 
 const Work = () => {
     const router = useRouter()
+    const { workId } = router.query
     const [isMap, setIsMap] = useState(false);
     const [articles, setArticles] = useState(null)
     const [types, setTypes] = useState(null)
@@ -27,26 +25,52 @@ const Work = () => {
     const goScene = useControl((state) => state.goScene);
     const contentRef = useRef()
 
-    // useEffect(() => {
-    //     if (selectedFilter === null || selectedFilter === "all") {
-    //         setFilteredArticles(articles)
-    //         return
-    //     }
+    // API
+    useEffect(() => {
+        if (router.isReady) {
 
-    //     const filteredArticles = articles.filter((obj) => {
-    //         return obj.type.find(element => element === selectedFilter)
-    //     })
+            goScene(scenes.LOOKING_BLUE_POLISH_MAN)
 
-    //     setFilteredArticles(filteredArticles)
-    // }, [selectedFilter])
+            api.getArticles()
+                .then(({ success, articles, types }) => {
+
+                    if (success) {
+                        setArticles(articles)
+
+                        setTypes([{
+                            type: "all",
+                            name: "全部"
+                        }].concat(types))
+
+                        if (selectedFilter === null || selectedFilter === "all") {
+                            setFilteredArticles(articles)
+                            return
+                        }
+                    }
+                });
+
+
+        }
+    }, [router.isReady]);
+
+    useEffect(() => {
+        if (selectedFilter === null || selectedFilter === "all") {
+            setFilteredArticles(articles)
+            return
+        }
+
+        const filteredArticles = articles.filter((obj) => obj.type === selectedFilter)
+
+        setFilteredArticles(filteredArticles)
+    }, [selectedFilter])
 
     const toggle = (workId) => {
-        console.log(workId)
-        // router.push()
-        // history.pushState({
-        // }, null, `/work/${workId}`);
+        history.pushState({
+        }, null, `/work?workId=${workId}`);
 
+        // router.push(`?workId=${workId}`, undefined, { shallow: true })
         // console.log('router.asPath', window.location.href)
+
         if (contentRef.current) {
             contentRef.current.scrollTo(0, 0)
         }
@@ -61,37 +85,7 @@ const Work = () => {
             setShowWorkContent(false)
             goScene(scenes.LOOKING_BLUE_POLISH_MAN)
         }
-        // router.push({
-        //     pathname: "/work",
-        //     query: {
-        //         workId
-        //     }
-        // }, undefined, { shallow: true })
     }
-
-    // API
-    useEffect(() => {
-        if (router.isReady) {
-            goScene(scenes.LOOKING_BLUE_POLISH_MAN)
-            api.getArticles().then(({ success, articles, types }) => {
-                if (success) {
-                    setArticles(articles)
-                    setTypes(types)
-
-                    if (selectedFilter === null || selectedFilter === "all") {
-                        setFilteredArticles(articles)
-                        return
-                    }
-
-                    const filteredArticles = articles.filter((obj) => {
-                        return obj.type.find(element => element === selectedFilter)
-                    })
-
-                    setFilteredArticles(filteredArticles)
-                }
-            });
-        }
-    }, [router.isReady]);
 
     return <>
         <style
@@ -119,65 +113,42 @@ const Work = () => {
             >
                 <Map isMap={isMap} />
             </Box>
+
             <Hide below='md'>
-                <Box
-                    opacity={1}
-                    h="100vh"
-                    bg="blue.900"
-                    pos="absolute"
-                    left="0"
-                    transition="0.3s ease"
-                >
-                    <Flex h="100%" color="white">
-                        <Box minW="171px" w="10vw" borderRight="1px" borderColor="blue.600">
-                        </Box>
+                <WorkDesktopNav
+                    ref={contentRef}
+                    show={showWorkContent}
+                    works={filteredArticles}
+                    selectedWork={selectedWork}
+                    selectedFilter={selectedFilter}
+                    selectFilter={selectFilter}
+                    types={types}
+                    nextWork={nextWork}
+                    othersWork={othersWork}
+                    onClick={toggle}
+                />
+            </Hide>
 
-                        {/* 專案縮圖 */}
-                        <WorkList
-                            works={filteredArticles}
-                            show={showWorkContent}
-                            onClick={toggle}
-                            flexDir="column"
-                        />
+            {/* 手機版專案縮圖 */}
+            <Hide above="md">
+                <WorkMobileNav
+                    works={filteredArticles}
+                    selectedWorkCode={selectedWork?.article_code}
+                    onClick={toggle}
+                />
+            </Hide>
 
-                        <Box
-                            minW={showWorkContent ? "560px" : "271px"}
-                            w="15vw"
-                            h="100%"
-                            pos="relative"
-                            transition="0.3s ease"
-                        >
-                            <Flex
-                                display="block"
-                                flexDir="column"
-                                h="100%"
-                                opacity={showWorkContent ? "0" : "1"}
-                            >
-
-                                <Box borderBottom="1px" borderColor="blue.600">
-                                    <Text pl="19.5px" pt="25px" pb="19px" fontSize="20px" fontWeight="bold">Portfolio</Text>
-                                </Box>
-
-                                <WorkFilter
-                                    filter={selectedFilter}
-                                    selectFilter={selectFilter}
-                                    options={types} />
-
-                                <WorkResult articles={filteredArticles} onClick={toggle} />
-                            </Flex>
-
-                            <WorkDesktopContent
-                                ref={contentRef}
-                                work={selectedWork}
-                                types={types}
-                                show={showWorkContent}
-                                nextWork={nextWork}
-                                othersWork={othersWork}
-                                onClick={toggle}
-                            />
-                        </Box>
-                    </Flex>
-                </Box>
+            <Hide above='md'>
+                <WorkMobileContent
+                    ref={contentRef}
+                    work={selectedWork}
+                    selectWork={selectWork}
+                    show={showWorkContent}
+                    types={types}
+                    nextWork={nextWork}
+                    othersWork={othersWork}
+                    onClick={toggle}
+                />
             </Hide>
         </Flex >
     </>

@@ -1,6 +1,4 @@
 import { Flex, Box, Text } from "@chakra-ui/react";
-import { useEffect } from "react";
-
 const WorkFilter = ({ options, filter, selectFilter }) => {
 
     return (
