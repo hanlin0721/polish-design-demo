@@ -16,6 +16,7 @@ export const WorkDesktopNav = React.forwardRef(({
     onClick,
     types,
 }, ref) => {
+    console.log(ref)
     return (
         <Box
             h="100vh"
@@ -126,8 +127,8 @@ export const WorkMobileNav = ({
                                     onClick={() => onClick(article.article_code)}
                                     pos="relative"
                                     opacity={
-                                        article.article_code === selectedWorkCode ?
-                                            "100%" : "38%"
+                                        (article.article_code === selectedWorkCode) ?
+                                            "100%" : selectedWorkCode ? "38%" : "100%"
                                     }
                                 >
                                     <Image

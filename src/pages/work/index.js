@@ -10,12 +10,12 @@ import { WorkDesktopNav, WorkMobileNav } from "../../components/Work/WorkNav.js"
 
 const Work = () => {
     const router = useRouter()
-    const { workId } = router.query
+    // const { workId } = router.query
     const [isMap, setIsMap] = useState(false);
     const [articles, setArticles] = useState(null)
     const [types, setTypes] = useState(null)
 
-    const [filteredArticles, setFilteredArticles] = useState(articles)
+    const [filteredArticles, setFilteredArticles] = useState(null)
     const [selectedFilter, selectFilter] = useState("all")
     const [selectedWork, selectWork] = useState(null)
     const [nextWork, setNextWork] = useState(null)
@@ -23,7 +23,10 @@ const Work = () => {
     const [showWorkContent, setShowWorkContent] = useState(false)
     const scenes = useControl((state) => state.scenes);
     const goScene = useControl((state) => state.goScene);
-    const contentRef = useRef()
+    const workDesktopContentRef = useRef()
+    const workMobileContentRef = useRef()
+
+    console.log('filteredArticles', filteredArticles)
 
     // API
     useEffect(() => {
@@ -36,20 +39,13 @@ const Work = () => {
 
                     if (success) {
                         setArticles(articles)
-
+                        setFilteredArticles(articles)
                         setTypes([{
                             type: "all",
                             name: "全部"
                         }].concat(types))
-
-                        if (selectedFilter === null || selectedFilter === "all") {
-                            setFilteredArticles(articles)
-                            return
-                        }
                     }
-                });
-
-
+                })
         }
     }, [router.isReady]);
 
@@ -64,21 +60,31 @@ const Work = () => {
         setFilteredArticles(filteredArticles)
     }, [selectedFilter])
 
+    useEffect(() => {
+        if (filteredArticles && router.query.workId) {
+            toggle(router.query.workId)
+        }
+
+    }, [filteredArticles])
+
     const toggle = (workId) => {
         history.pushState({
         }, null, `/work?workId=${workId}`);
 
         // router.push(`?workId=${workId}`, undefined, { shallow: true })
         // console.log('router.asPath', window.location.href)
+        if (workDesktopContentRef.current) {
+            workDesktopContentRef.current.scrollTo(0, 0)
+        }
 
-        if (contentRef.current) {
-            contentRef.current.scrollTo(0, 0)
+        if (workMobileContentRef.current) {
+            workMobileContentRef.current.scrollTo(0, 0)
         }
 
         if (typeof (workId) === 'string') {
-            selectWork(filteredArticles.find(element => element.article_code === workId))
-            setNextWork(filteredArticles[(filteredArticles.findIndex(element => element.article_code === workId) + 1) % filteredArticles.length])
-            setOthersWork(filteredArticles.filter(element => element.article_code !== workId))
+            selectWork(filteredArticles?.find(element => element.article_code === workId))
+            setNextWork(filteredArticles[(filteredArticles?.findIndex(element => element.article_code === workId) + 1) % filteredArticles?.length])
+            setOthersWork(filteredArticles?.filter(element => element.article_code !== workId))
             setShowWorkContent(true)
             goScene(workId)
         } else {
@@ -116,7 +122,7 @@ const Work = () => {
 
             <Hide below='md'>
                 <WorkDesktopNav
-                    ref={contentRef}
+                    ref={workDesktopContentRef}
                     show={showWorkContent}
                     works={filteredArticles}
                     selectedWork={selectedWork}
@@ -140,7 +146,7 @@ const Work = () => {
 
             <Hide above='md'>
                 <WorkMobileContent
-                    ref={contentRef}
+                    ref={workMobileContentRef}
                     work={selectedWork}
                     selectWork={selectWork}
                     show={showWorkContent}

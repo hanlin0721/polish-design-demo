@@ -381,10 +381,6 @@ export default function City(props) {
         // }
 
         if (scene === "A11") {
-            projectTestRef.current.geometry.center()
-            projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-            projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-
             const cameraPosition = new THREE.Vector3(
                 projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
                 projectCSOnlineRef.current.position.y,
@@ -405,10 +401,6 @@ export default function City(props) {
         }
 
         if (scene === "A15") {
-            projectTestRef.current.geometry.center()
-            projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-            projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-
             const cameraPosition = new THREE.Vector3(
                 projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
                 projectCSOnlineRef.current.position.y,
@@ -429,10 +421,6 @@ export default function City(props) {
         }
 
         if (scene === "A19") {
-            projectTestRef.current.geometry.center()
-            projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-            projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-
             const cameraPosition = new THREE.Vector3(
                 projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
                 projectCSOnlineRef.current.position.y,
@@ -453,10 +441,6 @@ export default function City(props) {
         }
 
         if (scene === "A20") {
-            projectTestRef.current.geometry.center()
-            projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-            projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-
             const cameraPosition = new THREE.Vector3(
                 projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
                 projectCSOnlineRef.current.position.y,

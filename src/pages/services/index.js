@@ -9,16 +9,14 @@ import BussinessExp from '../../images/services/bussiness-exp.png'
 import OpenedEgg from '../../images/services/opened-egg.png'
 import Bag from '../../images/services/bag.png'
 import Drawing from '../../images/services/drawing.png'
-
-import KevinWithPolishModel from '../../images/services/kevin-with-polish-model.png'
+// import KevinWithPolishModel from '../../images/services/kevin-with-polish-model.png'
 import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward_black.svg";
-
 import ZoraSmile from "../../images/services/banner.png";
-
-
 import Footer from "../../components/Footer";
+import { useDeviceType } from "../../utils/window";
 
 const About = () => {
+    const [device] = useDeviceType()
 
     const sections = [
         {
@@ -64,7 +62,7 @@ const About = () => {
     const processes = [
         {
             id: 1,
-            title: "線上策展",
+            title: "線上策展、活動、遊戲",
             steps: [
                 {
                     id: 0,
@@ -224,7 +222,8 @@ const About = () => {
                         fontSize={{ base: "48px", sm: "4.6vw" }}
                         mb="5%"
                         fontWeight="bold"
-                        lineHeight="1.3"
+                        lineHeight="1"
+                        letterSpacing="-2.2px"
                     >
                         We polish<br />all day!
                     </Text>
@@ -245,53 +244,61 @@ const About = () => {
                     justifyContent="space-between"
                 >
                     {sections.map((section, index) => (
-                        <Box
+                        <Flex
                             w={{ base: "100%", sm: "45%" }}
-                            mb={{ base: "25%", sm: "0%" }}
+                            mb={{ base: index === 2 ? "0" : "15%", sm: "0%" }}
+                            flexDir="column"
                             key={`section${index}`}
                         >
                             <Flex
+                                order={device !== "desktop" ? 0 : 1}
                                 h={{ base: "65%", sm: "75%" }}
                                 alignItems="center"
+                                mb={index === 2 ? "40px" : "0px"}
                             >
                                 <Image pointerEvents="none" src={section.image} pos="relative" right={{ base: (index % 2 == 0) ? "-15%" : "15%", sm: "0" }} />
                             </Flex>
-                            <Text fontWeight="bold" fontSize={{ base: "18px" }} mb={{ base: "8px", sm: "0px" }}>{section.title}</Text>
-                            <Text>{section.desc}</Text>
-                        </Box>
+                            <Box maxW="410px" mb="34px">
+                                <Text fontWeight="bold" fontSize={{ base: "20px" }} mb={{ base: "8px", sm: "7px" }}>{section.title}</Text>
+                                <Text>{section.desc}</Text>
+                            </Box>
+                        </Flex>
                     ))}
                 </Flex>
             </Box>
 
             {/* What we provide */}
             <Box
-                bg="#FFFFFF"
-                borderRadius={{ base: "0px", sm: "100px" }}
+                bg="#222A33"
+                color="white"
                 borderTopLeftRadius={{ base: "50px" }}
                 borderBottomLeftRadius={{ base: "50px" }}
                 pt="5%"
-                pb="8%"
+                pb="4%"
                 ml={{ base: "5.4%", sm: "12%" }}
-                mb="24px"
             >
                 <Flex
                     pl={{ base: "15%", sm: "10%" }}
                     pr="10%"
                 >
-                    <Box pos="relative">
+                    <Box pos="relative" justifyContent="flex-end">
                         <Text
                             fontSize={{ base: "10vw", sm: "4.6vw" }}
-                            mb="1%"
+                            mb="81px"
                             fontWeight="bold"
+                            lineHeight="1"
+                            letterSpacing="-2.2px"
                         >
                             What we<br />provide
                         </Text>
 
                         <Text
+                            opacity={device !== "desktop" ? 1 : 0}
                             pos="absolute"
-                            right={{ base: "-55%", sm: "-22%" }}
-                            bottom={{ base: "10%", sm: "14%" }}
+                            right={{ base: "0%", sm: "-22%" }}
+                            bottom={{ base: "20%", sm: "14%" }}
                             fontWeight="bold"
+                            w="100%"
                         >
                             我們的服務
                         </Text>
@@ -308,21 +315,26 @@ const About = () => {
                     {
                         servies.map((service, index) => {
                             return (
-                                <Box
+                                <Flex
                                     w={{ base: "100%", sm: "27%" }}
                                     mb={{ base: "40%", sm: "0%" }}
                                     key={`service${index}`}
+                                    flexDir="column"
                                 >
                                     <Flex
                                         h="90%"
                                         justifyContent="center"
                                         alignItems="center"
+                                        order={device !== "desktop" ? 0 : 1}
+                                        w="297px"
                                     >
                                         <Image pointerEvents="none" src={service.image} />
                                     </Flex>
-                                    <Text fontWeight="bold">{service.title}</Text>
-                                    <Text>{service.desc}</Text>
-                                </Box>
+                                    <Box mb="34px" maxW="296px">
+                                        <Text fontSize="20px" fontWeight="bold" mb="7px">{service.title}</Text>
+                                        <Text>{service.desc}</Text>
+                                    </Box>
+                                </Flex>
                             )
                         })
                     }
@@ -330,7 +342,7 @@ const About = () => {
             </Box>
 
             {/* Kevin */}
-            <Box
+            {/* <Box
                 bg="blue.900"
                 borderRadius={{ base: "50px", sm: "100px" }}
                 mx={{ base: "1%", sm: "0.5%" }}
@@ -395,7 +407,7 @@ const About = () => {
                     </Box>
 
                 </Flex>
-            </Box>
+            </Box> */}
 
             {/* The Process */}
             <Box>
@@ -419,7 +431,11 @@ const About = () => {
                     </Text>
                 </Box>
 
-                <Box pl={{ base: "5%", sm: "20%" }} pr={{ base: "5%", sm: "10%" }}>
+                <Box
+                    pl={{ base: "5%", sm: "20%" }}
+                    pr={{ base: "5%", sm: "10%" }}
+                    pb={"5%"}
+                >
                     {
                         processes.map((process, processIndex) => {
                             return (
@@ -479,7 +495,7 @@ const About = () => {
                     }
                 </Box>
 
-                <Box mt={{ base: "5%", sm: "10%" }} mb={{ base: "25%", sm: "0%" }} pl={{ base: "5%", sm: "20%" }}>
+                {/* <Box mt={{ base: "5%", sm: "10%" }} mb={{ base: "25%", sm: "0%" }} pl={{ base: "5%", sm: "20%" }}>
                     <Flex
                         bg="white"
                         w="308px"
@@ -495,19 +511,19 @@ const About = () => {
                             </Text>
                             <Image w="12px" src={ArrowDownwardIcon.src} transform="rotate(-90deg)" />
                         </Flex>
-                        {/* <Flex cursor="pointer">
+                        <Flex cursor="pointer">
                             <Text fontWeight="bold" mr="8px">
                                 相關資源
                             </Text>
                             <Image w="12px" src={ArrowDownwardIcon.src} transform="rotate(-90deg)" />
-                        </Flex> */}
+                        </Flex>
                     </Flex>
-                </Box>
+                </Box> */}
 
             </Box>
 
             {/* Zora Banner */}
-            <Image display={{ base: "none", sm: "block" }} src={ZoraSmile.src} transform="scale(1)" w="100%" bg="blue.900" />
+            {/* <Image display={{ base: "none", sm: "block" }} src={ZoraSmile.src} transform="scale(1)" w="100%" bg="blue.900" /> */}
 
             <Footer />
         </Box>

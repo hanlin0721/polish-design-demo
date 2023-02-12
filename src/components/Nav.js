@@ -54,7 +54,7 @@ const NavFooter = () => {
 };
 
 const NavContent = () => {
-    const { isMenu, lives, mapExp } = appStore;
+    const { isMenu } = appStore;
     const [device] = useDeviceType()
     const { t } = useTranslation("common");
     const router = useRouter();
@@ -298,6 +298,7 @@ const Nav = () => {
                 bg={isMenu ? "blue.800" : showWhiteLogo() ? "blue.800" : "white"}
                 justifyContent="center"
                 alignItems="center"
+                boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 6px"
             >
                 <Box className={`header__hamburger ${isMenu ? "show" : ""}`}>
                     <i className="header__hamburger__icon">
