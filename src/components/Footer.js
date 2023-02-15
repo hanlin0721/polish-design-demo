@@ -20,6 +20,8 @@ const Footer = () => {
                         mb="1%"
                         color="white"
                         fontWeight="bold"
+                        letterSpacing="-2.2px"
+                        lineHeight="1.2"
                     >
                         Let's polish<br />today!
                     </Text>

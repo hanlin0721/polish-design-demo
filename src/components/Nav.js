@@ -292,8 +292,8 @@ const Nav = () => {
                 zIndex="10002"
                 onClick={() => (appStore.isMenu = !isMenu)}
                 opacity={isAnimReady ? mapOpacity : 0}
-                w="50px"
-                h="50px"
+                w="65px"
+                h="65px"
                 borderRadius="50%"
                 bg={isMenu ? "blue.800" : showWhiteLogo() ? "blue.800" : "white"}
                 justifyContent="center"

@@ -18,7 +18,7 @@ const Map = memo(() => {
         }
     }
 
-    const onWheelDebounce = useMemo(() => _.debounce(scrollHandler, 500, { leading: true, trailing: false }), [])
+    const onWheelDebounce = useMemo(() => _.debounce(scrollHandler, 300, { leading: true, trailing: false }), [])
 
     return (
         <>

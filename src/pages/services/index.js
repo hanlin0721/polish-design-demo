@@ -209,7 +209,7 @@ const About = () => {
 
     return (
         <Box
-            bg="blue.50"
+            bg="#C8D1D6"
         >
             {/* We polish all day! */}
             <Box>
@@ -420,6 +420,7 @@ const About = () => {
                         fontSize={{ base: "12vw", sm: "4.6vw" }}
                         fontWeight="bold"
                         mb="1%"
+                        letterSpacing="-2.2px"
                     >
                         The process
                     </Text>
