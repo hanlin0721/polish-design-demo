@@ -1,6 +1,6 @@
-import { Flex, Box, Text, chakra, AspectRatio } from "@chakra-ui/react";
+import { Flex, Box, chakra } from "@chakra-ui/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Youtube from "./Youtube";
 import Lightbox from "react-18-image-lightbox";
 import "react-18-image-lightbox/style.css";
@@ -35,7 +35,16 @@ const CTA = ({ title, url }) => {
 
 const TextTitle = ({ text }) => {
   return (
-    <chakra.h1 fontSize="24px" my="30px" maxW="476px" fontWeight="800" id={text}>
+    <chakra.h1
+      fontSize="20px"
+      my="30px"
+      px={{ base: "20px", sm: "0" }}
+      maxW="476px"
+      fontWeight="bold"
+      fontFamily="Acumin Pro"
+      opacity="0.87"
+      id={text}
+    >
       {text}
     </chakra.h1>
   );
@@ -43,7 +52,13 @@ const TextTitle = ({ text }) => {
 
 const TextSubTitle = ({ text }) => {
   return (
-    <chakra.h2 fontSize="18px" my="30px" fontWeight="500" id={text}>
+    <chakra.h2
+      px={{ base: "20px", sm: "0" }}
+      fontSize="18px"
+      my="30px"
+      fontWeight="500"
+      id={text}
+    >
       {text}
     </chakra.h2>
   );
@@ -51,14 +66,28 @@ const TextSubTitle = ({ text }) => {
 
 const TextSubSubTitle = ({ text }) => {
   return (
-    <chakra.h3 fontSize="22px" my="30px" fontWeight="500" id={text}>
+    <chakra.h3
+      fontSize="22px"
+      my="30px"
+      fontWeight="500"
+      id={text}>
       {text}
     </chakra.h3>
   );
 };
 
 const TextContent = ({ text, index }) => {
-  return <Box mb="30px" maxW="476px" mt={index === 0 ? "30px" : "0px"} dangerouslySetInnerHTML={{ __html: text }} />;
+  return <Box
+    px={{ base: "20px", sm: "0" }}
+    mb="30px"
+    maxW="476px"
+    mt={index === 0 ? "30px" : "0px"}
+    opacity="0.87"
+    fontFamily="Acumin Pro"
+    fontSize="16px"
+    fontWeight="regular"
+    dangerouslySetInnerHTML={{ __html: text }}
+  />;
 };
 
 const TextTable = ({ text }) => {
@@ -137,8 +166,9 @@ const ReadMore = ({ article_code, title }) => {
 };
 
 const Editor = ({ content = [], ...props }) => {
+  // console.log(content)
   return (
-    <Box id="editor" color="#fff" pb="50px" {...props}>
+    <Box id="editor" color="#fff" {...props}>
       {content.map((c, index) => {
         switch (c.type) {
           case "text-title":

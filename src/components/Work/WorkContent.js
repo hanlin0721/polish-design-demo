@@ -156,7 +156,7 @@ export const WorkDesktopContent = React.forwardRef(({
                     align="start"
                     w="100px"
                     ml="20px"
-                    borderLeft={isMobile ? "1px" : "0px"}
+                    borderLeft={isMobile ? "1px solid #7B7F85" : "0px"}
                     pl={isMobile ? "20px" : "0px"}
                 >
                     {
@@ -166,7 +166,7 @@ export const WorkDesktopContent = React.forwardRef(({
                                     key={index}
                                     pb={(work?.jobs?.length - 1) === index ? "24px" : "0px"}
                                 >
-                                    <Text>{obj.value}</Text>
+                                    <Text opacity="0.87">{obj.value}</Text>
                                 </Box>
                             )
                         })
@@ -175,7 +175,7 @@ export const WorkDesktopContent = React.forwardRef(({
             </Flex>
 
             {/* 編輯器內容 */}
-            <Box pl={isMobile ? "20px" : "46px"} >
+            <Box pl={isMobile ? "0px" : "46px"} >
                 <Box maxW="514px" bg="grey" overflow="hidden">
                     <Image src={work?.image} objectFit="cover" w="100%" h="100%" />
                 </Box>
@@ -183,8 +183,8 @@ export const WorkDesktopContent = React.forwardRef(({
             </Box>
 
             {/* 技術範圍 */}
-            <Box pl={isMobile ? "20px" : "46px"}>
-                <Text as="b">技術範圍</Text>
+            <Box pl={isMobile ? "20px" : "46px"} pt="47px">
+                <Text as="b" className="poppins">技術範圍</Text>
                 <Flex flexWrap="wrap" flexDir={isMobile ? "column" : "row"}>
                     {
                         data?.scopes?.map((scope, index) => {
@@ -224,7 +224,7 @@ export const WorkDesktopContent = React.forwardRef(({
                 color={{ base: "blue.900", sm: "white" }}
                 overflow="hidden"
             >
-                <Text fontWeight="bold" fontSize="20px" mb="24px">下個專案</Text>
+                <Text fontWeight="bold" fontSize="20px" mb="24px" className="poppins">下個專案</Text>
                 <Text fontSize="16px" maxW="243px">{nextWork?.title}</Text>
                 <Box
                     mt="28px"
@@ -249,7 +249,7 @@ export const WorkDesktopContent = React.forwardRef(({
                 color="white"
                 display={isMobile ? "block" : "none"}
             >
-                <Text fontWeight="bold" fontSize="20px" mb="24px">其他專案</Text>
+                <Text fontWeight="bold" fontSize="20px" mb="24px" className="poppins">其他專案</Text>
 
                 <Flex w="100%" overflowX="scroll" overflowY="hidden">
                     {

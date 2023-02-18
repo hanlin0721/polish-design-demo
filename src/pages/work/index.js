@@ -26,8 +26,6 @@ const Work = () => {
     const workDesktopContentRef = useRef()
     const workMobileContentRef = useRef()
 
-    console.log('filteredArticles', filteredArticles)
-
     // API
     useEffect(() => {
         if (router.isReady) {

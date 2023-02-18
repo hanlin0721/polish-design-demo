@@ -4,19 +4,18 @@ const WorkResult = ({ articles, onClick }) => {
     return (
         <Box
             flex="1"
-            // overflow="hidden"
             pos="relative"
             h="100%"
             pb="190px"
         >
             <Flex pl="19.5px" pt="15px" pb="14px">
-                <Text mr="5px">
+                <Text mr="5px" color="#A6A9AD">
                     Found
                 </Text>
                 <Text as="b" mr="5px">
                     {articles?.length}
                 </Text>
-                <Text>
+                <Text color="#A6A9AD">
                     projects
                 </Text>
             </Flex>

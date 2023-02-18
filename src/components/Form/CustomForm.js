@@ -53,7 +53,7 @@ const CustomForm = () => {
                     <form onSubmit={handleSubmit}>
                         <Box
                             w={{ base: "100%", sm: "60%" }}
-                            mb="5%"
+                            mb={{ base: "5%", sm: "5%" }}
                         >
                             <Select
                                 id="projectType"
@@ -82,7 +82,7 @@ const CustomForm = () => {
 
                         <Box
                             w={{ base: "100%", sm: "60%" }}
-                            mb="5%"
+                            mb={{ base: "5%", sm: "5%" }}
                         >
                             <Select
                                 id="howYouKnowUsType"
@@ -110,7 +110,7 @@ const CustomForm = () => {
                             )}
                         </Box>
 
-                        <Box mb="5%" w={{ base: "100%", sm: "60%" }}>
+                        <Box mb={{ base: "5%", sm: "5%" }} w={{ base: "100%", sm: "60%" }}>
                             <CustomInputField
                                 id="name"
                                 placeholder="你的名字 *"
@@ -124,7 +124,7 @@ const CustomForm = () => {
                             )}
                         </Box>
 
-                        <Box mb="5%" w={{ base: "100%", sm: "60%" }}>
+                        <Box mb={{ base: "5%", sm: "5%" }} w={{ base: "100%", sm: "60%" }}>
                             <CustomInputField
                                 id="email"
                                 placeholder="Email *"
@@ -138,7 +138,7 @@ const CustomForm = () => {
                             )}
                         </Box>
 
-                        <Box mb="5%">
+                        <Box mb={{ base: "5%", sm: "5%" }}>
                             <CustomInputField
                                 id="yourIdea"
                                 placeholder="和我們聊聊你的點子 *"
@@ -152,7 +152,7 @@ const CustomForm = () => {
                             )}
                         </Box>
 
-                        <Box mb="5%">
+                        <Box mb={{ base: "5%", sm: "5%" }}>
                             <CustomInputField
                                 id="reference"
                                 placeholder="有相關的檔案嗎? 如果有的話, 可以附上連結"
@@ -180,27 +180,27 @@ const CustomForm = () => {
                             borderRadius="24px"
                             bg="white"
                             w={{ base: "100%", sm: "60%" }}
-                            pt="13px"
-                            pb="14px"
+                            pt="13.4px"
+                            pb="14.6px"
                             type="submit"
                             cursor="pointer"
                             disabled={isSubmitting}
                             mt="10%"
+                            h="50px"
                         >
-                            <Text color="black" textAlign="center">發送</Text>
+                            <Text color="black" textAlign="center" className="poppins" fontSize="16px">發送</Text>
                         </Button>
 
-                        <Text mt="12%" fontSize="14px" color="#A9ACB0">
+                        <Text maxW="610px" mt="10%" mb={{ base: "40px", sm: "0" }} fontSize="14px" color="#A9ACB0">
                             我們將使用您的詳細聯繫方式就現在或將來的潛在合作機會直接與您聯繫。 有關個人數據保護的所有詳細信息，請參
-                        </Text>
-                        <Link href="/privacy-policy" color="#A9ACB0">
-                            <Flex onClick={() => (appStore.isMenu = false)}>
-                                <Text fontSize="14px" fontWeight="normal" textDecoration="underline">
+                            <Link href="/privacy-policy" color="#A9ACB0" display="inline-block" onClick={() => (appStore.isMenu = false)}>
+                                <Text fontSize="14px" fontWeight="normal" textDecoration="underline" as="span">
                                     {t("nav.term-and-condition")}
                                 </Text>
                                 <span>。</span>
-                            </Flex>
-                        </Link>
+                            </Link>
+                        </Text>
+
                     </form>
                 );
             }}

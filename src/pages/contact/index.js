@@ -6,7 +6,7 @@ import CustomForm from "../../components/Form/CustomForm.js"
 const Contact = () => {
     return (
         <Box
-            bg="blue.900"
+            bg="blue.800"
             h="100%"
         >
             <Box pb={{ base: "10%", sm: "10%" }} color="white">
@@ -16,9 +16,10 @@ const Contact = () => {
                 >
                     <Text
                         fontSize={{ base: "48px", sm: "4.6vw" }}
-                        mb="5%"
+                        mb={{ base: "15%", sm: "5%" }}
                         fontWeight="bold"
-                        lineHeight="1.3"
+                        lineHeight="1"
+                        className="poppins"
                     >
                         Tell us about<br />
                         your idea

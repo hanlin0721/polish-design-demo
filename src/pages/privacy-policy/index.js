@@ -6,19 +6,19 @@ const PrivacyPolicy = () => {
 
     return (
         <Box
-            bg="blue.50"
+            bg="blue.80"
             h="100%"
-
+            fontFamily="Acumin Pro"
         >
             <Box pb={{ base: "10%", sm: "10%" }}>
                 <Box
-                    pt={{ base: "28%", sm: "8%" }}
+                    pt={{ base: "35%", sm: "8%" }}
+                    pb={{ base: "28%", sm: "8%" }}
                     px={{ base: "5%", sm: "20%" }}
-
                 >
                     <Text
                         fontSize={{ base: "30px", sm: "2.4vw" }}
-                        mb="5%"
+                        mb="45px"
                         fontWeight="bold"
                         lineHeight="1.3"
                     >
@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
                     <Box mb="3%" maxW="676px">
                         <Text
                             fontSize={{ base: "24px", sm: "1.8vw" }}
-                            mb="4%"
+                            mb="30.5px"
                             fontWeight="bold"
                             lineHeight="1.3"
                         >
@@ -37,6 +37,7 @@ const PrivacyPolicy = () => {
 
                         <Text
                             fontSize={{ base: "16px", sm: "16px" }}
+                            opacity="0.87"
                         >
                             Polish Design（以下分別或合稱「本網站」）為磨人創意網路有限公司（以下稱「本公司」）所經營，您在使用本網站相關服務前，請詳閱本使用者條款與隱私權聲明(下稱本條款)，當您已開始使用本網站各項服務時，視為您已確實閱讀、瞭解並同意遵守本條款，本條款與隱私權其後有任何修正或變更時，亦同；若您未滿二十歲或無完全行為能力，您的家長、法定代理人或監護人應同時確實閱讀、瞭解並同意遵守本條款之所有內容，您才能使用或繼續使用本網站相關服務。
                             <br />
@@ -48,7 +49,8 @@ const PrivacyPolicy = () => {
                     <Box maxW="676px">
                         <Text
                             fontSize={{ base: "24px", sm: "1.8vw" }}
-                            mb="4%"
+                            mt="30px"
+                            mb="30.5px"
                             fontWeight="bold"
                             lineHeight="1.3"
                         >
@@ -57,6 +59,7 @@ const PrivacyPolicy = () => {
 
                         <Text
                             fontSize={{ base: "16px", sm: "16px" }}
+                            opacity="0.87"
                         >
                             本網站使用 Cookies 或類似網站管理技術執行各項網站服務，透過 Cookies 蒐集並儲存您的喜好設定、瀏覽紀錄、裝置名稱等，以優化您在本網站使用體驗並提供您以興趣為導向的廣告。
                             <br />

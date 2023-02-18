@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Link } from "@chakra-ui/react";
 import Subscription from "../components/Nav/Subscription.js"
 import SocialLinks from "../components/Nav/SocialLinks.js"
 
@@ -21,7 +21,8 @@ const Footer = () => {
                         color="white"
                         fontWeight="bold"
                         letterSpacing="-2.2px"
-                        lineHeight="1.2"
+                        lineHeight="1"
+                        className="poppins"
                     >
                         Let's polish<br />today!
                     </Text>
@@ -35,18 +36,26 @@ const Footer = () => {
                         flexDir={{ base: "column", sm: "row" }}
                     >
                         <Box w="100%" pt={{ base: "20px", sm: "0px" }}>
-                            <Text pt="28px">首頁</Text>
-                            <Text pt="28px">關於我們</Text>
-                            <Text pt="28px">專案</Text>
-                            <Text pt="28px">資源</Text>
+                            <Link href="/">
+                                <Text pt="28px">首頁</Text>
+                            </Link>
+                            <Link href="/services">
+                                <Text pt="28px">我們的服務</Text>
+                            </Link>
+                            {/* <Text pt="28px">專案</Text> */}
+                            {/* <Text pt="28px">資源</Text> */}
                         </Box>
 
                         <Box
                             w="100%"
                             pb={{ base: "40px", sm: "0px" }}
                         >
-                            <Text pt="28px">與我們合作</Text>
-                            <Text pt="28px">The 2nd Ann. 禮品頁</Text>
+                            <Link href="/contact">
+                                <Text pt="28px">與我們合作</Text>
+                            </Link>
+                            <a target="_blank" href="https://hello.polish-design.com.tw/14?openExternalBrowser=1">
+                                <Text pt="28px">The 2nd Ann. 禮品頁</Text>
+                            </a>
                         </Box>
 
                         <Box

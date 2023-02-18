@@ -13,7 +13,7 @@ const StartWithUs = () => {
     return (
         <Flex
             pos={{ base: "none", sm: "fixed" }}
-            display={{ base: "none", sm: "block" }}
+            display={{ base: "none", sm: router.pathname === "/contact" ? "none" : "block" }}
             right="42px"
             top="35px"
             bg="blue.800"
@@ -30,6 +30,7 @@ const StartWithUs = () => {
                 pb="13.4px"
                 px="42px"
                 fontWeight="bold"
+                className="poppins"
                 fontSize="16px"
             >
                 與我們合作

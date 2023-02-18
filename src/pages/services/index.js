@@ -209,7 +209,7 @@ const About = () => {
 
     return (
         <Box
-            bg="#C8D1D6"
+            bg="blue.80"
         >
             {/* We polish all day! */}
             <Box>
@@ -220,10 +220,11 @@ const About = () => {
                 >
                     <Text
                         fontSize={{ base: "48px", sm: "4.6vw" }}
-                        mb="5%"
+                        mb="4%"
                         fontWeight="bold"
                         lineHeight="1"
                         letterSpacing="-2.2px"
+                        className="poppins"
                     >
                         We polish<br />all day!
                     </Text>
@@ -274,7 +275,7 @@ const About = () => {
                 borderTopLeftRadius={{ base: "50px" }}
                 borderBottomLeftRadius={{ base: "50px" }}
                 pt="5%"
-                pb="4%"
+                pb="5%"
                 ml={{ base: "5.4%", sm: "12%" }}
             >
                 <Flex
@@ -288,6 +289,7 @@ const About = () => {
                             fontWeight="bold"
                             lineHeight="1"
                             letterSpacing="-2.2px"
+                            className="poppins"
                         >
                             What we<br />provide
                         </Text>
@@ -306,7 +308,7 @@ const About = () => {
                 </Flex>
 
                 <Flex
-                    mt="40px"
+                    mt="20px"
                     pl={{ base: "10%", sm: "10%" }}
                     pr="10%"
                     flexWrap="wrap"
@@ -421,6 +423,7 @@ const About = () => {
                         fontWeight="bold"
                         mb="1%"
                         letterSpacing="-2.2px"
+                        className="poppins"
                     >
                         The process
                     </Text>

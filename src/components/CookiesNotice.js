@@ -54,7 +54,7 @@ const CookiesNotice = () => {
                 color="#000"
                 cursor="pointer"
                 textAlign="center"
-                fontSize="14px"
+                fontSize="16px"
                 lineHeight="41px"
                 h="41px"
                 fontWeight="bold"

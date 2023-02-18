@@ -40,7 +40,7 @@ const MainButton = ({
       pos="relative"
       {...props}
     >
-      <Text fontSize="16px" fontWeight="600">
+      <Text fontSize="16px" fontWeight="bold" className="poppins">
         {text}
       </Text>
       {hasIcon && (

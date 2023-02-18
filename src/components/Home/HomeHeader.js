@@ -102,13 +102,13 @@ const HomeHeader = () => {
                         transitionDelay={scene !== scenes.LOOKING_BLUE_POLISH_MAN ? "0s" : "1s"}
                         transitionTimingFunction="ease"
                     >
-                        <Box position="relative">
+                        <Box position="relative" fontWeight="bold">
                             <Text
                                 fontSize={{ base: "36px", sm: "100px" }}
-                                fontWeight="bold"
                                 textAlign="left"
                                 letterSpacing={{ base: "-1px" }}
                                 lineHeight="1"
+                                className="poppins"
                             >
                                 Create Digital
                             </Text>
@@ -116,15 +116,14 @@ const HomeHeader = () => {
                             <Flex
                                 position="relative"
                                 textAlign="left"
-                            // top={{ base: "-14px", lg: "-40px" }}
                             >
                                 <Text
                                     textAlign="left"
                                     position="relative"
                                     fontSize={{ base: "36px", sm: "100px" }}
-                                    fontWeight="bold"
                                     letterSpacing={{ base: "-1px" }}
                                     lineHeight="1"
+                                    className="poppins"
                                 >
                                     Solutions
                                 </Text>
@@ -134,13 +133,12 @@ const HomeHeader = () => {
                                     textAlign="left"
                                     alignSelf="center"
                                     pos="relative"
-                                    fontSize={{ base: "14px", sm: "0.8vw" }}
-                                    fontWeight="bold"
+                                    fontSize={{ base: "14px" }}
                                     ml="3%"
-                                    pt="2%"
+                                    mt="-1.4%"
                                 >
-                                    <Text fontWeight="bold">Polish Design 致力於創意</Text>
-                                    <Text fontWeight="bold">行得通得數位產品</Text>
+                                    <Text>Polish Design 致力於創意</Text>
+                                    <Text>行得通得數位產品</Text>
                                 </Box>
                             </Flex>
 
@@ -149,13 +147,12 @@ const HomeHeader = () => {
                                 display={{ md: "block", lg: "none" }}
                                 textAlign="left"
                                 fontSize={{ base: "14px", sm: "0.8vw" }}
-                                fontWeight="bold"
                                 position="relative"
                                 top={{ base: "10px", sm: "-40px" }}
                                 left={{ base: "0px", lg: "-10px" }}
                             >
-                                <Text fontWeight="bold">Polish Design 致力於創意</Text>
-                                <Text fontWeight="bold">行得通得數位產品</Text>
+                                <Text >Polish Design 致力於創意</Text>
+                                <Text >行得通得數位產品</Text>
                             </Box>
                         </Box>
                     </Box>
@@ -178,8 +175,9 @@ const HomeHeader = () => {
                         <Text
                             fontSize={{ base: "40px", sm: "82px" }}
                             transform={{ base: `translateX(0%)`, sm: `translateX(-23%)` }}
-                            lineHeight="0.9"
-                            fontWeight="700"
+                            lineHeight="1"
+                            fontWeight="bold"
+                            className="poppins"
                         >
                             We Focus
                         </Text>
@@ -187,8 +185,9 @@ const HomeHeader = () => {
                             fontSize={{ base: "40px", sm: "82px" }}
                             transform={{ base: `translateX(14%)`, sm: `translateX(0%)` }}
                             letterSpacing="-2.2px"
-                            lineHeight="0.9"
-                            fontWeight="700"
+                            lineHeight="1"
+                            fontWeight="bold"
+                            className="poppins"
                         >
                             More on
                         </Text>
@@ -196,22 +195,34 @@ const HomeHeader = () => {
                             fontSize={{ base: "40px", sm: "82px" }}
                             letterSpacing="-2.2px"
                             transform={{ base: `translateX(0%)`, sm: `translateX(-23%)` }}
-                            lineHeight="0.9"
-                            fontWeight="700"
+                            lineHeight="1"
+                            fontWeight="bold"
+                            className="poppins"
                         >
                             Results
                         </Text>
                     </Box>
 
                     <Text
-                        w={{ base: "86%", sm: "100%" }}
+                        display={{ base: "none", sm: "block" }}
                         mt="5.5%"
-                        fontSize={{ base: "14px", sm: "0.83vw" }}
+                        fontSize="14px"
                         fontWeight="bold"
-                        transform={{ base: "0", sm: `translateX(-22%)` }}
+                        transform="translateX(-22%)"
                         lineHeight="1.5"
                     >
-                        Polish Design 更關注於解決方案的成效<br />我們能達到 KPI 及提出現有資源中能達到的成效方案
+                        我們關注於解決方案的成效，<br />達到 KPI 及提出現有資源中能達到的成效方案
+                    </Text>
+
+                    <Text
+                        display={{ base: "block", sm: "none" }}
+                        maxW="218px"
+                        mt="5.5%"
+                        fontSize="14px"
+                        fontWeight="bold"
+                        lineHeight="1.5"
+                    >
+                        我們關注於解決方案的成效，達到 KPI 及提出現有資源中能達到的成效方案
                     </Text>
                 </Box>
 
@@ -246,6 +257,7 @@ const HomeHeader = () => {
                                 letterSpacing="-2.2px"
                                 lineHeight="1"
                                 fontWeight="bold"
+                                className="poppins"
                             >
                                 Portfolio
                             </Text>
@@ -255,11 +267,11 @@ const HomeHeader = () => {
                             pl={{ base: "29px", sm: "0px" }}
                             w={{ base: "86%", sm: "100%" }}
                             maxW="305px"
-                            mt="5.5%"
-                            fontSize={{ base: "14px", sm: "14px" }}
+                            mt={{ base: "1%", sm: "5.5%" }}
+                            fontSize="14px"
                             fontWeight="bold"
                             lineHeight="1.5"
-                            mb={{ base: "48px", sm: "0%" }}
+                            mb={{ base: "40px", sm: "0%" }}
                         >
                             過去的時間裡，我們嘗試以各種方式實踐商業、品牌目標。
                         </Text>
@@ -291,7 +303,8 @@ const HomeHeader = () => {
                     </Box>
 
                     <Flex
-                        w={{ base: "100%", sm: "70%" }}
+                        m="auto"
+                        w={{ base: "95%", sm: "70%" }}
                         maxW={{ base: "100%" }}
                         flexWrap="wrap"
                         justifyContent="space-around"
@@ -303,13 +316,13 @@ const HomeHeader = () => {
                                     <Box
                                         key={article.article_code}
                                         bg="grey"
-                                        w={{ base: "40%", sm: "calc((30%-33px))" }}
+                                        w={{ base: "45%", sm: "calc((30%-33px))" }}
                                         h={{ base: "90px", sm: "150px" }}
-                                        my="15.5px"
-                                        borderRadius="50px"
+                                        my={{ base: "8.5px", sm: "15.5px" }}
+                                        borderRadius={{ base: "30px", sm: "50px" }}
                                         overflow="hidden"
                                         cursor="pointer"
-                                        mx="12.5px"
+                                        mx={{ base: 0, sm: "12.5px" }}
                                         onClick={() => goWorkPage(article.article_code)}
                                     >
                                         <Image w="100%" h="100%" objectFit="cover" src={article.image} />
@@ -408,6 +421,7 @@ const HomeHeader = () => {
                     <Text
                         fontWeight="bold"
                         mb="16px"
+                        className="ab9"
                     >
                         NEXT
                     </Text>

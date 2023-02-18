@@ -27,7 +27,7 @@ const NavFooter = () => {
                 mb={{ base: "17%", sm: "8.3%" }}
             >
                 <Link href="https://polish-design.com.tw/">
-                    <a style={{ display: "block", width: "100%" }} target="_blank">
+                    <a style={{ display: "block", width: "100%" }} target="_blank" href="https://hello.polish-design.com.tw/14?openExternalBrowser=1">
                         <Box onClick={() => (appStore.isMenu = false)}>
                             <Text fontSize="16px" fontWeight="normal">
                                 {t("nav.polish-2nd-anniversary")}
@@ -55,11 +55,8 @@ const NavFooter = () => {
 
 const NavContent = () => {
     const { isMenu } = appStore;
-    const [device] = useDeviceType()
     const { t } = useTranslation("common");
-    const router = useRouter();
 
-    const goScene = useControl((state) => state.goScene);
     return (
         <Box
             zIndex="10001"
@@ -100,7 +97,11 @@ const NavContent = () => {
                     flexDir={{ base: "column", lg: "row" }}
                 >
                     {/* Left Nav */}
-                    <Box flex={1.28}>
+                    <Box
+                        flex={1.28}
+                        borderRight={{ base: "0px", sm: "1px solid" }}
+                        borderColor={{ base: "transparent", sm: "blue.600" }}
+                    >
                         <Box
                             w="100%"
                             h="100%"
@@ -125,6 +126,7 @@ const NavContent = () => {
                                             <Text
                                                 fontSize={{ base: "30px", sm: "64px" }}
                                                 fontWeight="bold"
+                                                className="poppins"
                                             >
                                                 Portfolio
                                             </Text>
@@ -172,6 +174,7 @@ const NavContent = () => {
                                 fontWeight="bold"
                                 spacing="28px"
                                 color="#fff"
+                                className="poppins"
                             >
                                 <Link href="/">
                                     <a style={{ display: "block", width: "100%" }}>
@@ -208,7 +211,7 @@ const NavContent = () => {
                     <Box
                         flex={1}
                         w="100%"
-                        borderLeft={{ base: "0", sm: "1px" }}
+                        // borderLeft={{ base: "0", sm: "1px" }}
                         borderColor="rgba(255,255,255,0.15)"
                         alignSelf={{ base: "start", sm: "end" }}
                     >
@@ -292,8 +295,8 @@ const Nav = () => {
                 zIndex="10002"
                 onClick={() => (appStore.isMenu = !isMenu)}
                 opacity={isAnimReady ? mapOpacity : 0}
-                w="65px"
-                h="65px"
+                w={{ base: "50px", sm: "65px" }}
+                h={{ base: "50px", sm: "65px" }}
                 borderRadius="50%"
                 bg={isMenu ? "blue.800" : showWhiteLogo() ? "blue.800" : "white"}
                 justifyContent="center"

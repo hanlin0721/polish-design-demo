@@ -52,13 +52,14 @@ export const WorkDesktopNav = React.forwardRef(({
                     >
 
                         <Box borderBottom="1px" borderColor="blue.600">
-                            <Text pl="19.5px" pt="25px" pb="19px" fontSize="20px" fontWeight="bold">Portfolio</Text>
+                            <Text pl="19.5px" pt="25px" pb="19px" fontSize="20px" fontWeight="bold" className="poppins">Portfolio</Text>
                         </Box>
 
                         <WorkFilter
                             filter={selectedFilter}
                             selectFilter={selectFilter}
-                            options={types} />
+                            options={types}
+                        />
 
                         <WorkResult articles={works} onClick={onClick} />
                     </Flex>
