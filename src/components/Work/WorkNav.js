@@ -16,7 +16,6 @@ export const WorkDesktopNav = React.forwardRef(({
     onClick,
     types,
 }, ref) => {
-    console.log(ref)
     return (
         <Box
             h="100vh"

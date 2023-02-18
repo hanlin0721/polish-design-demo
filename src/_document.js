@@ -22,6 +22,7 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#ffffff" />
           <link rel="stylesheet" href="https://use.typekit.net/gxv6uzg.css"></link>
+          <link rel="stylesheet" href="https://use.typekit.net/dlv4flv.css"></link>
           {/* {GTM_ID && (
             <>
               <script

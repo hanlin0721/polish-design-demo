@@ -20,22 +20,54 @@ export default function City(props) {
     const group = useRef();
     const polishManHiddenRef = useRef()
     const polishManShowedRef = useRef()
-    const polishManFloatingRef = useRef()
-    const groundRef = useRef()
     const buildingRef = useRef()
     const othersBuildingRef = useRef()
     const whloeMap = useRef()
 
-    const projectTestRef = useRef()
-    const projectTestGroupRef = useRef()
-    const projectCSOnlineRef = useRef()
+    const A01Ref = useRef()
+    const A02Ref = useRef()
+    const A03Ref = useRef()
+    const A04Ref = useRef()
+    const A05Ref = useRef()
+    const A06Ref = useRef()
+    const A07Ref = useRef()
+    const A08Ref = useRef()
+    const A09Ref = useRef()
+    const A10Ref = useRef()
+    const A11Ref = useRef()
+    const A12Ref = useRef()
+    const A13Ref = useRef()
+    const A14Ref = useRef()
+    const A15Ref = useRef()
+    const A16Ref = useRef()
+    const A17Ref = useRef()
+    const A18Ref = useRef()
+    const A19Ref = useRef()
+    const A20Ref = useRef()
 
-    const rawNFreshMeshRef = useRef()
-    const projectRawNFreshRef = useRef()
+    const refs = {
+        "A01": A01Ref,
+        "A02": A02Ref,
+        "A03": A03Ref,
+        "A04": A04Ref,
+        "A05": A05Ref,
+        "A06": A06Ref,
+        "A07": A07Ref,
+        "A08": A08Ref,
+        "A09": A09Ref,
+        "A10": A10Ref,
+        "A11": A11Ref,
+        "A12": A12Ref,
+        "A13": A13Ref,
+        "A14": A14Ref,
+        "A15": A15Ref,
+        "A16": A16Ref,
+        "A17": A17Ref,
+        "A18": A18Ref,
+        "A19": A19Ref,
+        "A20": A20Ref,
+    }
 
-    const fourDesireMeshRef = useRef()
-    const projectFourDesireRef = useRef()
-    const wassupRef = useRef()
 
     const [smoothCameraPosition] = useState(() => new THREE.Vector3())
     const [smoothCameraTarget] = useState(() => new THREE.Vector3())
@@ -239,225 +271,76 @@ export default function City(props) {
             cameraTarget = ct
         }
 
-        if (scene === "A01") {
-            cameraPosition = new THREE.Vector3(
-                projectFourDesireRef.current.position.x - (device !== "desktop" ? 1.7 : 1.5),
-                projectFourDesireRef.current.position.y,
-                projectFourDesireRef.current.position.z - (device !== "desktop" ? 0.1 : 1)
-            )
+        if (scene.includes("A")) {
+            if (refs[scene]?.current === undefined) {
+                cameraPosition = new THREE.Vector3(
+                    device !== "desktop" ? -28 : -6.5 + state.pointer.x * 0.6,
+                    device !== "desktop" ? 30 : 20 + state.pointer.y * 0.9,
+                    device !== "desktop" ? -30 : -20
+                )
 
-            cameraTarget = new THREE.Vector3(
-                projectFourDesireRef.current.position.x + 2,
-                projectFourDesireRef.current.position.y,
-                projectFourDesireRef.current.position.z
-            )
-        }
+                cameraTarget = new THREE.Vector3(
+                    device !== "desktop" ? -8 : -3,
+                    device !== "desktop" ? -2 : -0,
+                    device !== "desktop" ? 0 : 0
+                )
+            }
 
-        if (scene === "A02") {
-            cameraPosition = new THREE.Vector3(
-                projectRawNFreshRef.current.position.x + 1.2,
-                projectRawNFreshRef.current.position.y,
-                projectRawNFreshRef.current.position.z + 1
-            )
+            if (scene === "A08") {
+                cameraPosition = new THREE.Vector3(
+                    refs[scene].current.position.x + Math.sin(0.9) + 0.5,
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z + Math.cos(0.9)
+                )
 
-            cameraTarget = new THREE.Vector3(
-                projectRawNFreshRef.current.position.x + (device !== "desktop" ? 0 : -2),
-                projectRawNFreshRef.current.position.y,
-                projectRawNFreshRef.current.position.z
-            )
-        }
+                cameraTarget = new THREE.Vector3(
+                    refs[scene].current.position.x,
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z + 0.4
+                )
+            }
 
-        if (scene === "A03") {
-            // projectTestRef.current.geometry.center()
-            // projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-            // projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-            cameraPosition = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-            )
+            if (scene === "A09") {
+                cameraPosition = new THREE.Vector3(
+                    refs[scene].current.position.x + Math.sin(2) + 0.5,
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z + Math.cos(2)
+                )
 
-            cameraTarget = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x,
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-            )
-        }
+                cameraTarget = new THREE.Vector3(
+                    refs[scene].current.position.x,
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z + 0.6
+                )
+            }
 
-        // if (scene === "A04") {
-        //     projectTestRef.current.geometry.center()
-        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
+            if (scene === "A10") {
+                cameraPosition = new THREE.Vector3(
+                    refs[scene].current.position.x + Math.sin(16) + 2.2,
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z + Math.cos(16)
+                )
 
-        //     const cameraPosition = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-        //     )
+                cameraTarget = new THREE.Vector3(
+                    refs[scene].current.position.x,
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z + 0.8
+                )
+            }
 
-        //     const cameraTarget = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x,
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-        //     )
+            if (scene !== "A08" && scene !== "A09" && scene !== "A10" && refs[scene]?.current !== undefined) {
+                cameraPosition = new THREE.Vector3(
+                    refs[scene].current.position.x - (device !== "desktop" ? 1.7 : 1.5),
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z - (device !== "desktop" ? 0.1 : 1)
+                )
 
-        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-        //     state.camera.position.copy(smoothCameraPosition)
-        //     state.camera.lookAt(smoothCameraTarget)
-        // }
-
-        // if (scene === "A08") {
-        //     projectTestRef.current.geometry.center()
-        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-
-        //     const cameraPosition = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-        //     )
-
-        //     const cameraTarget = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x,
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-        //     )
-
-        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-        //     state.camera.position.copy(smoothCameraPosition)
-        //     state.camera.lookAt(smoothCameraTarget)
-        // }
-
-        // if (scene === "A09") {
-        //     projectTestRef.current.geometry.center()
-        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-
-        //     const cameraPosition = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-        //     )
-
-        //     const cameraTarget = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x,
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-        //     )
-
-        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-        //     state.camera.position.copy(smoothCameraPosition)
-        //     state.camera.lookAt(smoothCameraTarget)
-        // }
-
-        // if (scene === "A10") {
-        //     projectTestRef.current.geometry.center()
-        //     projectTestGroupRef.current.rotation.y += ((scroll * 4 / 1730) - projectTestGroupRef.current.rotation.y) * 0.1
-        //     projectTestGroupRef.current.position.copy(projectCSOnlineRef.current.position)
-
-        //     const cameraPosition = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-        //     )
-
-        //     const cameraTarget = new THREE.Vector3(
-        //         projectCSOnlineRef.current.position.x,
-        //         projectCSOnlineRef.current.position.y,
-        //         projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-        //     )
-
-        //     smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-        //     smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-        //     state.camera.position.copy(smoothCameraPosition)
-        //     state.camera.lookAt(smoothCameraTarget)
-        // }
-
-        if (scene === "A11") {
-            const cameraPosition = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-            )
-
-            const cameraTarget = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x,
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-            )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
-        }
-
-        if (scene === "A15") {
-            const cameraPosition = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-            )
-
-            const cameraTarget = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x,
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-            )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
-        }
-
-        if (scene === "A19") {
-            const cameraPosition = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-            )
-
-            const cameraTarget = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x,
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-            )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
-        }
-
-        if (scene === "A20") {
-            const cameraPosition = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x - (device !== "desktop" ? 1 : 1),
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? 0.5 : 1),
-            )
-
-            const cameraTarget = new THREE.Vector3(
-                projectCSOnlineRef.current.position.x,
-                projectCSOnlineRef.current.position.y,
-                projectCSOnlineRef.current.position.z - (device !== "desktop" ? -0.025 : 0.5)
-            )
-
-            smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
-            smoothCameraTarget.lerp(cameraTarget, 4.2 * delta)
-
-            state.camera.position.copy(smoothCameraPosition)
-            state.camera.lookAt(smoothCameraTarget)
+                cameraTarget = new THREE.Vector3(
+                    refs[scene].current.position.x + 2,
+                    refs[scene].current.position.y,
+                    refs[scene].current.position.z
+                )
+            }
         }
 
         smoothCameraPosition.lerp(cameraPosition, 4.2 * delta)
@@ -472,7 +355,7 @@ export default function City(props) {
         <group ref={group} {...props} dispose={null}>
             <group ref={whloeMap} name="Scene">
                 <mesh
-                    ref={groundRef}
+                    // ref={groundRef}
                     name="ground"
                     castShadow
                     receiveShadow
@@ -486,12 +369,17 @@ export default function City(props) {
                 </mesh>
 
                 {/* 4 Desire */}
-                <mesh visible={false} ref={projectFourDesireRef} position={[-0, 0.3, 1.45]} rotation-y={1}>
+                <mesh
+                    visible={false}
+                    ref={refs.A01}
+                    position={[0.1, 0.2, 1.6]}
+                    rotation-y={Math.PI * 2}
+                >
                     <boxGeometry args={[0.25, 0.25, 0.25]} />
                     <meshBasicMaterial color="red" />
                 </mesh>
+
                 <mesh
-                    ref={fourDesireMeshRef}
                     name="A01"
                     castShadow
                     receiveShadow
@@ -504,12 +392,16 @@ export default function City(props) {
                 </mesh>
 
                 {/* 沙西米 */}
-                <mesh visible={false} ref={projectRawNFreshRef} position={[-1.45, 0.19, 1.17]} rotation-y={Math.PI * 0.25}>
+                <mesh
+                    visible={false}
+                    ref={refs.A02}
+                    position={[-1.45, 0.19, 1.17]}
+                    rotation-y={Math.PI * 2}
+                >
                     <boxGeometry args={[0.25, 0.25, 0.25]} />
                     <meshBasicMaterial color="red" />
                 </mesh>
                 <mesh
-                    ref={rawNFreshMeshRef}
                     name="A02"
                     castShadow
                     receiveShadow
@@ -522,32 +414,38 @@ export default function City(props) {
                 </mesh>
 
                 {/* CSO */}
-                <mesh visible={false} ref={projectCSOnlineRef} position={[-1.5, 0.12, 4.1]} rotation-y={Math.PI * 1.3}>
-                    <boxGeometry args={[0.25, 0.25, 0.25]} />
-                    <meshBasicMaterial color="red" />
-                </mesh>
-                <group ref={projectTestGroupRef}>
-                    <mesh
-                        ref={projectTestRef}
-                        name="A03"
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.A03.geometry}
-                        material={nodes.A03.material}
-                        position={[0, 0.03, 0]}
-                        rotation={[Math.PI / 2, 0, 0]}
-                    >
-                        <meshBasicMaterial map={bakedA03Texture} transparent={true} />
-                    </mesh>
-                </group>
-
-                {/* WASSUP */}
-                <mesh visible={false} position={[-3.3, 0.49, 4.6]} rotation-y={Math.PI * 0.25}>
+                <mesh
+                    visible={false}
+                    ref={refs.A03}
+                    position={[-1, 0.12, 4.5]}
+                    rotation-y={Math.PI * 2}
+                >
                     <boxGeometry args={[0.25, 0.25, 0.25]} />
                     <meshBasicMaterial color="red" />
                 </mesh>
                 <mesh
-                    ref={wassupRef}
+                    name="A03"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.A03.geometry}
+                    material={nodes.A03.material}
+                    position={[0, 0.03, 0]}
+                    rotation={[Math.PI / 2, 0, 0]}
+                >
+                    <meshBasicMaterial map={bakedA03Texture} transparent={true} />
+                </mesh>
+
+                {/* WASSUP */}
+                <mesh
+                    visible={false}
+                    ref={refs.A04}
+                    position={[-2.7, 0.17, 5]}
+                    rotation-y={Math.PI * 2}
+                >
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
+                <mesh
                     name="A04"
                     castShadow
                     receiveShadow
@@ -558,7 +456,11 @@ export default function City(props) {
                     <meshBasicMaterial map={bakedA04Texture} transparent={true} />
                 </mesh>
 
+                {/* Mervét */}
                 <mesh
+                    // ref={A05Ref}
+                    // ref={mervetRef}
+                    ref={refs.A05}
                     name="A05"
                     castShadow
                     receiveShadow
@@ -570,6 +472,7 @@ export default function City(props) {
                 </mesh>
 
                 <mesh
+                    ref={refs.A06}
                     name="A06"
                     castShadow
                     receiveShadow
@@ -581,6 +484,7 @@ export default function City(props) {
                 </mesh>
 
                 <mesh
+                    ref={refs.A07}
                     name="A07"
                     castShadow
                     receiveShadow
@@ -591,6 +495,16 @@ export default function City(props) {
                     <meshBasicMaterial map={bakedA07Texture} transparent={true} />
                 </mesh>
 
+                {/*  */}
+                <mesh
+                    ref={refs.A08}
+                    visible={false}
+                    position={[-6.75, 0.276, 8.8]}
+                    rotation-y={Math.PI * 2}
+                >
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
                 <mesh
                     name="A08"
                     castShadow
@@ -602,6 +516,17 @@ export default function City(props) {
                     <meshBasicMaterial map={bakedA08Texture} transparent={true} />
                 </mesh>
 
+                {/*  */}
+                <mesh
+                    ref={refs.A09}
+                    visible={false}
+                    position={[-7.8, 0.25, 9.9]}
+                    rotation-y={Math.PI * 0.25}
+                >
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
+
                 <mesh
                     name="A09"
                     castShadow
@@ -611,6 +536,17 @@ export default function City(props) {
                     position={[-7.93, 0.31, 9.84]}
                 >
                     <meshBasicMaterial map={bakedA09Texture} transparent={true} />
+                </mesh>
+
+                {/*  */}
+                <mesh
+                    ref={refs.A10}
+                    visible={false}
+                    position={[-10.18, 0.5, 9.75]}
+                    rotation-y={Math.PI * 2}
+                >
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
                 </mesh>
 
                 <mesh
@@ -625,6 +561,15 @@ export default function City(props) {
                 </mesh>
 
                 <mesh
+                    visible={false}
+                    position={[-10.2, 1, 9.7]}
+                    rotation-y={Math.PI * 0.25}
+                >
+                    <boxGeometry args={[0.25, 0.25, 0.25]} />
+                    <meshBasicMaterial color="red" />
+                </mesh>
+                <mesh
+                    ref={refs.A15}
                     name="A15"
                     castShadow
                     receiveShadow
@@ -636,6 +581,7 @@ export default function City(props) {
                 </mesh>
 
                 <mesh
+                    ref={refs.A19}
                     name="A19"
                     castShadow
                     receiveShadow
@@ -647,6 +593,7 @@ export default function City(props) {
                 </mesh>
 
                 <mesh
+                    ref={refs.A20}
                     name="A20"
                     castShadow
                     receiveShadow

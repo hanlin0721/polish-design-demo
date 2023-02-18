@@ -15,6 +15,7 @@ const WorkList = ({
     const [articles, setArticles] = useState(null)
 
     useEffect(() => {
+        console.log(works)
         setArticles(works)
     }, [works])
 
