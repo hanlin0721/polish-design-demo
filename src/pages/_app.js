@@ -26,19 +26,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta name="og:image" content="/og.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        {/* <link rel="manifest" href="/site.webmanifest" /> */}
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#717c9a" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1"
-        />
         <title key="title">
           磨人設計 Polish Design - We keep polish all day !
         </title>
@@ -57,7 +44,24 @@ function MyApp({ Component, pageProps }) {
           property="og:description"
           content="Polish Design. 是一家提供數位解決方案的軟體設計公司，致力於為企業開發創意、行得通的數位產品，以實現任何商業挑戰及有趣的點子。"
         />
+        <meta
+          key="og:image"
+          property="og:image"
+          content="https://polish-design-demo.zeabur.app/og.jpg"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#717c9a" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
         <link rel="stylesheet" href="https://use.typekit.net/pxc5lqp.css" />
+        {/* <link rel="manifest" href="/site.webmanifest" /> */}
       </Head>
       <ChakraProvider theme={theme}>
         {isAppStoreInit && (
