@@ -1,5 +1,5 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { Box, Image, Text } from "@chakra-ui/react";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Footer from "../../components/Footer";
 
 const PrivacyPolicy = () => {
@@ -109,7 +109,7 @@ export default PrivacyPolicy;
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            // ...(await serverSideTranslations(locale, ["common"])),
         },
     };
 }

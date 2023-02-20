@@ -12,7 +12,7 @@ import PageLoading from "../components/PageLoading.js";
 import Nav from "../components/Nav.js";
 import StartWithUs from "../components/StartWithUs.js";
 import GiftBox from "../components/GiftBox.js";
-import { appWithTranslation } from "next-i18next";
+// import { appWithTranslation } from "next-i18next";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -83,4 +83,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default appWithTranslation(MyApp)
+export default MyApp

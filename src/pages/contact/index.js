@@ -1,5 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Footer from "../../components/Footer";
 import CustomForm from "../../components/Form/CustomForm.js"
 
@@ -41,7 +41,7 @@ export default Contact;
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            // ...(await serverSideTranslations(locale, ["common"])),
         },
     };
 }

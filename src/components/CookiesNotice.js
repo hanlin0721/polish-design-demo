@@ -41,11 +41,13 @@ const CookiesNotice = () => {
                 mr={{ base: "0", sm: "18px" }}
                 mb={{ base: "18px", sm: "0px" }}
             >
-                {t("cookies-desc1")}
+                {/* {t("cookies-desc1")} */}
+                為提供您更多優質的內容，本網站使用 cookies 分析技術。若繼續閱覽本網站內容，即表示您同意我們使用 cookies，關於更多cookies資訊請閱讀我們的
                 <a target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }} href="/privacy-policy">
-                    {t("privacy-link")}
+                    {/* {t("privacy-link")} */}
+                    「隱私權政策」
                 </a>
-                {t("cookies-desc2")}
+                。{/* {t("cookies-desc2")} */}
             </Text>
 
             <Box

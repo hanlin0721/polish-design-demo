@@ -1,5 +1,5 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import TechTeam from '../../images/services/tech-team.png'
 import Creator from '../../images/services/creator.png'
@@ -9,9 +9,6 @@ import BussinessExp from '../../images/services/bussiness-exp.png'
 import OpenedEgg from '../../images/services/opened-egg.png'
 import Bag from '../../images/services/bag.png'
 import Drawing from '../../images/services/drawing.png'
-// import KevinWithPolishModel from '../../images/services/kevin-with-polish-model.png'
-import ArrowDownwardIcon from "../../images/home/icons/Icon_arrow_downward_black.svg";
-import ZoraSmile from "../../images/services/banner.png";
 import Footer from "../../components/Footer";
 import { useDeviceType } from "../../utils/window";
 
@@ -539,7 +536,7 @@ export default About;
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            // ...(await serverSideTranslations(locale, ["common"])),
         },
     };
 }

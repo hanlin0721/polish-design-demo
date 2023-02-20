@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Select, Checkbox, Button, Link } from "@chakra-ui/react";
+import { Box, Text, Select, Checkbox, Button, Link } from "@chakra-ui/react";
 import CustomInputField from "./CustomInputField";
 import { Formik } from 'formik';
 import { useTranslation } from "next-i18next";
@@ -195,7 +195,8 @@ const CustomForm = () => {
                             我們將使用您的詳細聯繫方式就現在或將來的潛在合作機會直接與您聯繫。 有關個人數據保護的所有詳細信息，請參
                             <Link href="/privacy-policy" color="#A9ACB0" display="inline-block" onClick={() => (appStore.isMenu = false)}>
                                 <Text fontSize="14px" fontWeight="normal" textDecoration="underline" as="span">
-                                    {t("nav.term-and-condition")}
+                                    {/* {t("nav.term-and-condition")} */}
+                                    相關條款 & Cookies 授權
                                 </Text>
                                 <span>。</span>
                             </Link>

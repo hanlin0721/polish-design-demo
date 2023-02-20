@@ -30,7 +30,8 @@ const NavFooter = () => {
                     <a style={{ display: "block", width: "100%" }} target="_blank" href="https://hello.polish-design.com.tw/14?openExternalBrowser=1">
                         <Box onClick={() => (appStore.isMenu = false)}>
                             <Text fontSize="16px" fontWeight="normal">
-                                {t("nav.polish-2nd-anniversary")}
+                                {/* {t("nav.polish-2nd-anniversary")} */}
+                                The 2nd Ann. 禮品頁
                             </Text>
                         </Box>
                     </a>
@@ -39,7 +40,8 @@ const NavFooter = () => {
                     <a style={{ display: "block", width: "100%" }}>
                         <Box onClick={() => (appStore.isMenu = false)}>
                             <Text fontSize="16px" fontWeight="normal">
-                                {t("nav.term-and-condition")}
+                                {/* {t("nav.term-and-condition")} */}
+                                相關條款 & Cookies 授權
                             </Text>
                         </Box>
                     </a>
@@ -180,7 +182,7 @@ const NavContent = () => {
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
-                                                {t("home-2.home-link")}
+                                                首頁{/* {t("home-2.home-link")} */}
                                             </Text>
                                         </Box>
                                     </a>
@@ -189,7 +191,7 @@ const NavContent = () => {
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
-                                                {t("nav.how-we-do")}
+                                                我們的服務{/* {t("nav.how-we-do")} */}
                                             </Text>
                                         </Box>
                                     </a>
@@ -198,7 +200,7 @@ const NavContent = () => {
                                     <a style={{ display: "block", width: "100%" }}>
                                         <Box onClick={() => (appStore.isMenu = false)}>
                                             <Text fontSize="20px" fontWeight="normal">
-                                                {t("nav.start-with-us")}
+                                                與我們合作{/* {t("nav.start-with-us")} */}
                                             </Text>
                                         </Box>
                                     </a>

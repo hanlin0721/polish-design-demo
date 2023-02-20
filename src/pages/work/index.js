@@ -1,4 +1,4 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect, useRef } from "react";
 import { Box, Flex, Hide } from "@chakra-ui/react";
 import Map from "../../components/Maps/Map.js";
@@ -163,7 +163,7 @@ export default Work;
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            // ...(await serverSideTranslations(locale, ["common"])),
         },
     };
 }

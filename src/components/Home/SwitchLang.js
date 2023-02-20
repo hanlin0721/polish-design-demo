@@ -8,24 +8,24 @@ function SwitchLang({ ...props }) {
   const router = useRouter();
   const { locale } = router;
 
-  const switchLang = async () => {
-    const newLocale = locale === "en" ? "zh-TW" : "en";
-    const { pathname } = window.location;
-    if (newLocale === "zh-TW") {
-      window.location.href = window.location.pathname.replace(
-        pathname,
-        "/zh-TW" + pathname
-      );
-    } else {
-      window.location.href = window.location.pathname.replace("/en", "");
-    }
-  };
+  // const switchLang = async () => {
+  //   const newLocale = locale === "en" ? "zh-TW" : "en";
+  //   const { pathname } = window.location;
+  //   if (newLocale === "zh-TW") {
+  //     window.location.href = window.location.pathname.replace(
+  //       pathname,
+  //       "/zh-TW" + pathname
+  //     );
+  //   } else {
+  //     window.location.href = window.location.pathname.replace("/en", "");
+  //   }
+  // };
 
   return (
     <Flex
       cursor="pointer"
       fontSize="16px"
-      onClick={switchLang}
+      // onClick={switchLang}
       justify="center"
     >
       <Text opacity={locale === "en" ? 1 : 0.5}>English</Text>
